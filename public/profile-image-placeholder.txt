@@ -1,0 +1,2 @@
+Replace this placeholder with your real profile image named profile.png.
+Expected path: public/profile.png
