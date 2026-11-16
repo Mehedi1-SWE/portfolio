@@ -1,55 +1,57 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 
 const links = [
-    ["Home", "#home"],
-    ["About", "#about"],
-    ["Skills", "#skills"],
-    ["Projects", "#projects"],
-    ["Experience", "#experience"],
-    ["Contact", "#contact"],
-];
+  ["Home", "#home"],
+  ["About", "#about"],
+  ["Academic", "#academic"],
+  ["Research", "#research"],
+  ["Experience", "#experience"],
+  ["Projects", "#projects"],
+] as const;
 
-export default function Navbar() {
-    const [open, setOpen] = useState(false);
+export function Navbar() {
+  return (
+    <header className="fixed left-0 top-[40px] z-50 w-full px-4 pt-0 lg:px-8">
+      <nav className="mx-auto flex h-[65px] max-w-[1280px] items-center justify-between border border-white/80 bg-[#FFFDFACC] px-4 shadow-[0_18px_55px_rgba(54,39,29,.075)] backdrop-blur-xl lg:px-6">
 
-    return (
-        <header className="sticky top-0 z-50 border-b border-[#E8E8E8] bg-white/90 backdrop-blur-xl">
-            <div className="portfolio-container flex h-[90px] items-center justify-between">
-                <Link href="#home" className="text-[27px] font-bold tracking-[-0.045em] text-[#151515]">
-                    MEHEDI<span className="text-[#FF3811]">.</span>
-                </Link>
+        {/* Logo */}
+        <Link
+          href="#home"
+          className="flex min-h-11 items-center gap-3"
+          aria-label="Go to homepage"
+        >
+          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#9B3D27] text-sm font-black text-white">
+            MH
+          </span>
 
-                <nav className="hidden items-center gap-8 lg:flex">
-                    {links.map(([label, href]) => (
-                        <Link key={label} href={href} className="text-[14px] font-bold text-[#444444] transition-colors duration-300 hover:text-[#FF3811]">
-                            {label}
-                        </Link>
-                    ))}
-                </nav>
+          <span className="hidden text-sm font-bold uppercase tracking-[.13em] text-[#27231F] sm:block">
+            Mehedi Hasan
+          </span>
+        </Link>
 
-                <Link href="#contact" className="hidden rounded-[6px] bg-[#151515] px-6 py-[13px] text-[14px] font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#FF3811] lg:block">
-                    Hire Me
-                </Link>
+        {/* Navigation */}
+        <div className="hidden items-center gap-7 md:flex">
+          {links.map(([label, href]) => (
+            <Link
+              key={href}
+              href={href}
+              className="relative min-h-11 py-3 text-sm font-bold tracking-[.035em] text-[#514B44] transition hover:text-[#211F1C]"
+            >
+              {label}
+            </Link>
+          ))}
+        </div>
 
-                <button type="button" onClick={() => setOpen(!open)} className="rounded-[6px] border border-[#E8E8E8] px-3 py-2 text-xl text-[#151515] lg:hidden" aria-label="Toggle navigation" aria-expanded={open}>
-                    {open ? "×" : "☰"}
-                </button>
-            </div>
-
-            {open && (
-                <nav className="border-t border-[#E8E8E8] bg-white px-6 py-5 lg:hidden">
-                    <div className="portfolio-container flex flex-col gap-1">
-                        {links.map(([label, href]) => (
-                            <Link key={label} href={href} onClick={() => setOpen(false)} className="rounded-[6px] px-4 py-3 text-[15px] font-semibold text-[#444444] transition-colors hover:bg-[#F7F7F5] hover:text-[#FF3811]">
-                                {label}
-                            </Link>
-                        ))}
-                    </div>
-                </nav>
-            )}
-        </header>
-    );
+        {/* Contact Button */}
+        <Link
+          href="#contact"
+          className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-xl bg-[#9B3D27] px-5 text-sm font-bold text-white shadow-[0_12px_30px_rgba(155,61,39,.18)] transition hover:-translate-y-0.5 hover:bg-[#7F2F20]"
+        >
+          Contact
+          <ArrowUpRight size={14} />
+        </Link>
+      </nav>
+    </header>
+  );
 }

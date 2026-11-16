@@ -1,1 +1,10 @@
-export default function Footer(){return <footer className="bg-[#151515] py-10"><div className="portfolio-container flex flex-col justify-between gap-5 text-sm text-[#aaa] md:flex-row md:items-center"><p>© {new Date().getFullYear()} Mehedi Hasan. All rights reserved.</p><div className="flex gap-5"><a href="https://github.com/Mehedi1-SWE" target="_blank">GitHub</a><a href="https://linkedin.com/in/mehedi-hasan96" target="_blank">LinkedIn</a><a href="mailto:mehedi1-3144@diu.edu.bd">Email</a></div></div></footer>}
+export function Footer() {
+  return (
+    <footer className="border-t border-[#DDD7CD] bg-white px-6 py-7 lg:px-12">
+      <div className="mx-auto flex max-w-[1280px] flex-col gap-3 text-sm font-bold uppercase tracking-[.13em] text-[#5F5A53] md:flex-row md:items-center md:justify-between">
+        <span>© 2026 Mehedi Hasan</span>
+        <span>Software Engineering · Academic · Research</span>
+      </div>
+    </footer>
+  );
+}

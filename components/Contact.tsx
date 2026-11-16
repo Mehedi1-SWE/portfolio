@@ -1,1 +1,18 @@
-"use client";import{useState,type FormEvent}from"react";export default function Contact(){const[status,setStatus]=useState("");async function submit(e:FormEvent<HTMLFormElement>){e.preventDefault();setStatus("Sending...");const data=Object.fromEntries(new FormData(e.currentTarget).entries());const r=await fetch("/api/contact",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});const j=await r.json().catch(()=>({}));if(r.ok){e.currentTarget.reset();setStatus("Message sent successfully.")}else setStatus(j.error??"Unable to send message.")}return <section id="contact" className="py-24"><div className="portfolio-container grid gap-8 lg:grid-cols-[.8fr_1.2fr]"><div className="rounded-[10px] bg-[#151515] p-8 text-white"><div className="section-label">Contact</div><h2 className="mt-5 text-[42px] font-bold">Let&apos;s Build Something Together</h2><p className="mt-6 leading-8 text-[#b9b9b9]">Open to software engineering opportunities, full-stack projects and collaborative technical work.</p><div className="mt-10 space-y-5"><div>Dhaka, Bangladesh</div><div>mehedi1-3144@diu.edu.bd</div><div>+880 1758-685869</div></div></div><form onSubmit={submit} className="card p-8"><div className="grid gap-5 sm:grid-cols-2"><input name="name" required placeholder="Your name" className="h-14 rounded-[6px] border border-[#E8E8E8] px-4 outline-none focus:border-[#FF3811]"/><input name="email" required type="email" placeholder="Your email" className="h-14 rounded-[6px] border border-[#E8E8E8] px-4 outline-none focus:border-[#FF3811]"/></div><input name="subject" required placeholder="Subject" className="mt-5 h-14 w-full rounded-[6px] border border-[#E8E8E8] px-4 outline-none focus:border-[#FF3811]"/><textarea name="message" required rows={7} placeholder="Your message" className="mt-5 w-full rounded-[6px] border border-[#E8E8E8] p-4 outline-none focus:border-[#FF3811]"/><div className="mt-5 flex flex-wrap items-center gap-4"><button className="rounded-[6px] bg-[#FF3811] px-7 py-4 font-semibold text-white">Send Message</button><span className="text-sm text-[#737373]">{status}</span></div></form></div></section>}
+import { Github, Mail } from "lucide-react";
+
+export function Contact() {
+  return (
+    <section id="contact" className="relative px-6 py-32 lg:px-12">
+      <div className="hero-orb absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#9B3D27]/[.06] blur-[110px]" aria-hidden="true" />
+      <div className="relative mx-auto max-w-3xl text-center">
+        <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.14em] text-[#625B53]">07 / Contact</span>
+        <h2 className="mt-5 text-[clamp(46px,7vw,88px)] font-black leading-[1.05] tracking-[-.04em] text-[#202020]">Let&apos;s build the <span className="font-sans font-normal italic text-[#9B3D27]">next thing.</span></h2>
+        <p className="mx-auto mt-7 max-w-2xl text-[16px] leading-8 text-[#5B564F]">Open to software engineering opportunities, academic collaboration and Master&apos;s-level research conversations.</p>
+        <div className="mt-9 flex flex-wrap justify-center gap-3">
+          <a href="mailto:hello@example.com" className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-xl bg-[#9B3D27] px-5 text-sm font-bold text-white shadow-[0_12px_30px_rgba(155,61,39,.18)] transition hover:-translate-y-0.5 hover:bg-[#7F2F20]">Email me <Mail size={15} /></a>
+          <a href="https://github.com/Mehedi1-SWE" target="_blank" rel="noreferrer" className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-xl border border-[#CEC6BB] bg-white/90 px-5 text-sm font-bold text-[#292521] shadow-sm transition hover:-translate-y-0.5 hover:border-[#A89484]">GitHub <Github size={15} /></a>
+        </div>
+      </div>
+    </section>
+  );
+}

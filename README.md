@@ -1,11 +1,61 @@
-# Mehedi Hasan Professional Portfolio
+# Mehedi Hasan — Next.js + Tailwind Portfolio
 
-Next.js + TypeScript + Tailwind CSS + MongoDB + Mongoose full-stack portfolio.
+A clean, premium portfolio that combines **academic background, research interests, professional experience, and software projects**.
 
-## Run
-1. `npm install`
-2. Copy `.env.example` to `.env.local`
-3. Put your MongoDB Atlas URI in `MONGODB_URI`
-4. `npm run dev`
+## Tech Stack
 
-The production site should be deployed on an HTTPS-enabled host. Keep `.env.local` out of Git.
+- Next.js 15
+- React 19
+- TypeScript
+- Tailwind CSS v4
+- Lucide React
+
+## Project Structure
+
+```text
+app/
+  page.tsx          # Main page: only combines the sections
+  globals.css       # Global styles, animations and reusable UI classes
+  layout.tsx        # Website metadata and root layout
+
+components/
+  Navbar.tsx        # Top navigation
+  Hero.tsx          # Hero / introduction section
+  About.tsx         # About section
+  Academic.tsx      # Education, coursework and academic projects
+  Research.tsx      # Research interests
+  Experience.tsx    # Professional experience + education timeline
+  Projects.tsx      # Professional project showcase
+  Skills.tsx        # Technical skills
+  Contact.tsx       # Contact CTA
+  Footer.tsx        # Footer
+  SectionHeading.tsx# Reusable section heading
+```
+
+## How to edit content
+
+Most content is intentionally kept close to the component that displays it.
+
+Examples:
+
+- Change your name or hero text → `components/Hero.tsx`
+- Add academic projects → `components/Academic.tsx`
+- Add research topics → `components/Research.tsx`
+- Update jobs / education → `components/Experience.tsx`
+- Add projects and links → `components/Projects.tsx`
+- Update skills → `components/Skills.tsx`
+- Change contact email → `components/Contact.tsx`
+
+## Run locally
+
+```bash
+npm install
+npm run dev
+```
+
+Then open `http://localhost:3000`.
+
+## Important files
+
+If you want to change the visual system, start with `app/globals.css`.
+The main accent color is stored in the CSS variable `--accent`.

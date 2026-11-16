@@ -1,17 +1,21 @@
-export default function SectionHeading({
-    label,
-    title,
-    description,
-}: {
-    label: string;
-    title: string;
-    description: string;
-}) {
-    return (
-        <div className="mx-auto max-w-[780px] text-center">
-            <div className="section-label">{label}</div>
-            <h2 className="section-title mt-5">{title}</h2>
-            <p className="section-description mx-auto mt-7 max-w-[680px]">{description}</p>
-        </div>
-    );
+type SectionHeadingProps = {
+  number: string;
+  eyebrow: string;
+  title: React.ReactNode;
+  description?: string;
+};
+
+export function SectionHeading({ number, eyebrow, title, description }: SectionHeadingProps) {
+  return (
+    <div className="max-w-3xl">
+      <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-[#625B53]">
+        <span className="h-px w-6 bg-[#BCAE9F]" />
+        {number} / {eyebrow}
+      </span>
+      <h2 className="mt-5 text-[clamp(2.35rem,4vw,4rem)] font-black leading-[1.1] tracking-[-0.035em] text-[#201E1B]">
+        {title}
+      </h2>
+      {description ? <p className="mt-5 max-w-2xl text-base leading-8 text-[#5B554E] md:text-[17px]">{description}</p> : null}
+    </div>
+  );
 }

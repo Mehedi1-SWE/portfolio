@@ -1,9 +1,22 @@
-import type {Metadata} from "next";
+
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 
-export 
-const metadata:Metadata={title:"Mehedi Hasan | Software Engineer & Full-Stack Developer",description:"Professional portfolio of Mehedi Hasan.",metadataBase:new URL(process.env.NEXT_PUBLIC_SITE_URL??"http://localhost:3000")};
+const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter" });
 
-export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="en"><body><Navbar/>{children}<Footer/></body></html>}
+export const metadata: Metadata = {
+  title: "Mehedi Hasan | Software Engineer",
+  description: "Academic, research and professional portfolio of Mehedi Hasan — Full-Stack Software Engineer.",
+  keywords: ["Mehedi Hasan", "Software Engineer", "Next.js", "TypeScript", "React", "Full-Stack Developer"],
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <html lang="en">
+      <body className={inter.variable} suppressHydrationWarning>{children}</body>
+    </html>
+  );
+}

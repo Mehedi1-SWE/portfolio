@@ -1,1 +1,13 @@
-import SectionHeading from"./SectionHeading";export default function About(){return <section id="about" className="py-24"><div className="portfolio-container"><SectionHeading label="About Me" title="Professional Profile" description="A Computer Science and Engineering graduate and MERN Stack Developer focused on building reliable, scalable and user-friendly software."/><div className="mt-16 grid gap-8 lg:grid-cols-[1.2fr_.8fr]"><div className="card p-8"><h3 className="text-[25px] font-bold">Professional Summary</h3><p className="mt-6 text-[16px] leading-8 text-[#737373]">Results-driven Computer Science and Engineering graduate and MERN Stack Developer Intern at Goinnovior Limited with background in machine learning research. Adept at designing and delivering scalable web applications using React.js, Node.js, Express.js, MongoDB and modern TypeScript-based tooling.</p></div><div className="rounded-[10px] bg-[#151515] p-8 text-white"><h3 className="text-[25px] font-bold">Core Expertise</h3><div className="mt-6 grid gap-4">{["Full-Stack Development","REST API Development","Responsive UI/UX","Database Design","Machine Learning","Testing & Debugging"].map(x=><div key={x} className="rounded-[8px] border border-white/10 px-4 py-3">{x}</div>)}</div></div></div></div></section>}
+import { SectionHeading } from "./SectionHeading";
+
+export function About() {
+  return (
+    <section id="about" className="mx-auto grid max-w-[1280px] gap-14 px-6 py-28 lg:grid-cols-[.72fr_1.28fr] lg:px-12">
+      <SectionHeading number="01" eyebrow="About" title={<>Academic mind.<br /><span className="font-sans font-normal italic text-[#9B3D27]">Engineering craft.</span></>} />
+      <div className="max-w-3xl text-[16px] leading-8 text-[#4E4A44]">
+        <p>My work combines a Computer Science foundation with practical full-stack development. I enjoy turning requirements into reliable interfaces, APIs and data-driven products.</p>
+        <p className="mt-5">This portfolio brings together my academic work, research interests and professional experience so it can support both Master&apos;s applications and software engineering opportunities.</p>
+      </div>
+    </section>
+  );
+}
