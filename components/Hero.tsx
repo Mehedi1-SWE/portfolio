@@ -81,7 +81,7 @@ export function Hero() {
           aria-hidden="true"
         />
 
-        <div className="relative mx-auto grid w-full max-w-[1280px] items-start gap-14 lg:grid-cols-[1.08fr_.78fr] lg:items-start">
+        <div className="relative mx-auto grid w-full max-w-[1280px] items-start gap-8 lg:grid-cols-[1.08fr_.78fr] lg:items-start lg:gap-14">
           <div className="reveal-card max-w-[760px]">
             <div className="mb-6 flex items-center gap-3 text-sm font-bold uppercase tracking-[.12em] text-[#5A554E]">
               <span className="h-2 w-2 rounded-full bg-[#9B3D27]" />
@@ -92,7 +92,7 @@ export function Hero() {
               Hello, I&apos;m
             </p>
 
-            <h1 className="mt-3 text-[clamp(56px,7.5vw,104px)] font-black leading-[1] tracking-[-.05em] text-[#171717]">
+            <h1 className="mt-3 text-[clamp(42px,10vw,104px)] font-black leading-[1] tracking-[-.05em] text-[#171717] sm:text-[clamp(56px,7.5vw,104px)]">
               Mehedi{" "}
               <span className="font-sans font-normal italic text-[#9B3D27]">
                 Hasan.
@@ -113,7 +113,7 @@ export function Hero() {
             </p>
 
             {/* CV BUTTONS */}
-            <div className="mt-9 flex items-center gap-5">
+            <div className="mt-9 flex flex-wrap items-center gap-3 sm:gap-5">
               {/* Professional CV */}
               <a href="/professional-cv.pdf" className="group inline-flex h-[52px] w-[185px] shrink-0 items-center justify-between rounded-[12px] bg-gradient-to-r from-[#A93E25] to-[#F04A20] px-3 text-white shadow-[0_10px_24px_rgba(169,62,37,.16)] transition hover:-translate-y-0.5">
                 <span className="flex items-center gap-2">
