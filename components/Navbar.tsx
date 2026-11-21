@@ -63,7 +63,7 @@ export function Navbar() {
         </Link>
       </nav>
 
-      <div id="mobile-navigation" className={`absolute left-4 right-4 top-[73px] rounded-xl border border-[#E8DDD7] bg-[#FFFDFACC] p-3 shadow-[0_18px_45px_rgba(15,23,42,.14)] md:hidden ${isMenuOpen ? "block" : "hidden"}`}>
+      <div id="mobile-navigation" className={`absolute left-4 right-4 top-[73px] max-h-[calc(100dvh-130px)] overflow-y-auto rounded-xl border border-[#E8DDD7] bg-[#FFFDFACC] p-3 shadow-[0_18px_45px_rgba(15,23,42,.14)] md:hidden ${isMenuOpen ? "block" : "hidden"}`}>
         <div className="flex flex-col">
           {links.map(([label, href]) => (
             <Link key={href} href={href} onClick={() => setIsMenuOpen(false)} className="flex min-h-11 items-center rounded-lg px-3 text-sm font-bold text-[#514B44] transition hover:bg-[#F7ECE7] hover:text-[#9B3D27]">
