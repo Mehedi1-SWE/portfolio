@@ -69,7 +69,7 @@ export function Hero() {
     <>
       <section
         id="home"
-        className="relative flex min-h-[700px] items-start px-6 pb-18 pt-[120px] lg:px-12 lg:pt-[120px]"
+        className="relative flex min-h-0 items-start px-4 pb-14 pt-[112px] sm:px-6 sm:pb-16 sm:pt-[120px] lg:min-h-[700px] lg:px-12 lg:pb-18"
       >
         <div
           className="grid-bg absolute inset-x-0 top-0 h-[760px] opacity-50"
@@ -92,30 +92,30 @@ export function Hero() {
               Hello, I&apos;m
             </p>
 
-            <h1 className="mt-3 text-[clamp(42px,10vw,104px)] font-black leading-[1] tracking-[-.05em] text-[#0F172A] sm:text-[clamp(56px,7.5vw,104px)]">
+            <h1 className="mt-3 text-[clamp(40px,10vw,104px)] font-black leading-[1] tracking-[-.05em] text-[#0F172A] sm:text-[clamp(56px,7.5vw,104px)]">
               Mehedi{" "}
-              <span className="font-sans font-normal italic text-[#2563EB]">
+              <span className="font-normal italic text-[#2563EB]">
                 Hasan.
               </span>
             </h1>
 
-            <h2 className="mt-9 max-w-2xl text-[clamp(28px,3.1vw,46px)] font-semibold leading-[1.15] tracking-[-.03em] text-[#1E293B]">
+            <h2 className="mt-7 max-w-2xl text-[clamp(28px,3.1vw,46px)] font-semibold leading-[1.15] tracking-[-.03em] text-[#1E293B]">
               Building modern software with a{" "}
               <span className="text-[#64748B]">
                 strong engineering and academic foundation.
               </span>
             </h2>
 
-            <p className="mt-7 max-w-2xl text-base leading-8 text-[#475569] md:text-[17px]">
+            <p className="mt-5 max-w-2xl text-base leading-8 text-[#475569] sm:mt-7 md:text-[17px]">
               Software engineer with a Computer Science background, focused on
               full-stack web development, practical software solutions and
               research-oriented work.
             </p>
 
             {/* CV BUTTONS */}
-            <div className="mt-9 flex flex-wrap items-center gap-3 sm:gap-5">
+            <div className="mt-7 grid grid-cols-1 gap-3 sm:mt-9 sm:flex sm:flex-wrap sm:items-center sm:gap-5">
               {/* Professional CV */}
-              <a href="/professional-cv.pdf" className="group inline-flex h-[52px] w-[185px] shrink-0 items-center justify-between rounded-[12px] bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] px-3 text-white shadow-[0_10px_24px_rgba(37,99,235,.16)] transition hover:-translate-y-0.5">
+              <a href="/professional-cv.pdf" className="group inline-flex h-[52px] w-full shrink-0 sm:w-[185px] items-center justify-between rounded-[12px] bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] px-3 text-white shadow-[0_10px_24px_rgba(37,99,235,.16)] transition hover:-translate-y-0.5">
                 <span className="flex items-center gap-2">
                   <FileText size={18} strokeWidth={2.2} className="shrink-0" />
                   <span className="whitespace-nowrap text-[14px] font-bold">Professional CV</span>
@@ -124,7 +124,7 @@ export function Hero() {
               </a>
 
               {/* Academic CV */}
-              <a href="/academic-cv.pdf" className="group inline-flex h-[52px] w-[180px] shrink-0 items-center justify-between rounded-[12px] border border-[#CBD5E1] bg-white px-3 text-[#0F172A] shadow-[0_4px_12px_rgba(15,23,42,.06)] transition hover:-translate-y-0.5">
+              <a href="/academic-cv.pdf" className="group inline-flex h-[52px] w-full shrink-0 sm:w-[180px] items-center justify-between rounded-[12px] border border-[#CBD5E1] bg-white px-3 text-[#0F172A] shadow-[0_4px_12px_rgba(15,23,42,.06)] transition hover:-translate-y-0.5">
                 <span className="flex items-center gap-2">
                   {/* Filled Academic Mortarboard */}
                   <svg
@@ -158,7 +158,7 @@ export function Hero() {
               </a>
 
               {/* Europass CV */}
-              <a href="/europass-cv.pdf" className="group inline-flex h-[52px] w-[180px] shrink-0 items-center justify-between rounded-[12px] border border-[#CBD5E1] bg-white px-3 text-[#0F172A] shadow-[0_4px_12px_rgba(15,23,42,.06)] transition hover:-translate-y-0.5">
+              <a href="/europass-cv.pdf" className="group inline-flex h-[52px] w-full shrink-0 sm:w-[180px] items-center justify-between rounded-[12px] border border-[#CBD5E1] bg-white px-3 text-[#0F172A] shadow-[0_4px_12px_rgba(15,23,42,.06)] transition hover:-translate-y-0.5">
                 <span className="flex items-center gap-2">
                   {/* EU Flag */}
                   <span className="flex h-[28px] w-[38px] shrink-0 items-center justify-center rounded-[2px] bg-[#0757B8]">
@@ -248,7 +248,7 @@ export function Hero() {
                       Academic &amp; Professional
                     </p>
 
-                    <h3 className="mt-2 text-[27px] font-bold leading-[1.2] tracking-[-.025em] text-[#0F172A] md:text-[32px]">
+                    <h3 className="mt-2 text-[23px] font-bold leading-[1.2] tracking-[-.025em] text-[#0F172A] sm:text-[27px] md:text-[32px]">
                       Software Engineer
                     </h3>
 
