@@ -10,20 +10,20 @@ const skillGroups = [
 
 export function Skills() {
   return (
-    <section className="border-y border-[#E2E8F0] bg-[#F1F5F9] px-6 py-28 lg:px-12">
+    <section className="border-y border-[#E2E8F0] bg-[#F1F5F9] px-4 py-16 sm:px-6 sm:py-20 lg:px-12 lg:py-28">
       <div className="mx-auto max-w-[1280px]">
         <SectionHeading
           number="06"
           eyebrow="Technical skills"
-          title={<>The <span className="font-sans font-normal italic text-[#2563EB]">toolkit.</span></>}
+          title={<>The <span className="font-normal italic text-[#2563EB]">toolkit.</span></>}
           description="A focused overview of the technologies and engineering practices I use to build reliable, modern software."
         />
 
-        <div className="mt-12 overflow-hidden rounded-[28px] border border-[#E2E8F0] bg-white shadow-[0_14px_44px_rgba(15,23,42,.055)]">
+        <div className="mt-8 overflow-hidden rounded-[28px] border border-[#E2E8F0] bg-white shadow-[0_14px_44px_rgba(15,23,42,.055)] sm:mt-12">
           {skillGroups.map((group, index) => {
             const Icon = group.icon;
             return (
-              <div key={group.category} className={`grid gap-6 px-7 py-7 md:grid-cols-[230px_1fr] md:items-center lg:px-9 ${index !== skillGroups.length - 1 ? "border-b border-[#E2E8F0]" : ""}`}>
+              <div key={group.category} className={`grid gap-4 px-4 py-5 sm:gap-6 sm:px-7 sm:py-7 md:grid-cols-[230px_1fr] md:items-center lg:px-9 ${index !== skillGroups.length - 1 ? "border-b border-[#E2E8F0]" : ""}`}>
                 <div className="flex items-start gap-4">
                   <span className="pt-1 text-[11px] font-bold tracking-[.18em] text-[#2563EB]">{group.number}</span>
                   <div className="flex items-center gap-2.5">
@@ -43,7 +43,7 @@ export function Skills() {
           })}
         </div>
 
-        <div className="mt-5 flex items-center gap-2 text-xs font-semibold uppercase tracking-[.16em] text-[#64748B]">
+        <div className="mt-4 flex flex-wrap items-start gap-2 text-xs font-semibold uppercase tracking-[.16em] text-[#64748B]">
           <Cloud size={14} className="text-[#2563EB]" />
           Practical stack · engineering fundamentals · production-ready workflows
         </div>
