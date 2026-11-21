@@ -71,7 +71,7 @@ export function TopBar() {
   const [showWeChat, setShowWeChat] = useState(false);
 
   return (
-    <div className="fixed left-1/2 top-0 z-[60] w-full max-w-[1280px] -translate-x-1/2 border-b border-white/15 bg-[#0F172A] text-white shadow-[0_8px_28px_rgba(15,23,42,.16)]">
+    <div className="fixed left-1/2 top-0 z-[60] w-full max-w-[1280px] -translate-x-1/2 border-b border-white/15 bg-[#A63D24] text-white shadow-[0_8px_28px_rgba(80,31,19,.16)]">
 
       <div className="flex min-h-[42px] w-full items-center justify-between gap-3 px-4 sm:gap-5 lg:px-6">
 
