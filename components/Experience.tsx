@@ -2,7 +2,7 @@ import { BriefcaseBusiness, GraduationCap } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 
 const timeline = [
-  { date: "2026 — PRESENT", title: "MERN Stack Developer Intern", organization: "Goinnovior Limited", description: "Developing web applications with MongoDB, Express.js, React.js and Node.js; building responsive interfaces with React and Tailwind CSS; assisting with APIs, testing and deployment.", icon: BriefcaseBusiness },
+  { date: "2026 — PRESENT", title: "MERN Stack Developer Intern", organization: "Goinnovior Limited", description: "Contributing to full-stack web application development using MongoDB, Express.js, React.js and Node.js. Building responsive interfaces with React and Tailwind CSS, and supporting API integration, testing and deployment workflows.", icon: BriefcaseBusiness },
   { date: "2025 — 2026", title: "IT & Support", organization: "MRS Engineering", description: "Provided technical support and troubleshooting while helping maintain reliable technology operations.", icon: BriefcaseBusiness },
   { date: "2019 — 2024", title: "B.Sc. in Computer Science & Engineering", organization: "Daffodil International University", description: "Computer Science and Engineering · CGPA 3.58 / 4.00.", icon: GraduationCap },
 ];
