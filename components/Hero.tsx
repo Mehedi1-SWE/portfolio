@@ -100,16 +100,14 @@ export function Hero() {
             </h1>
 
             <h2 className="mt-7 max-w-2xl text-[clamp(28px,3.1vw,46px)] sm:mt-9 font-semibold leading-[1.15] tracking-[-.03em] text-[#1E293B]">
-              Building modern software with a{" "}
+              Full-Stack Software Engineer{" "}
               <span className="text-[#64748B]">
-                strong engineering and academic foundation.
+                building modern web applications with Next.js, React and Node.js.
               </span>
             </h2>
 
             <p className="mt-5 max-w-2xl text-base leading-8 text-[#475569] sm:mt-7 md:text-[17px]">
-              Software engineer with a Computer Science background, focused on
-              full-stack web development, practical software solutions and
-              research-oriented work.
+              Computer Science graduate focused on full-stack web development, building responsive interfaces, backend APIs and practical software solutions.
             </p>
 
             {/* CV BUTTONS */}
@@ -186,7 +184,7 @@ export function Hero() {
                   </span>
 
                   <span className="whitespace-nowrap text-[14px] font-bold">
-                    <span className="text-[#7030A0]">europass</span>
+                    <span className="text-[#7030A0]">Europass</span>
                     <span className="ml-1 text-[#0F172A]">CV</span>
                   </span>
                 </span>
