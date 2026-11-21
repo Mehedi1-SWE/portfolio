@@ -99,7 +99,7 @@ export function Hero() {
               </span>
             </h1>
 
-            <h2 className="mt-7 max-w-2xl text-[clamp(28px,3.1vw,46px)] font-semibold leading-[1.15] tracking-[-.03em] text-[#1E293B]">
+            <h2 className="mt-7 max-w-2xl text-[clamp(28px,3.1vw,46px)] sm:mt-9 font-semibold leading-[1.15] tracking-[-.03em] text-[#1E293B]">
               Building modern software with a{" "}
               <span className="text-[#64748B]">
                 strong engineering and academic foundation.
