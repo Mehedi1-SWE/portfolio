@@ -16,8 +16,8 @@ export function Experience() {
           {timeline.map(({ date, title, organization, description, icon: Icon }) => (
             <article key={`${date}-${title}`} className="grid gap-3 py-6 sm:gap-5 sm:py-8 md:grid-cols-[170px_1fr]">
               <span className="font-sans text-sm font-semibold text-[#64748B]">{date}</span>
-              <div className="relative">
-                <div className="flex items-start gap-3"><Icon size={18} className="mt-1 shrink-0 text-[#2563EB]" /><div><h3 className="text-xl font-semibold text-[#0F172A]">{title}</h3><p className="mt-1 text-sm font-bold uppercase tracking-[.12em] text-[#2563EB]">{organization}</p></div></div>
+              <div className="relative min-w-0">
+                <div className="flex min-w-0 items-start gap-3"><Icon size={18} className="mt-1 shrink-0 text-[#2563EB]" /><div className="min-w-0"><h3 className="text-xl font-semibold text-[#0F172A]">{title}</h3><p className="mt-1 text-sm font-bold uppercase tracking-[.12em] text-[#2563EB]">{organization}</p></div></div>
                 <p className="mt-4 max-w-3xl text-[16px] leading-7 text-[#475569]">{description}</p>
               </div>
             </article>
