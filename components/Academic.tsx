@@ -22,9 +22,9 @@ export function Academic() {
         <div className="mt-10 grid gap-5 sm:mt-14 lg:grid-cols-2">
           {academicProjects.map((project) => (
             <article key={project.title} className="relative min-h-0 overflow-hidden rounded-2xl border border-[#E2E8F0] bg-[#FFFFFFCC] p-5 shadow-[0_14px_44px_rgba(15,23,42,.055)] transition hover:-translate-y-1.5 hover:shadow-[0_26px_72px_rgba(15,23,42,.12)] sm:p-7 md:min-h-[420px] md:p-9">
-              <div className="flex items-center justify-between gap-4">
+              <div className="flex min-w-0 items-start justify-between gap-3 sm:gap-4">
                 <span className="text-sm font-bold tracking-[.15em] text-[#2563EB]">{project.number}</span>
-                <span className="text-right text-sm font-bold uppercase tracking-[.12em] text-[#64748B]">{project.course}</span>
+                <span className="min-w-0 max-w-[85%] text-right text-xs font-bold uppercase tracking-[.1em] text-[#64748B] sm:text-sm sm:tracking-[.12em]">{project.course}</span>
               </div>
               <h3 className="mt-8 max-w-xl text-3xl font-bold leading-[1.2] tracking-[-.025em] text-[#0F172A] sm:mt-12 md:text-4xl">{project.title}</h3>
               <p className="mt-5 max-w-xl text-[16px] leading-7 text-[#475569]">{project.description}</p>
