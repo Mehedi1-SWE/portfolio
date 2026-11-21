@@ -5,7 +5,6 @@ import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter" });
 const geist = Geist({ subsets: ["latin"], display: "swap", variable: "--font-geist" });
-const geist = Geist({ subsets: ["latin"], display: "swap", variable: "--font-geist" });
 
 export const metadata: Metadata = {
   title: "Mehedi Hasan | Software Engineer",
