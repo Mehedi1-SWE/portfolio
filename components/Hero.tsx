@@ -330,27 +330,47 @@ export function Hero() {
         className="relative z-10 mt-6 overflow-hidden border-y border-[#E2E8F0] bg-white py-3.5"
         aria-label="Technology highlights"
       >
-        <div className="marquee flex w-max gap-10 whitespace-nowrap">
-          {[
-            "NEXT.JS",
-            "REACT",
-            "TYPESCRIPT",
-            "NODE.JS",
-            "MONGODB",
-            "SOFTWARE ENGINEERING",
-            "AI / ML",
-            "RESEARCH",
-          ].map((item) => (
-            <span
-              key={item}
-              className="text-sm font-bold tracking-[.16em] text-[#64748B]"
-            >
-              {item}{" "}
-              <span className="ml-10 text-[#2563EB]">
-                ✦
+        <div className="marquee flex w-max whitespace-nowrap">
+          <div className="flex shrink-0 items-center gap-10 pr-10">
+            {[
+              "NEXT.JS",
+              "REACT",
+              "TYPESCRIPT",
+              "NODE.JS",
+              "MONGODB",
+              "SOFTWARE ENGINEERING",
+              "AI / ML",
+              "RESEARCH",
+            ].map((item) => (
+              <span
+                key={item}
+                className="shrink-0 text-sm font-bold tracking-[.16em] text-[#64748B]"
+              >
+                {item}{" "}
+                <span className="ml-10 text-[#2563EB]">✦</span>
               </span>
-            </span>
-          ))}
+            ))}
+          </div>
+          <div className="flex shrink-0 items-center gap-10 pr-10" aria-hidden="true">
+            {[
+              "NEXT.JS",
+              "REACT",
+              "TYPESCRIPT",
+              "NODE.JS",
+              "MONGODB",
+              "SOFTWARE ENGINEERING",
+              "AI / ML",
+              "RESEARCH",
+            ].map((item) => (
+              <span
+                key={item}
+                className="shrink-0 text-sm font-bold tracking-[.16em] text-[#64748B]"
+              >
+                {item}{" "}
+                <span className="ml-10 text-[#2563EB]">✦</span>
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </>
