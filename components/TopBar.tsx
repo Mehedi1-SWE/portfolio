@@ -75,7 +75,7 @@ export function TopBar() {
 
       <div className="flex min-h-[42px] w-full items-center justify-between gap-3 px-4 sm:gap-5 lg:px-6">
 
-        <div className="flex min-h-[42px] w-full items-center justify-between gap-3 px-4 sm:gap-5 lg:px-6">
+        <div className="flex min-h-[42px] min-w-0 flex-1 items-center justify-between gap-3 px-0 sm:gap-5 lg:px-0">
 
           {/* ================= LEFT CONTACT INFORMATION ================= */}
 
@@ -147,7 +147,7 @@ export function TopBar() {
                 </svg>
               </span>
 
-              <span>Dhaka, Bangladesh</span>
+              <span className="hidden sm:inline">Dhaka, Bangladesh</span>
             </a>
 
 
@@ -349,7 +349,7 @@ export function TopBar() {
 
         {/* ================= SOCIAL ICONS ================= */}
 
-        <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
+        <div className="topbar-social-scroll flex max-w-[calc(100vw-100px)] shrink-0 items-center gap-1.5 overflow-x-auto sm:max-w-none sm:gap-2 sm:overflow-visible">
 
           {socialItems.map(({ label, href, color, icon: Icon }) =>
             label === "WeChat" ? (
