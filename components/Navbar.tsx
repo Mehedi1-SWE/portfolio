@@ -18,7 +18,7 @@ export function Navbar() {
 
   return (
     <header className="fixed left-0 top-[40px] z-50 w-full px-4 pt-0 lg:px-8">
-      <nav className="mx-auto flex h-[65px] max-w-[1280px] items-center justify-between border border-white/80 bg-[#FFFDFACC] px-4 shadow-[0_18px_55px_rgba(54,39,29,.075)] backdrop-blur-xl lg:px-6">
+      <nav className="mx-auto flex h-[65px] max-w-[1280px] items-center justify-between border border-white/80 bg-[#FFFFFFCC] px-4 shadow-[0_18px_55px_rgba(15,23,42,.075)] backdrop-blur-xl lg:px-6">
 
         {/* Logo */}
         <Link
@@ -26,11 +26,11 @@ export function Navbar() {
           className="flex min-h-11 items-center gap-3"
           aria-label="Go to homepage"
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#9B3D27] text-sm font-black text-white">
+          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#2563EB] text-sm font-black text-white">
             MH
           </span>
 
-          <span className="hidden text-sm font-bold uppercase tracking-[.13em] text-[#27231F] sm:block">
+          <span className="hidden text-sm font-bold uppercase tracking-[.13em] text-[#0F172A] sm:block">
             Mehedi Hasan
           </span>
         </Link>
@@ -41,7 +41,7 @@ export function Navbar() {
             <Link
               key={href}
               href={href}
-              className="relative min-h-11 py-3 text-sm font-bold tracking-[.035em] text-[#514B44] transition hover:text-[#211F1C]"
+              className="relative min-h-11 py-3 text-sm font-bold tracking-[.035em] text-[#334155] transition hover:text-[#0F172A]"
             >
               {label}
             </Link>
@@ -49,24 +49,24 @@ export function Navbar() {
         </div>
 
         {/* Mobile Menu Toggle */}
-        <button type="button" aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={isMenuOpen} aria-controls="mobile-navigation" onClick={() => setIsMenuOpen(!isMenuOpen)} className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[#DED7CE] bg-white text-[#514B44] transition hover:border-[#9B3D27] hover:text-[#9B3D27] md:hidden">
+        <button type="button" aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={isMenuOpen} aria-controls="mobile-navigation" onClick={() => setIsMenuOpen(!isMenuOpen)} className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[#E2E8F0] bg-white text-[#334155] transition hover:border-[#2563EB] hover:text-[#2563EB] md:hidden">
           {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
 
         {/* Contact Button */}
         <Link
           href="#contact"
-          className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-xl bg-[#9B3D27] px-5 text-sm font-bold text-white shadow-[0_12px_30px_rgba(155,61,39,.18)] transition hover:-translate-y-0.5 hover:bg-[#7F2F20]"
+          className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-xl bg-[#2563EB] px-5 text-sm font-bold text-white shadow-[0_12px_30px_rgba(37,99,235,.18)] transition hover:-translate-y-0.5 hover:bg-[#1D4ED8]"
         >
           Contact
           <ArrowUpRight size={14} />
         </Link>
       </nav>
 
-      <div id="mobile-navigation" className={`absolute left-4 right-4 top-[73px] rounded-xl border border-[#E7DED5] bg-[#FFFDFC] p-3 shadow-[0_18px_45px_rgba(54,39,29,.14)] md:hidden ${isMenuOpen ? "block" : "hidden"}`}>
+      <div id="mobile-navigation" className={`absolute left-4 right-4 top-[73px] rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-3 shadow-[0_18px_45px_rgba(15,23,42,.14)] md:hidden ${isMenuOpen ? "block" : "hidden"}`}>
         <div className="flex flex-col">
           {links.map(([label, href]) => (
-            <Link key={href} href={href} onClick={() => setIsMenuOpen(false)} className="flex min-h-11 items-center rounded-lg px-3 text-sm font-bold text-[#514B44] transition hover:bg-[#F6F0EA] hover:text-[#9B3D27]">
+            <Link key={href} href={href} onClick={() => setIsMenuOpen(false)} className="flex min-h-11 items-center rounded-lg px-3 text-sm font-bold text-[#334155] transition hover:bg-[#EFF6FF] hover:text-[#2563EB]">
               {label}
             </Link>
           ))}
