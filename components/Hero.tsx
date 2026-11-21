@@ -191,7 +191,7 @@ export function Hero() {
                   </span>
                 </span>
 
-                <Download size={18} strokeWidth={2.2} className="shrink-0 text-[#1769D2]" />
+                <Download size={18} strokeWidth={2.2} className="shrink-0 text-[#2563EB]" />
               </a>
             </div>
 
