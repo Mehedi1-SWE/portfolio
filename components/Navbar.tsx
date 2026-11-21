@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
+import { useState } from "react";
 
 const links = [
   ["Home", "#home"],
@@ -11,6 +12,8 @@ const links = [
 ] as const;
 
 export function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <header className="fixed left-0 top-[40px] z-50 w-full px-4 pt-0 lg:px-8">
       <nav className="mx-auto flex h-[65px] max-w-[1280px] items-center justify-between border border-white/80 bg-[#FFFDFACC] px-4 shadow-[0_18px_55px_rgba(54,39,29,.075)] backdrop-blur-xl lg:px-6">
@@ -43,6 +46,11 @@ export function Navbar() {
           ))}
         </div>
 
+        {/* Mobile Menu Toggle */}
+        <button type="button" aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={isMenuOpen} aria-controls="mobile-navigation" onClick={() => setIsMenuOpen(!isMenuOpen)} className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[#DED7CE] bg-white text-[#514B44] transition hover:border-[#9B3D27] hover:text-[#9B3D27] md:hidden">
+          {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
+
         {/* Contact Button */}
         <Link
           href="#contact"
@@ -52,6 +60,16 @@ export function Navbar() {
           <ArrowUpRight size={14} />
         </Link>
       </nav>
+
+      <div id="mobile-navigation" className={`absolute left-4 right-4 top-[73px] rounded-xl border border-[#E7DED5] bg-[#FFFDFC] p-3 shadow-[0_18px_45px_rgba(54,39,29,.14)] md:hidden ${isMenuOpen ? "block" : "hidden"}`}>
+        <div className="flex flex-col">
+          {links.map(([label, href]) => (
+            <Link key={href} href={href} onClick={() => setIsMenuOpen(false)} className="flex min-h-11 items-center rounded-lg px-3 text-sm font-bold text-[#514B44] transition hover:bg-[#F6F0EA] hover:text-[#9B3D27]">
+              {label}
+            </Link>
+          ))}
+        </div>
+      </div>
     </header>
   );
 }
