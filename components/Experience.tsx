@@ -9,12 +9,12 @@ const timeline = [
 
 export function Experience() {
   return (
-    <section id="experience" className="border-y border-[#E2E8F0] bg-[#F1F5F9] px-6 py-28 lg:px-12">
+    <section id="experience" className="border-y border-[#E2E8F0] bg-[#F1F5F9] px-4 py-16 sm:px-6 sm:py-20 lg:px-12 lg:py-28">
       <div className="mx-auto max-w-[1280px]">
-        <SectionHeading number="04" eyebrow="Career & education" title={<>Professional experience.<br /><span className="font-sans font-normal italic text-[#2563EB]">Academic foundation.</span></>} />
-        <div className="mt-14 divide-y divide-[#E2E8F0] border-y border-[#E2E8F0]">
+        <SectionHeading number="04" eyebrow="Career & education" title={<>Professional experience.<br /><span className="font-normal italic text-[#2563EB]">Academic foundation.</span></>} />
+        <div className="mt-10 divide-y divide-[#E2E8F0] border-y border-[#E2E8F0] sm:mt-14">
           {timeline.map(({ date, title, organization, description, icon: Icon }) => (
-            <article key={`${date}-${title}`} className="grid gap-5 py-8 md:grid-cols-[170px_1fr]">
+            <article key={`${date}-${title}`} className="grid gap-3 py-6 sm:gap-5 sm:py-8 md:grid-cols-[170px_1fr]">
               <span className="font-sans text-sm font-semibold text-[#64748B]">{date}</span>
               <div className="relative">
                 <div className="flex items-start gap-3"><Icon size={18} className="mt-1 shrink-0 text-[#2563EB]" /><div><h3 className="text-xl font-semibold text-[#0F172A]">{title}</h3><p className="mt-1 text-sm font-bold uppercase tracking-[.12em] text-[#2563EB]">{organization}</p></div></div>
