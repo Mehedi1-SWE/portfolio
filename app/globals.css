@@ -77,23 +77,25 @@ p {
 
 /* Responsive safeguards: preserve the desktop composition while preventing
    horizontal overflow and fixed-header collisions on smaller screens. */
-html {
-  scroll-padding-top: 120px;
-}
+@media (max-width: 1023px) {
+  html {
+    scroll-padding-top: 120px;
+  }
 
-body {
-  overflow-x: clip;
-}
+  body {
+    overflow-x: clip;
+  }
 
-img,
-svg,
-video,
-canvas {
-  max-width: 100%;
-}
+  img,
+  svg,
+  video,
+  canvas {
+    max-width: 100%;
+  }
 
-section[id] {
-  scroll-margin-top: 120px;
+  section[id] {
+    scroll-margin-top: 120px;
+  }
 }
 
 .topbar-social-scroll {
