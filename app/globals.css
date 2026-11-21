@@ -57,14 +57,14 @@ p {
 
 .hero-orb { animation: drift 11s ease-in-out infinite; }
 .reveal-card { animation: reveal .8s ease both; }
-.marquee { animation: marquee 30s linear infinite; }
+.marquee { animation: marquee 30s linear infinite; will-change: transform; transform: translate3d(0, 0, 0); }
 
 @keyframes drift { 0%, 100% { transform: translate3d(0, 0, 0) scale(1); } 50% { transform: translate3d(20px, -16px, 0) scale(1.05); } }
 @keyframes reveal { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+  *:not(.marquee), *:not(.marquee)::before, *:not(.marquee)::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
 }
 
 @media (max-width: 767px) {
