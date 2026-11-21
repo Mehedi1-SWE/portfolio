@@ -41,7 +41,7 @@ h1, h2, h3 {
 }
 
 .grid-bg {
-  background-image: linear-gradient(rgba(15, 23, 42, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(36, 33, 30, .035) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(15, 23, 42, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(15, 23, 42, .035) 1px, transparent 1px);
   background-size: 72px 72px;
   mask-image: linear-gradient(to bottom, black 0%, transparent 90%);
 }
