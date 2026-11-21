@@ -89,9 +89,9 @@ export function TopBar() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Open exact location in Google Maps"
-              className="group inline-flex min-w-0 items-center gap-2 whitespace-nowrap rounded-md outline-none transition-all duration-200 ease-out hover:text-white active:scale-[0.98]  focus-visible:ring-2 focus-visible:ring-white/40 ">
+              className="group inline-flex min-w-0 items-center gap-2 whitespace-nowrap rounded-full border border-white/20 bg-white/[.10] px-2 py-1 outline-none shadow-[0_2px_10px_rgba(0,0,0,.08)] backdrop-blur-sm transition-all duration-200 ease-out hover:bg-white/[.16] hover:text-white active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-white/40">
               {/* Icon */}
-              <span className=" relative flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-[9px] transition-all duration-200 ease-out group-hover:bg-white/[.13] group-hover:shadow-[0_4px_14px_rgba(0,0,0,.14)] group-active:scale-[.94]">
+              <span className="relative flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full transition-all duration-200 ease-out group-hover:bg-white/[.13] group-hover:shadow-[0_4px_14px_rgba(0,0,0,.14)] group-active:scale-[.94]">
                 {/* Normal */}
                 <MapPin size={16} strokeWidth={2.25} className=" absolute transition-all duration-200 ease-out group-hover:scale-0 group-hover:opacity-0" />
 
@@ -349,7 +349,7 @@ export function TopBar() {
 
         {/* ================= SOCIAL ICONS ================= */}
 
-        <div className="topbar-social-scroll flex max-w-[calc(100vw-100px)] shrink-0 items-center gap-1.5 overflow-x-auto sm:max-w-none sm:gap-2 sm:overflow-visible">
+        <div className="topbar-social-scroll flex max-w-[calc(100vw-100px)] shrink-0 items-center gap-2 overflow-x-auto py-2 sm:max-w-none sm:gap-2 sm:overflow-visible">
 
           {socialItems.map(({ label, href, color, icon: Icon }) =>
             label === "WeChat" ? (
@@ -362,11 +362,10 @@ export function TopBar() {
                 className={`
         group
         flex
-        h-9
-        w-9
+        h-14
+        w-14
+        shrink-0
         items-center
-        sm:h-8
-        sm:w-8
         justify-center
         rounded-full
         border
@@ -382,7 +381,7 @@ export function TopBar() {
         ${color}
       `}
               >
-                <Icon size={16} />
+                <Icon size={19} />
               </button>
             ) : (
               <a
@@ -401,11 +400,10 @@ export function TopBar() {
                 className={`
         group
         flex
-        h-9
-        w-9
+        h-14
+        w-14
+        shrink-0
         items-center
-        sm:h-8
-        sm:w-8
         justify-center
         rounded-full
         border
@@ -421,7 +419,7 @@ export function TopBar() {
         ${color}
       `}
               >
-                <Icon size={14} />
+                <Icon size={18} />
               </a>
             )
           )}
