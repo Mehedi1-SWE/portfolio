@@ -71,7 +71,7 @@ export function TopBar() {
   const [showWeChat, setShowWeChat] = useState(false);
 
   return (
-    <div className="fixed left-1/2 top-0 z-[60] w-full max-w-[1280px] -translate-x-1/2 border-b border-white/15 bg-[#A63D24] text-white shadow-[0_8px_28px_rgba(80,31,19,.16)]">
+    <div className="fixed left-1/2 top-0 z-[60] w-full max-w-[1280px] -translate-x-1/2 border-b border-white/15 bg-[#0F172A] text-white shadow-[0_8px_28px_rgba(15,23,42,.16)]">
 
       <div className="flex min-h-[42px] w-full items-center justify-between gap-3 px-4 sm:gap-5 lg:px-6">
 
@@ -626,7 +626,7 @@ function WhatsAppIcon({
 
       <path
         d="M8.1 6.9c.3-.4.6-.4.9-.4.2 0 .4 0 .6.1.2.1.3.3.4.5l.9 2c.1.3.1.5-.1.8l-.6.8c-.2.2-.2.4 0 .7.5.8 1.2 1.5 2 2 .3.2.5.2.7 0l.8-.6c.2-.2.5-.2.8-.1l2 .9c.3.1.5.3.5.6.1.4.1.8-.1 1.1-.4.7-1.1 1.2-1.9 1.2-1.4 0-3.4-1-5-2.5-1.6-1.5-2.6-3.5-2.6-4.9 0-.8.5-1.5 1.2-1.9Z"
-        fill="#A63D24"
+        fill="#0F172A"
       />
     </svg>
   );
@@ -919,7 +919,7 @@ function YouTubeIcon({
 
       <path
         d="m10 15.5 5-3.5-5-3.5v7Z"
-        fill="#A63D24"
+        fill="#0F172A"
       />
     </svg>
   );
