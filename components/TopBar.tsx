@@ -73,13 +73,13 @@ export function TopBar() {
   return (
     <div className="fixed left-1/2 top-0 z-[60] w-full max-w-[1280px] -translate-x-1/2 border-b border-white/15 bg-[#A63D24] text-white shadow-[0_8px_28px_rgba(80,31,19,.16)]">
 
-      <div className="flex w-full flex-col gap-1 px-3 py-1 lg:min-h-[42px] lg:flex-row lg:items-center lg:justify-between lg:gap-3 lg:px-6 lg:py-0">
+      <div className="flex h-[42px] w-full items-center gap-3 overflow-x-auto px-3 lg:min-h-[42px] lg:justify-between lg:gap-3 lg:overflow-visible lg:px-6">
 
-        <div className="flex min-h-[34px] w-full min-w-0 flex-1 items-center justify-between gap-3 px-0 lg:min-h-[42px] lg:w-auto lg:gap-5 lg:px-0">
+        <div className="flex min-w-0 shrink-0 items-center gap-2 px-0 lg:min-h-[42px] lg:gap-5 lg:px-0">
 
           {/* ================= LEFT CONTACT INFORMATION ================= */}
 
-          <div className="flex min-w-0 items-center gap-3 overflow-x-auto text-[10px] font-semibold tracking-[.01em] sm:gap-5 sm:text-[13px] lg:overflow-visible">
+          <div className="flex shrink-0 items-center gap-1 text-[10px] font-semibold tracking-[.01em] lg:gap-5 lg:text-[13px]">
 
             {/* =====================================================
                             LOCATION
@@ -147,11 +147,11 @@ export function TopBar() {
                 </svg>
               </span>
 
-              <span className="inline">Dhaka, Bangladesh</span>
+              <span className="hidden lg:inline">Dhaka, Bangladesh</span>
             </a>
 
 
-            <span className="hidden h-6 w-px bg-white/25 sm:block" />
+            <span className="hidden h-6 w-px bg-white/25 lg:block" />
 
 
             {/* =====================================================
@@ -256,11 +256,11 @@ export function TopBar() {
                 </span>
               </span>
 
-              <span>mehedi.se4@gmail.com</span>
+              <span className="hidden lg:inline">mehedi.se4@gmail.com</span>
             </a>
 
 
-            <span className="hidden h-6 w-px bg-white/25 md:block" />
+            <span className="hidden h-6 w-px bg-white/25 lg:block" />
 
 
             {/* =====================================================
@@ -341,7 +341,7 @@ export function TopBar() {
                 </span>
               </span>
 
-              <span>+8801758585858</span>
+              <span className="hidden lg:inline">+8801758585858</span>
             </a>
 
           </div>
@@ -349,7 +349,7 @@ export function TopBar() {
 
         {/* ================= SOCIAL ICONS ================= */}
 
-        <div className="topbar-social-scroll flex w-full shrink-0 items-center justify-start gap-1.5 overflow-x-auto sm:gap-2 lg:w-auto lg:max-w-none lg:justify-end lg:overflow-visible">
+        <div className="topbar-social-scroll flex shrink-0 items-center justify-start gap-1.5 lg:w-auto lg:max-w-none lg:justify-end lg:gap-2 lg:overflow-visible">
 
           {socialItems.map(({ label, href, color, icon: Icon }) =>
             label === "WeChat" ? (
