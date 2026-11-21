@@ -20,7 +20,7 @@ export function SectionHeading({
         <span className="h-px w-6 bg-[#CBD5E1]" />
         {number && eyebrow ? `${number} / ${eyebrow}` : (label ?? eyebrow ?? "")}
       </span>
-      <h2 className="mt-5 text-[clamp(2rem,4vw,4rem)] font-black leading-[1.1] tracking-[-0.035em] text-[#0F172A]">
+      <h2 className="mt-5 text-[clamp(2rem,4vw,4rem)] font-black sm:text-[clamp(2.35rem,4vw,4rem)] leading-[1.1] tracking-[-0.035em] text-[#0F172A]">
         {title}
       </h2>
       {description ? (
