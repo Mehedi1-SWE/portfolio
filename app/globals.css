@@ -57,3 +57,7 @@ body {
 @media (max-width: 767px) {
   body { font-size: 16px; }
 }
+
+
+.topbar-social-scroll { scrollbar-width: none; }
+.topbar-social-scroll::-webkit-scrollbar { display: none; }
