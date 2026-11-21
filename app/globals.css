@@ -1,28 +1,41 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-sans: var(--font-inter), Arial, Helvetica, sans-serif;
+  --font-sans: "Times New Roman", Times, serif;
 }
 
 :root {
-  --background: #f8f6f1;
-  --text: #24211e;
-  --accent: #9b3d27;
+  --background: #F8FAFC;
+  --text: #0F172A;
+  --accent: #2563EB;
 }
 
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
   background:
-    radial-gradient(circle at 85% 5%, rgba(155, 61, 39, .065), transparent 25rem),
-    radial-gradient(circle at 8% 35%, rgba(184, 145, 112, .055), transparent 30rem),
-    linear-gradient(180deg, #fcfaf7 0%, #f7f4ee 100%);
+    radial-gradient(circle at 85% 5%, rgba(37, 99, 235, .055), transparent 25rem),
+    radial-gradient(circle at 8% 35%, rgba(148, 163, 184, .055), transparent 30rem),
+    linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
   color: var(--text);
-  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  font-family: "Times New Roman", Times, serif;
   font-size: 16px;
   line-height: 1.72;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+*, *::before, *::after {
+  font-family: "Times New Roman", Times, serif !important;
+}
+
+h1, h2, h3 {
+  font-family: "Times New Roman", Times, serif;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 ::selection { background: var(--accent); color: #fff; }
@@ -37,7 +50,7 @@ body {
 }
 
 .grid-bg {
-  background-image: linear-gradient(rgba(36, 33, 30, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(36, 33, 30, .035) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(15, 23, 42, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(15, 23, 42, .035) 1px, transparent 1px);
   background-size: 72px 72px;
   mask-image: linear-gradient(to bottom, black 0%, transparent 90%);
 }
@@ -57,3 +70,7 @@ body {
 @media (max-width: 767px) {
   body { font-size: 16px; }
 }
+
+
+.topbar-social-scroll { scrollbar-width: none; }
+.topbar-social-scroll::-webkit-scrollbar { display: none; }

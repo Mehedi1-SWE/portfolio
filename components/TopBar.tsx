@@ -75,7 +75,7 @@ export function TopBar() {
 
       <div className="flex min-h-[42px] w-full items-center justify-between gap-3 px-4 sm:gap-5 lg:px-6">
 
-        <div className="flex min-h-[42px] w-full items-center justify-between gap-3 px-4 sm:gap-5 lg:px-6">
+        <div className="flex min-h-[42px] min-w-0 flex-1 items-center justify-between gap-3 px-0 sm:gap-5 lg:px-0">
 
           {/* ================= LEFT CONTACT INFORMATION ================= */}
 
@@ -147,7 +147,7 @@ export function TopBar() {
                 </svg>
               </span>
 
-              <span>Dhaka, Bangladesh</span>
+              <span className="hidden sm:inline">Dhaka, Bangladesh</span>
             </a>
 
 
@@ -349,7 +349,7 @@ export function TopBar() {
 
         {/* ================= SOCIAL ICONS ================= */}
 
-        <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
+        <div className="topbar-social-scroll flex max-w-[calc(100vw-100px)] shrink-0 items-center gap-1.5 overflow-x-auto sm:max-w-none sm:gap-2 sm:overflow-visible">
 
           {socialItems.map(({ label, href, color, icon: Icon }) =>
             label === "WeChat" ? (
@@ -362,9 +362,11 @@ export function TopBar() {
                 className={`
         group
         flex
-        h-8
-        w-8
+        h-9
+        w-9
         items-center
+        sm:h-8
+        sm:w-8
         justify-center
         rounded-full
         border
@@ -399,9 +401,11 @@ export function TopBar() {
                 className={`
         group
         flex
-        h-8
-        w-8
+        h-9
+        w-9
         items-center
+        sm:h-8
+        sm:w-8
         justify-center
         rounded-full
         border
@@ -626,7 +630,7 @@ function WhatsAppIcon({
 
       <path
         d="M8.1 6.9c.3-.4.6-.4.9-.4.2 0 .4 0 .6.1.2.1.3.3.4.5l.9 2c.1.3.1.5-.1.8l-.6.8c-.2.2-.2.4 0 .7.5.8 1.2 1.5 2 2 .3.2.5.2.7 0l.8-.6c.2-.2.5-.2.8-.1l2 .9c.3.1.5.3.5.6.1.4.1.8-.1 1.1-.4.7-1.1 1.2-1.9 1.2-1.4 0-3.4-1-5-2.5-1.6-1.5-2.6-3.5-2.6-4.9 0-.8.5-1.5 1.2-1.9Z"
-        fill="#A63D24"
+        fill="#0F172A"
       />
     </svg>
   );
@@ -919,7 +923,7 @@ function YouTubeIcon({
 
       <path
         d="m10 15.5 5-3.5-5-3.5v7Z"
-        fill="#A63D24"
+        fill="#0F172A"
       />
     </svg>
   );

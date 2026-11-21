@@ -1,9 +1,10 @@
 
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Geist, Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter" });
+const geist = Geist({ subsets: ["latin"], display: "swap", variable: "--font-geist" });
 
 export const metadata: Metadata = {
   title: "Mehedi Hasan | Software Engineer",
@@ -16,7 +17,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={inter.variable} suppressHydrationWarning>{children}</body>
+      <body className={`${inter.variable} ${geist.variable}`} suppressHydrationWarning>{children}</body>
     </html>
   );
 }

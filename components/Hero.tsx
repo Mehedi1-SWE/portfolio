@@ -57,7 +57,7 @@ function EuropassLogo() {
         europass
       </span>
 
-      <span className="text-[21px] font-semibold tracking-[-0.04em] text-[#292521]">
+      <span className="text-[21px] font-semibold tracking-[-0.04em] text-[#0F172A]">
         CV
       </span>
     </div>
@@ -69,7 +69,7 @@ export function Hero() {
     <>
       <section
         id="home"
-        className="relative flex min-h-[700px] items-start px-6 pb-18 pt-[120px] lg:px-12 lg:pt-[120px]"
+        className="relative flex min-h-0 items-start px-4 pb-14 pt-[112px] sm:px-6 sm:pb-16 sm:pt-[120px] lg:min-h-[700px] lg:px-12 lg:pb-18"
       >
         <div
           className="grid-bg absolute inset-x-0 top-0 h-[760px] opacity-50"
@@ -77,45 +77,45 @@ export function Hero() {
         />
 
         <div
-          className="hero-orb absolute right-[8%] top-1/4 h-[380px] w-[380px] rounded-full bg-[#9B3D27]/[.07] blur-[110px]"
+          className="hero-orb absolute right-[8%] top-1/4 h-[380px] w-[380px] rounded-full bg-[#2563EB]/[.07] blur-[110px]"
           aria-hidden="true"
         />
 
-        <div className="relative mx-auto grid w-full max-w-[1280px] items-start gap-14 lg:grid-cols-[1.08fr_.78fr] lg:items-start">
+        <div className="relative mx-auto grid w-full max-w-[1280px] items-start gap-8 lg:grid-cols-[1.08fr_.78fr] lg:items-start lg:gap-14">
           <div className="reveal-card max-w-[760px]">
-            <div className="mb-6 flex items-center gap-3 text-sm font-bold uppercase tracking-[.12em] text-[#5A554E]">
-              <span className="h-2 w-2 rounded-full bg-[#9B3D27]" />
+            <div className="mb-6 flex items-center gap-3 text-sm font-bold uppercase tracking-[.12em] text-[#64748B]">
+              <span className="h-2 w-2 rounded-full bg-[#2563EB]" />
               Engineering · Research · Web
             </div>
 
-            <p className="text-sm font-medium uppercase tracking-[.14em] text-[#5A554E]">
+            <p className="text-sm font-medium uppercase tracking-[.14em] text-[#64748B]">
               Hello, I&apos;m
             </p>
 
-            <h1 className="mt-3 text-[clamp(56px,7.5vw,104px)] font-black leading-[1] tracking-[-.05em] text-[#171717]">
+            <h1 className="mt-3 text-[clamp(40px,10vw,104px)] font-black leading-[1] tracking-[-.05em] text-[#0F172A] sm:text-[clamp(56px,7.5vw,104px)]">
               Mehedi{" "}
-              <span className="font-sans font-normal italic text-[#9B3D27]">
+              <span className="font-normal italic text-[#2563EB]">
                 Hasan.
               </span>
             </h1>
 
-            <h2 className="mt-9 max-w-2xl text-[clamp(28px,3.1vw,46px)] font-semibold leading-[1.15] tracking-[-.03em] text-[#242424]">
+            <h2 className="mt-7 max-w-2xl text-[clamp(28px,3.1vw,46px)] sm:mt-9 font-semibold leading-[1.15] tracking-[-.03em] text-[#1E293B]">
               Building modern software with a{" "}
-              <span className="text-[#5A554E]">
+              <span className="text-[#64748B]">
                 strong engineering and academic foundation.
               </span>
             </h2>
 
-            <p className="mt-7 max-w-2xl text-base leading-8 text-[#4E4A44] md:text-[17px]">
+            <p className="mt-5 max-w-2xl text-base leading-8 text-[#475569] sm:mt-7 md:text-[17px]">
               Software engineer with a Computer Science background, focused on
               full-stack web development, practical software solutions and
               research-oriented work.
             </p>
 
             {/* CV BUTTONS */}
-            <div className="mt-9 flex items-center gap-5">
+            <div className="mt-7 grid grid-cols-1 gap-3 sm:mt-9 sm:flex sm:flex-wrap sm:items-center sm:gap-5">
               {/* Professional CV */}
-              <a href="/professional-cv.pdf" className="group inline-flex h-[52px] w-[185px] shrink-0 items-center justify-between rounded-[12px] bg-gradient-to-r from-[#A93E25] to-[#F04A20] px-3 text-white shadow-[0_10px_24px_rgba(169,62,37,.16)] transition hover:-translate-y-0.5">
+              <a href="/professional-cv.pdf" className="group inline-flex h-[52px] w-full shrink-0 sm:w-[185px] items-center justify-between rounded-[12px] bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] px-3 text-white shadow-[0_10px_24px_rgba(37,99,235,.16)] transition hover:-translate-y-0.5">
                 <span className="flex items-center gap-2">
                   <FileText size={18} strokeWidth={2.2} className="shrink-0" />
                   <span className="whitespace-nowrap text-[14px] font-bold">Professional CV</span>
@@ -124,7 +124,7 @@ export function Hero() {
               </a>
 
               {/* Academic CV */}
-              <a href="/academic-cv.pdf" className="group inline-flex h-[52px] w-[180px] shrink-0 items-center justify-between rounded-[12px] border border-[#CEC6BB] bg-white px-3 text-[#292521] shadow-[0_4px_12px_rgba(60,45,35,.06)] transition hover:-translate-y-0.5">
+              <a href="/academic-cv.pdf" className="group inline-flex h-[52px] w-full shrink-0 sm:w-[180px] items-center justify-between rounded-[12px] border border-[#CBD5E1] bg-white px-3 text-[#0F172A] shadow-[0_4px_12px_rgba(15,23,42,.06)] transition hover:-translate-y-0.5">
                 <span className="flex items-center gap-2">
                   {/* Filled Academic Mortarboard */}
                   <svg
@@ -137,15 +137,15 @@ export function Hero() {
                   >
                     <path
                       d="M12 3L2.5 8L12 13L21.5 8L12 3Z"
-                      fill="#A94727"
+                      fill="#2563EB"
                     />
                     <path
                       d="M5.5 10.2V14.7C5.5 14.7 8.1 18 12 18C15.9 18 18.5 14.7 18.5 14.7V10.2L12 13.6L5.5 10.2Z"
-                      fill="#A94727"
+                      fill="#2563EB"
                     />
                     <path
                       d="M20 9V14"
-                      stroke="#A94727"
+                      stroke="#2563EB"
                       strokeWidth="1.7"
                       strokeLinecap="round"
                     />
@@ -154,11 +154,11 @@ export function Hero() {
                   <span className="whitespace-nowrap text-[14px] font-bold">Academic CV</span>
                 </span>
 
-                <Download size={18} strokeWidth={2.2} className="shrink-0 text-[#A94727]" />
+                <Download size={18} strokeWidth={2.2} className="shrink-0 text-[#2563EB]" />
               </a>
 
               {/* Europass CV */}
-              <a href="/europass-cv.pdf" className="group inline-flex h-[52px] w-[180px] shrink-0 items-center justify-between rounded-[12px] border border-[#CEC6BB] bg-white px-3 text-[#292521] shadow-[0_4px_12px_rgba(60,45,35,.06)] transition hover:-translate-y-0.5">
+              <a href="/europass-cv.pdf" className="group inline-flex h-[52px] w-full shrink-0 sm:w-[180px] items-center justify-between rounded-[12px] border border-[#CBD5E1] bg-white px-3 text-[#0F172A] shadow-[0_4px_12px_rgba(15,23,42,.06)] transition hover:-translate-y-0.5">
                 <span className="flex items-center gap-2">
                   {/* EU Flag */}
                   <span className="flex h-[28px] w-[38px] shrink-0 items-center justify-center rounded-[2px] bg-[#0757B8]">
@@ -187,18 +187,18 @@ export function Hero() {
 
                   <span className="whitespace-nowrap text-[14px] font-bold">
                     <span className="text-[#7030A0]">europass</span>
-                    <span className="ml-1 text-[#292521]">CV</span>
+                    <span className="ml-1 text-[#0F172A]">CV</span>
                   </span>
                 </span>
 
-                <Download size={18} strokeWidth={2.2} className="shrink-0 text-[#1769D2]" />
+                <Download size={18} strokeWidth={2.2} className="shrink-0 text-[#2563EB]" />
               </a>
             </div>
 
-            <div className="mt-7 flex flex-wrap gap-6 text-sm font-bold uppercase tracking-[.1em] text-[#5A554E]">
+            <div className="mt-7 flex flex-wrap gap-6 text-sm font-bold uppercase tracking-[.1em] text-[#64748B]">
               <Link
                 href="#academic"
-                className="inline-flex min-h-11 items-center gap-2 transition hover:text-[#9B3D27]"
+                className="inline-flex min-h-11 items-center gap-2 transition hover:text-[#2563EB]"
               >
                 Explore academic profile
                 <ArrowDown size={14} />
@@ -208,7 +208,7 @@ export function Hero() {
                 href="https://github.com/Mehedi1-SWE"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex min-h-11 items-center gap-2 transition hover:text-[#9B3D27]"
+                className="inline-flex min-h-11 items-center gap-2 transition hover:text-[#2563EB]"
               >
                 GitHub
                 <Github size={14} />
@@ -218,21 +218,21 @@ export function Hero() {
 
           {/* RIGHT PROFILE CARD */}
           <div className="relative mx-auto w-full max-w-[500px]">
-            <div className="relative overflow-hidden rounded-[24px] border border-[#DED7CE] bg-gradient-to-br from-white to-[#F8F3ED] p-5 shadow-[0_30px_85px_rgba(54,39,29,.11)] md:p-6">
+            <div className="relative overflow-hidden rounded-[24px] border border-[#E2E8F0] bg-gradient-to-br from-white to-[#F8FAFC] p-5 shadow-[0_30px_85px_rgba(15,23,42,.11)] md:p-6">
               <div
-                className="absolute right-0 top-0 h-40 w-40 rounded-full bg-[#9B3D27]/[.07] blur-3xl"
+                className="absolute right-0 top-0 h-40 w-40 rounded-full bg-[#2563EB]/[.07] blur-3xl"
                 aria-hidden="true"
               />
 
-              <div className="relative flex items-center border-b border-[#E5E0D8] pb-6">
-                <p className="text-sm font-bold tracking-[.04em] text-[#292521]">
+              <div className="relative flex items-center border-b border-[#E2E8F0] pb-6">
+                <p className="text-sm font-bold tracking-[.04em] text-[#0F172A]">
                   Mehedi Hasan
                 </p>
               </div>
 
               <div className="relative py-6">
                 <div className="flex items-center gap-4">
-                  <div className="relative h-[128px] w-[100px] shrink-0 overflow-hidden rounded-[10px] border border-white/90 bg-[#EEE5DE] shadow-[0_18px_34px_rgba(84,45,31,.18)]">
+                  <div className="relative h-[128px] w-[100px] shrink-0 overflow-hidden rounded-[10px] border border-white/90 bg-[#EFF6FF] shadow-[0_18px_34px_rgba(15,23,42,.18)]">
                     <Image
                       src="/mehedi-hasan.jpg"
                       alt="Mehedi Hasan"
@@ -244,21 +244,21 @@ export function Hero() {
                   </div>
 
                   <div className="min-w-0">
-                    <p className="text-xs font-bold uppercase tracking-[.14em] text-[#8A3A27]">
+                    <p className="text-xs font-bold uppercase tracking-[.14em] text-[#1D4ED8]">
                       Academic &amp; Professional
                     </p>
 
-                    <h3 className="mt-2 text-[27px] font-bold leading-[1.2] tracking-[-.025em] text-[#202020] md:text-[32px]">
+                    <h3 className="mt-2 text-[23px] font-bold leading-[1.2] tracking-[-.025em] text-[#0F172A] sm:text-[27px] md:text-[32px]">
                       Software Engineer
                     </h3>
 
-                    <p className="mt-3 text-sm font-medium text-[#6A625A]">
+                    <p className="mt-3 text-sm font-medium text-[#64748B]">
                       Full-Stack Development
                     </p>
                   </div>
                 </div>
 
-                <p className="mt-4 max-w-sm text-[15px] leading-7 text-[#555049]">
+                <p className="mt-4 max-w-sm text-[15px] leading-7 text-[#64748B]">
                   Computer Science graduate building modern web applications
                   with a practical, research-aware approach to software
                   engineering.
@@ -275,7 +275,7 @@ export function Hero() {
                   ].map((skill) => (
                     <span
                       key={skill}
-                      className="inline-flex items-center rounded-full border border-[#DDD4CA] bg-white/80 px-2.5 py-1.5 text-xs font-bold text-[#4C453E] transition hover:-translate-y-0.5 hover:border-[#C6AD9E] hover:text-[#8F3623]"
+                      className="inline-flex items-center rounded-full border border-[#E2E8F0] bg-white/80 px-2.5 py-1.5 text-xs font-bold text-[#475569] transition hover:-translate-y-0.5 hover:border-[#CBD5E1] hover:text-[#1D4ED8]"
                     >
                       {skill}
                     </span>
@@ -283,38 +283,38 @@ export function Hero() {
                 </div>
               </div>
 
-              <div className="relative grid grid-cols-2 gap-3 border-t border-[#E5E0D8] pt-4">
-                <div className="rounded-2xl border border-[#E7E0D7] bg-white/70 p-3.5">
-                  <span className="text-xs font-bold uppercase tracking-[.12em] text-[#716A62]">
+              <div className="relative grid grid-cols-2 gap-3 border-t border-[#E2E8F0] pt-4">
+                <div className="rounded-2xl border border-[#E2E8F0] bg-white/70 p-3.5">
+                  <span className="text-xs font-bold uppercase tracking-[.12em] text-[#64748B]">
                     Education
                   </span>
 
-                  <p className="mt-2 text-sm font-bold text-[#292521]">
+                  <p className="mt-2 text-sm font-bold text-[#0F172A]">
                     B.Sc. in CSE
                   </p>
 
-                  <p className="mt-1 text-xs leading-5 text-[#686159]">
+                  <p className="mt-1 text-xs leading-5 text-[#64748B]">
                     CGPA 3.58 / 4.00
                   </p>
                 </div>
 
-                <div className="rounded-2xl border border-[#E7E0D7] bg-white/70 p-3.5">
-                  <span className="text-xs font-bold uppercase tracking-[.12em] text-[#716A62]">
+                <div className="rounded-2xl border border-[#E2E8F0] bg-white/70 p-3.5">
+                  <span className="text-xs font-bold uppercase tracking-[.12em] text-[#64748B]">
                     Focus
                   </span>
 
-                  <p className="mt-2 text-sm font-bold text-[#292521]">
+                  <p className="mt-2 text-sm font-bold text-[#0F172A]">
                     Engineering + Research
                   </p>
 
-                  <p className="mt-1 text-xs leading-5 text-[#686159]">
+                  <p className="mt-1 text-xs leading-5 text-[#64748B]">
                     Web · AI / ML
                   </p>
                 </div>
               </div>
 
-              <div className="relative mt-2.5 flex items-center gap-2 rounded-2xl border border-[#E7E0D7] bg-[#FBF8F4] px-4 py-3 text-sm text-[#554E47]">
-                <Sparkles size={15} className="text-[#9B3D27]" />
+              <div className="relative mt-2.5 flex items-center gap-2 rounded-2xl border border-[#E2E8F0] bg-[#F8FAFC] px-4 py-3 text-sm text-[#475569]">
+                <Sparkles size={15} className="text-[#2563EB]" />
 
                 <span>
                   Academic credibility meets practical software engineering.
@@ -327,7 +327,7 @@ export function Hero() {
 
       {/* TECHNOLOGY MARQUEE */}
       <div
-        className="relative z-10 mt-6 overflow-hidden border-y border-[#DDD7CD] bg-white py-3.5"
+        className="relative z-10 mt-6 overflow-hidden border-y border-[#E2E8F0] bg-white py-3.5"
         aria-label="Technology highlights"
       >
         <div className="marquee flex w-max gap-10 whitespace-nowrap">
@@ -343,10 +343,10 @@ export function Hero() {
           ].map((item) => (
             <span
               key={item}
-              className="text-sm font-bold tracking-[.16em] text-[#5F5A53]"
+              className="text-sm font-bold tracking-[.16em] text-[#64748B]"
             >
               {item}{" "}
-              <span className="ml-10 text-[#9B3D27]">
+              <span className="ml-10 text-[#2563EB]">
                 ✦
               </span>
             </span>

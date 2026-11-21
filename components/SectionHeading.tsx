@@ -16,15 +16,15 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   return (
     <div className="max-w-3xl">
-      <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-[#625B53]">
-        <span className="h-px w-6 bg-[#BCAE9F]" />
+      <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-[#64748B]">
+        <span className="h-px w-6 bg-[#CBD5E1]" />
         {number && eyebrow ? `${number} / ${eyebrow}` : (label ?? eyebrow ?? "")}
       </span>
-      <h2 className="mt-5 text-[clamp(2.35rem,4vw,4rem)] font-black leading-[1.1] tracking-[-0.035em] text-[#201E1B]">
+      <h2 className="mt-5 text-[clamp(2.35rem,4vw,4rem)] font-black leading-[1.1] tracking-[-0.035em] text-[#0F172A]">
         {title}
       </h2>
       {description ? (
-        <p className="mt-5 max-w-2xl text-base leading-8 text-[#5B554E] md:text-[17px]">
+        <p className="mt-5 max-w-2xl text-base leading-8 text-[#475569] md:text-[17px]">
           {description}
         </p>
       ) : null}
