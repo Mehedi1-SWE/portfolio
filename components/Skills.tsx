@@ -33,7 +33,7 @@ export function Skills() {
                 </div>
                 <div className="flex flex-wrap gap-2.5">
                   {group.items.map((item) => (
-                    <span key={item} className="inline-flex items-center rounded-full border border-[#D8D0C5] bg-[#F8FAFC] px-3.5 py-2 text-[13px] font-semibold text-[#334155] transition hover:-translate-y-0.5 hover:border-[#CBD5E1] hover:bg-white">
+                    <span key={item} className="inline-flex items-center rounded-full border border-[#E2E8F0] bg-[#F8FAFC] px-3.5 py-2 text-[13px] font-semibold text-[#334155] transition hover:-translate-y-0.5 hover:border-[#CBD5E1] hover:bg-white">
                       {item}
                     </span>
                   ))}
