@@ -92,7 +92,7 @@ export function Hero() {
               Hello, I&apos;m
             </p>
 
-            <h1 className="mt-3 text-[clamp(40px,10vw,104px)] font-black leading-[1] tracking-[-.05em] text-[#0F172A] sm:text-[clamp(56px,7.5vw,104px)]">
+            <h1 className="mt-3 text-[clamp(36px,10vw,104px)] font-black leading-[1] tracking-[-.05em] text-[#0F172A] sm:text-[clamp(56px,7.5vw,104px)]">
               Mehedi{" "}
               <span className="font-normal italic text-[#2563EB]">
                 Hasan.
@@ -231,7 +231,7 @@ export function Hero() {
               </div>
 
               <div className="relative py-6">
-                <div className="flex items-center gap-4">
+                <div className="flex min-w-0 items-center gap-3 sm:gap-4">
                   <div className="relative h-[128px] w-[100px] shrink-0 overflow-hidden rounded-[10px] border border-white/90 bg-[#EFF6FF] shadow-[0_18px_34px_rgba(15,23,42,.18)]">
                     <Image
                       src="/mehedi-hasan.jpg"
@@ -248,7 +248,7 @@ export function Hero() {
                       Academic &amp; Professional
                     </p>
 
-                    <h3 className="mt-2 text-[23px] font-bold leading-[1.2] tracking-[-.025em] text-[#0F172A] sm:text-[27px] md:text-[32px]">
+                    <h3 className="mt-2 text-[clamp(19px,6vw,23px)] font-bold leading-[1.2] tracking-[-.025em] text-[#0F172A] sm:text-[27px] md:text-[32px]">
                       Software Engineer
                     </h3>
 
