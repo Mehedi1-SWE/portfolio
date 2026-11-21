@@ -362,9 +362,11 @@ export function TopBar() {
                 className={`
         group
         flex
-        h-8
-        w-8
+        h-9
+        w-9
         items-center
+        sm:h-8
+        sm:w-8
         justify-center
         rounded-full
         border
@@ -399,9 +401,11 @@ export function TopBar() {
                 className={`
         group
         flex
-        h-8
-        w-8
+        h-9
+        w-9
         items-center
+        sm:h-8
+        sm:w-8
         justify-center
         rounded-full
         border
