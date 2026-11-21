@@ -27,6 +27,11 @@ body {
 
 h1, h2, h3 {
   font-family: var(--font-geist), var(--font-inter), Arial, Helvetica, sans-serif;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 ::selection { background: var(--accent); color: #fff; }
