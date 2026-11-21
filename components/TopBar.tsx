@@ -349,7 +349,7 @@ export function TopBar() {
 
         {/* ================= SOCIAL ICONS ================= */}
 
-        <div className="topbar-social-scroll flex shrink-0 items-center justify-start gap-1.5 lg:w-auto lg:max-w-none lg:justify-end lg:gap-2 lg:overflow-visible">
+        <div className="topbar-social-scroll flex shrink-0 items-center justify-start gap-1.5 pr-1 lg:w-auto lg:max-w-none lg:justify-end lg:gap-2 lg:overflow-visible lg:pr-0">
 
           {socialItems.map(({ label, href, color, icon: Icon }) =>
             label === "WeChat" ? (
@@ -435,16 +435,17 @@ export function TopBar() {
             type="button"
             aria-label="Language: English"
             className="
-              hidden
+              inline-flex
               h-8
+              shrink-0
               items-center
-              gap-2
+              gap-1.5
               rounded-lg
               border
               border-white/15
               bg-white/[.10]
-              px-3
-              text-xs
+              px-2
+              text-[11px]
               font-semibold
               text-white/95
               backdrop-blur-sm
@@ -453,12 +454,15 @@ export function TopBar() {
               hover:bg-white/[.18]
               hover:border-white/30
               hover:shadow-[0_0_18px_rgba(255,255,255,.12)]
-              lg:inline-flex
+              lg:gap-2
+              lg:px-3
+              lg:text-xs
             "
           >
             <GlobeIcon size={16} />
 
-            <span>English</span>
+            <span className="lg:hidden">EN</span>
+            <span className="hidden lg:inline">English</span>
 
             <ChevronDownIcon size={14} />
           </button>
