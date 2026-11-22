@@ -6,6 +6,7 @@ const contactSchema = new Schema({
   subject: { type: String, required: true, maxlength: 160, trim: true },
   message: { type: String, required: true, maxlength: 3000, trim: true },
   isRead: { type: Boolean, default: false },
+  replies: [{ message: { type: String, required: true, maxlength: 5000 }, sentAt: { type: Date, default: Date.now } }],
 }, { timestamps: true });
 
 export const Contact = mongoose.models.Contact || mongoose.model("Contact", contactSchema);
