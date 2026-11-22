@@ -56,7 +56,34 @@ export default function AdminDashboard() {
     setAuthenticated(false); setItems([]); setJson("");
   }
 
-  async function saveAcademic(event: React.FormEvent<HTMLFormElement>) {\n    event.preventDefault(); setError(""); setNotice("");\n    try {\n      const response = await fetch(editingId ? `/api/academic/${editingId}` : "/api/academic", { method: editingId ? "PATCH" : "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(academicForm) });\n      const data = await response.json();\n      if (!response.ok) throw new Error(data.error || "Could not save academic record.");\n      setEditingId(null); setAcademicForm({ category: "education", title: "", institution: "", issuer: "", result: "", date: "", expiryDate: "", description: "", credentialId: "", credentialUrl: "", documentUrl: "", isPublished: true, sortOrder: 0 });\n      setNotice(editingId ? "Academic record updated." : "Academic record added."); load();\n    } catch (err) { setError(err instanceof Error ? err.message : "Could not save academic record."); }\n  }\n\n  async function uploadAcademicFile(file?: File) {\n    if (!file) return;\n    if (file.size > 10 * 1024 * 1024) { setError("File must be 10 MB or smaller."); return; }\n    if (!["application/pdf", "image/png", "image/jpeg", "image/webp"].includes(file.type)) { setError("Only PDF, PNG, JPG and WEBP files are supported."); return; }\n    setUploading(true); setError("");\n    try {\n      const form = new FormData(); form.append("file", file);\n      const response = await fetch("/api/academic/upload", { method: "POST", body: form });\n      const data = await response.json();\n      if (!response.ok) throw new Error(data.error || "Upload failed.");\n      setAcademicForm((current) => ({ ...current, documentUrl: data.url }));\n      setNotice("File uploaded successfully.");\n    } catch (err) { setError(err instanceof Error ? err.message : "Upload failed."); }\n    finally { setUploading(false); }\n  }\n\n  async function saveItem(event: React.FormEvent<HTMLFormElement>) {
+  async function saveAcademic(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault(); setError(""); setNotice("");
+    try {
+      const response = await fetch(editingId ? `/api/academic/${editingId}` : "/api/academic", { method: editingId ? "PATCH" : "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(academicForm) });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || "Could not save academic record.");
+      setEditingId(null); setAcademicForm({ category: "education", title: "", institution: "", issuer: "", result: "", date: "", expiryDate: "", description: "", credentialId: "", credentialUrl: "", documentUrl: "", isPublished: true, sortOrder: 0 });
+      setNotice(editingId ? "Academic record updated." : "Academic record added."); load();
+    } catch (err) { setError(err instanceof Error ? err.message : "Could not save academic record."); }
+  }
+
+  async function uploadAcademicFile(file?: File) {
+    if (!file) return;
+    if (file.size > 10 * 1024 * 1024) { setError("File must be 10 MB or smaller."); return; }
+    if (!["application/pdf", "image/png", "image/jpeg", "image/webp"].includes(file.type)) { setError("Only PDF, PNG, JPG and WEBP files are supported."); return; }
+    setUploading(true); setError("");
+    try {
+      const form = new FormData(); form.append("file", file);
+      const response = await fetch("/api/academic/upload", { method: "POST", body: form });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || "Upload failed.");
+      setAcademicForm((current) => ({ ...current, documentUrl: data.url }));
+      setNotice("File uploaded successfully.");
+    } catch (err) { setError(err instanceof Error ? err.message : "Upload failed."); }
+    finally { setUploading(false); }
+  }
+
+  async function saveItem(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault(); setError(""); setNotice("");
     try {
       const payload = JSON.parse(json);
