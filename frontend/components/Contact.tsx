@@ -25,7 +25,9 @@ export function Contact() {
     setStatus(null);
 
     try {
-      const response = await fetch("/api/contact", {
+      const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "");
+      if (!apiBaseUrl) throw new Error("Contact service is not configured yet. Please try again later.");
+      const response = await fetch(`${apiBaseUrl}/api/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

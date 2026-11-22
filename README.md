@@ -1,61 +1,35 @@
-# Mehedi Hasan — Next.js + Tailwind Portfolio
+# Mehedi Hasan — Portfolio
 
-A clean, premium portfolio that combines **academic background, research interests, professional experience, and software projects**.
+This repository contains two independent Next.js applications deployed as separate Vercel projects.
 
-## Tech Stack
+## Applications
 
-- Next.js 15
-- React 19
-- TypeScript
-- Tailwind CSS v4
-- Lucide React
+- `frontend/` — public portfolio website. Visitors can view the portfolio and submit the contact form.
+- `backend/` — private administration app and API. It manages MongoDB data, contact submissions, and portfolio content. Admin routes require authentication.
 
-## Project Structure
+## Local development
 
-```text
-app/
-  page.tsx          # Main page: only combines the sections
-  globals.css       # Global styles, animations and reusable UI classes
-  layout.tsx        # Website metadata and root layout
-
-components/
-  Navbar.tsx        # Top navigation
-  Hero.tsx          # Hero / introduction section
-  About.tsx         # About section
-  Academic.tsx      # Education, coursework and academic projects
-  Research.tsx      # Research interests
-  Experience.tsx    # Professional experience + education timeline
-  Projects.tsx      # Professional project showcase
-  Skills.tsx        # Technical skills
-  Contact.tsx       # Contact CTA
-  Footer.tsx        # Footer
-  SectionHeading.tsx# Reusable section heading
-```
-
-## How to edit content
-
-Most content is intentionally kept close to the component that displays it.
-
-Examples:
-
-- Change your name or hero text → `components/Hero.tsx`
-- Add academic projects → `components/Academic.tsx`
-- Add research topics → `components/Research.tsx`
-- Update jobs / education → `components/Experience.tsx`
-- Add projects and links → `components/Projects.tsx`
-- Update skills → `components/Skills.tsx`
-- Change contact email → `components/Contact.tsx`
-
-## Run locally
+Run each application in its own terminal:
 
 ```bash
+cd frontend
 npm install
 npm run dev
 ```
 
-Then open `http://localhost:3000`.
+```bash
+cd backend
+npm install
+npm run dev
+```
 
-## Important files
+## Vercel deployment
 
-If you want to change the visual system, start with `app/globals.css`.
-The main accent color is stored in the CSS variable `--accent`.
+Create two Vercel projects from this same GitHub repository:
+
+1. Frontend project: set Root Directory to `frontend` and configure `NEXT_PUBLIC_API_URL` with the deployed backend URL.
+2. Backend project: set Root Directory to `backend` and configure `MONGODB_URI`, `ADMIN_API_KEY`, optional Resend variables, and `FRONTEND_ORIGIN` with the exact deployed frontend origin.
+
+Deploy the backend first, then set its URL in the frontend environment variables. Redeploy the frontend after adding or changing `NEXT_PUBLIC_API_URL`.
+
+Never put MongoDB credentials or the admin key in frontend environment variables. The public contact endpoint is intentionally reachable by the frontend; administrative endpoints remain protected by the admin session/key.
