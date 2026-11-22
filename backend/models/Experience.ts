@@ -1,3 +1,21 @@
-import mongoose,{Schema} from "mongoose";
-const schema=new Schema({company:{type:String,required:true},position:{type:String,required:true},startDate:{type:String,required:true},endDate:String,location:String,responsibilities:[String]},{timestamps:true});
-export const Experience=mongoose.models.Experience||mongoose.model("Experience",schema);
+
+import mongoose, { Schema } from "mongoose";
+
+const experienceSchema = new Schema(
+    {
+        company: { type: String, required: true, trim: true },
+        position: { type: String, required: true, trim: true },
+        startDate: { type: String, required: true, trim: true },
+        endDate: { type: String, trim: true },
+        location: { type: String, trim: true },
+        responsibilities: {
+            type: [String],
+            default: [],
+        },
+    },
+    { timestamps: true }
+);
+
+export const Experience =
+    mongoose.models.Experience ||
+    mongoose.model("Experience", experienceSchema);
