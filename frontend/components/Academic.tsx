@@ -1,5 +1,6 @@
 import { BookOpen, GraduationCap } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
+import { AcademicCredentials } from "./AcademicCredentials";
 
 const academicProjects = [
   { number: "01", course: "Artificial Intelligence / Machine Learning", title: "Dental Disease Prediction System", description: "An academic machine-learning project focused on disease prediction with a user-facing interface for interacting with the model.", stack: ["Python", "Machine Learning", "React"], outcome: "99% model accuracy" },
@@ -51,6 +52,8 @@ export function Academic() {
             ))}
           </div>
         </div>
+
+        <AcademicCredentials />
 
         <div className="mt-10 flex flex-wrap items-center gap-3 text-sm font-bold uppercase tracking-[.16em] text-[#64748B]"><BookOpen size={15} className="text-[#2563EB]" /> B.Sc. in Computer Science & Engineering · CGPA 3.58 / 4.00</div>
       </div>
