@@ -48,13 +48,17 @@ const translations: Record<Language, Record<string, string>> = {
   }
 };
 
+const originalText = new WeakMap<Text, string>();
+const originalAttributes = new WeakMap<Element, Map<string, string>>();
+
 function translateDocument(language: Language) {
   const dictionary = translations[language];
   const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
   const nodes: Text[] = [];
   while (walker.nextNode()) nodes.push(walker.currentNode as Text);
   nodes.forEach((node) => {
-    const original = node.textContent ?? "";
+    if (!originalText.has(node)) originalText.set(node, node.textContent ?? "");
+    const original = originalText.get(node) ?? "";
     const trimmed = original.trim();
     if (!trimmed) return;
     const translated = dictionary[trimmed];
@@ -62,9 +66,16 @@ function translateDocument(language: Language) {
   });
 
   document.querySelectorAll<HTMLElement>("[placeholder], [aria-label], [title]").forEach((element) => {
+    let originals = originalAttributes.get(element);
+    if (!originals) { originals = new Map<string, string>(); originalAttributes.set(element, originals); }
     ["placeholder", "aria-label", "title"].forEach((attribute) => {
-      const value = element.getAttribute(attribute);
-      if (value && dictionary[value]) element.setAttribute(attribute, dictionary[value]);
+      const current = element.getAttribute(attribute);
+      if (current !== null && !originals!.has(attribute)) originals!.set(attribute, current);
+      const original = originals!.get(attribute);
+      if (original !== undefined) {
+        const nextValue = dictionary[original] ?? original;
+        if (current !== nextValue) element.setAttribute(attribute, nextValue);
+      }
     });
   });
 }
