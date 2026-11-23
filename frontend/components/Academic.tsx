@@ -46,7 +46,7 @@ export async function Academic() {
   return (
     <section id="academic" className="border-y border-[#E2E8F0] bg-[#F1F5F9] px-4 py-16 sm:px-6 sm:py-20 lg:px-12 lg:py-28">
       <div className="mx-auto max-w-[1280px]">
-        <SectionHeading number="02" eyebrow="Academic profile" title={<>My academic <span className="font-normal italic text-[#2563EB]">background.</span></>} description="Explore my Computer Science degree, selected academic projects and relevant coursework." />
+        <SectionHeading number="02" eyebrow="Academic profile" title={<>A strong <span className="font-normal italic text-[#2563EB]">foundation.</span></>} description="Explore my Computer Science degree, selected academic projects and relevant coursework." />
 
         <div className="mt-10 grid gap-5 sm:mt-14 lg:grid-cols-2">
           {academicProjects.map((project, index) => (
