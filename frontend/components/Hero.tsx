@@ -1,13 +1,31 @@
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowDown,
-  Download,
-  FileText,
-  Github,
-  GraduationCap,
-  Sparkles,
-} from "lucide-react";
+import { ArrowDown, Download, FileText, Github, GraduationCap, Sparkles } from "lucide-react";
+
+type CVLink = { slug: string; title?: string; url: string; downloadName?: string; isActive: boolean };
+
+async function getCVLinks(): Promise<Record<string, CVLink>> {
+  const fallback: Record<string, CVLink> = {
+    professional: { slug: "professional", url: "/professional-cv.pdf", downloadName: "Mehedi-Hasan-Professional-CV.pdf", isActive: true },
+    academic: { slug: "academic", url: "/academic-cv.pdf", downloadName: "Mehedi-Hasan-Academic-CV.pdf", isActive: true },
+    europass: { slug: "europass", url: "/europass-cv.pdf", downloadName: "Mehedi-Hasan-Europass-CV.pdf", isActive: true },
+  };
+  const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
+  try {
+    const response = await fetch(`${apiBaseUrl}/api/cv`, { cache: "no-store" });
+    if (!response.ok) return fallback;
+    const records = await response.json();
+    if (!Array.isArray(records)) return fallback;
+    return Object.fromEntries(Object.keys(fallback).map((slug) => {
+      const record = records.find((item) => item?.slug === slug);
+      return [slug, record || { ...fallback[slug], isActive: false }];
+    }));
+  } catch (error) {
+    console.error("CV links API request failed:", error);
+    return fallback;
+  }
+}
+
 
 function AcademicIcon() {
   return (
@@ -64,7 +82,12 @@ function EuropassLogo() {
   );
 }
 
-export function Hero() {
+export async function Hero() {
+  const cvLinks = await getCVLinks();
+  const professionalCV = cvLinks.professional;
+  const academicCV = cvLinks.academic;
+  const europassCV = cvLinks.europass;
+
   return (
     <>
       <section
@@ -113,16 +136,16 @@ export function Hero() {
             {/* CV BUTTONS */}
             <div className="mt-7 grid grid-cols-1 gap-3 sm:mt-9 sm:flex sm:flex-wrap sm:items-center sm:gap-5">
               {/* Professional CV */}
-              <a href="/professional-cv.pdf" className="group inline-flex h-[52px] w-full shrink-0 sm:w-[185px] items-center justify-between rounded-[12px] bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] px-3 text-white shadow-[0_10px_24px_rgba(37,99,235,.16)] transition hover:-translate-y-0.5">
+              {professionalCV.isActive && <a href={professionalCV.url} download={professionalCV.downloadName} className="group inline-flex h-[52px] w-full shrink-0 sm:w-[185px] items-center justify-between rounded-[12px] bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] px-3 text-white shadow-[0_10px_24px_rgba(37,99,235,.16)] transition hover:-translate-y-0.5">
                 <span className="flex items-center gap-2">
                   <FileText size={18} strokeWidth={2.2} className="shrink-0" />
-                  <span className="whitespace-nowrap text-[14px] font-bold">Professional CV</span>
+                  <span className="whitespace-nowrap text-[14px] font-bold">{professionalCV.title || "Professional CV"}</span>
                 </span>
                 <Download size={18} strokeWidth={2.2} className="shrink-0" />
-              </a>
+              </a>}
 
               {/* Academic CV */}
-              <a href="/academic-cv.pdf" className="group inline-flex h-[52px] w-full shrink-0 sm:w-[180px] items-center justify-between rounded-[12px] border border-[#CBD5E1] bg-white px-3 text-[#0F172A] shadow-[0_4px_12px_rgba(15,23,42,.06)] transition hover:-translate-y-0.5">
+              {academicCV.isActive && <a href={academicCV.url} download={academicCV.downloadName} className="group inline-flex h-[52px] w-full shrink-0 sm:w-[180px] items-center justify-between rounded-[12px] border border-[#CBD5E1] bg-white px-3 text-[#0F172A] shadow-[0_4px_12px_rgba(15,23,42,.06)] transition hover:-translate-y-0.5">
                 <span className="flex items-center gap-2">
                   {/* Filled Academic Mortarboard */}
                   <svg
@@ -149,14 +172,14 @@ export function Hero() {
                     />
                   </svg>
 
-                  <span className="whitespace-nowrap text-[14px] font-bold">Academic CV</span>
+                  <span className="whitespace-nowrap text-[14px] font-bold">{academicCV.title || "Academic CV"}</span>
                 </span>
 
                 <Download size={18} strokeWidth={2.2} className="shrink-0 text-[#2563EB]" />
-              </a>
+              </a>}
 
               {/* Europass CV */}
-              <a href="/europass-cv.pdf" className="group inline-flex h-[52px] w-full shrink-0 sm:w-[180px] items-center justify-between rounded-[12px] border border-[#CBD5E1] bg-white px-3 text-[#0F172A] shadow-[0_4px_12px_rgba(15,23,42,.06)] transition hover:-translate-y-0.5">
+              {europassCV.isActive && <a href={europassCV.url} download={europassCV.downloadName} className="group inline-flex h-[52px] w-full shrink-0 sm:w-[180px] items-center justify-between rounded-[12px] border border-[#CBD5E1] bg-white px-3 text-[#0F172A] shadow-[0_4px_12px_rgba(15,23,42,.06)] transition hover:-translate-y-0.5">
                 <span className="flex items-center gap-2">
                   {/* EU Flag */}
                   <span className="flex h-[28px] w-[38px] shrink-0 items-center justify-center rounded-[2px] bg-[#0757B8]">
@@ -184,13 +207,13 @@ export function Hero() {
                   </span>
 
                   <span className="whitespace-nowrap text-[14px] font-bold">
-                    <span className="text-[#7030A0]">Europass</span>
+                    <span className="text-[#7030A0]">{(europassCV.title || "Europass CV").replace(/ CV$/, "")}</span>
                     <span className="ml-1 text-[#0F172A]">CV</span>
                   </span>
                 </span>
 
                 <Download size={18} strokeWidth={2.2} className="shrink-0 text-[#2563EB]" />
-              </a>
+              </a>}
             </div>
 
             <div className="mt-7 flex flex-wrap gap-6 text-sm font-bold uppercase tracking-[.1em] text-[#64748B]">
