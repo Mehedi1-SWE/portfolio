@@ -49,7 +49,7 @@ export async function Skills() {
     : fallbackSkillGroups;
 
   return (
-    <section className="border-y border-[#E2E8F0] bg-[#F1F5F9] px-4 py-16 sm:px-6 sm:py-20 lg:px-12 lg:py-28">
+    <section id="skills" className="border-y border-[#E2E8F0] bg-[#F1F5F9] px-4 py-16 sm:px-6 sm:py-20 lg:px-12 lg:py-28">
       <div className="mx-auto max-w-[1280px]">
         <SectionHeading
           number="06"
