@@ -34,6 +34,9 @@ export async function PATCH(request: Request) {
       return NextResponse.json({ error: "Invalid CV category." }, { status: 400 });
     }
     const updates = Object.fromEntries(allowed.filter((key) => Object.prototype.hasOwnProperty.call(body, key)).map((key) => [key, body[key]]));
+    if (updates.isActive === true && !(typeof updates.url === "string" ? updates.url : "").trim()) {
+      return NextResponse.json({ error: "Add a PDF URL or upload a PDF before publishing this CV." }, { status: 400 });
+    }
     if (updates.url && typeof updates.url === "string" && !updates.url.startsWith("/") && !/^https:\/\//i.test(updates.url)) {
       return NextResponse.json({ error: "CV URL must use HTTPS." }, { status: 400 });
     }
