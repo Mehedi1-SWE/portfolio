@@ -16,10 +16,10 @@ async function getCVLinks(): Promise<Record<string, CVLink>> {
     if (!response.ok) return fallback;
     const records = await response.json();
     if (!Array.isArray(records)) return fallback;
-    return records.reduce((result, item) => {
-      if (item && typeof item.slug === "string" && typeof item.url === "string") result[item.slug] = item;
-      return result;
-    }, { ...fallback });
+    return Object.fromEntries(Object.keys(fallback).map((slug) => {
+      const record = records.find((item) => item?.slug === slug);
+      return [slug, record || { ...fallback[slug], isActive: false }];
+    }));
   } catch (error) {
     console.error("CV links API request failed:", error);
     return fallback;
