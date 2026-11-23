@@ -302,6 +302,35 @@ function translateDocument(language: Language) {
   const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
   const nodes: Text[] = [];
   while (walker.nextNode()) nodes.push(walker.currentNode as Text);
+  // Handle headings whose English phrase is split across JSX text nodes and styled spans.
+  document.querySelectorAll<HTMLElement>("h1, h2, h3, h4, h5, h6").forEach((heading) => {
+    const headingNodes: Text[] = [];
+    const headingWalker = document.createTreeWalker(heading, NodeFilter.SHOW_TEXT);
+    while (headingWalker.nextNode()) {
+      const textNode = headingWalker.currentNode as Text;
+      if ((textNode.textContent ?? "").trim()) headingNodes.push(textNode);
+    }
+    const originalParts = headingNodes.map((node) => {
+      if (!originalText.has(node)) originalText.set(node, node.textContent ?? "");
+      return originalText.get(node) ?? "";
+    });
+    const originalHeading = originalParts.join("").trim();
+    const phraseTranslations: Record<string, Record<Language, string[]>> = {
+      "A strong foundation.": {
+        EN: ["A strong ", "foundation."],
+        PT: ["Uma base ", "sólida."],
+        FR: ["Une base ", "solide."],
+      },
+    };
+    const phrase = phraseTranslations[originalHeading];
+    if (phrase && headingNodes.length === phrase[language].length) {
+      headingNodes.forEach((node, index) => {
+        const nextText = phrase[language][index];
+        if (node.nodeValue !== nextText) node.nodeValue = nextText;
+      });
+    }
+  });
+
   nodes.forEach((node) => {
     if (!originalText.has(node)) originalText.set(node, node.textContent ?? "");
     const original = originalText.get(node) ?? "";
