@@ -24,7 +24,7 @@ const academicFoundation = {
 };
 
 async function getExperience(): Promise<ExperienceRecord[]> {
-  const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL?.replace(/\\/$/, "") || "http://localhost:3001";
+  const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") || "http://localhost:3001";
 
   try {
     const response = await fetch(`${apiBaseUrl}/api/experience`, { cache: "no-store" });
