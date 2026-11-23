@@ -2,9 +2,12 @@ import mongoose, { Schema } from "mongoose";
 
 const academicRecordSchema = new Schema(
   {
-    category: { type: String, enum: ["education", "academic-certification", "professional-certification", "achievement"], required: true, index: true },
+    category: { type: String, enum: ["education", "academic-certification", "professional-certification", "achievement", "academic-project", "coursework"], required: true, index: true },
     title: { type: String, required: true, trim: true, maxlength: 180 },
     institution: { type: String, trim: true, maxlength: 180 },
+    course: { type: String, trim: true, maxlength: 180 },
+    technologies: { type: [String], default: [] },
+    outcome: { type: String, trim: true, maxlength: 300 },
     issuer: { type: String, trim: true, maxlength: 180 },
     result: { type: String, trim: true, maxlength: 100 },
     date: { type: String, trim: true, maxlength: 40 },
