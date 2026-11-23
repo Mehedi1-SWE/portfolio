@@ -48,6 +48,9 @@ const translations: Record<Language, Record<string, string>> = {
   }
 };
 
+const originalText = new WeakMap<Text, string>();
+const originalAttributes = new WeakMap<Element, Map<string, string>>();
+
 function translateDocument(language: Language) {
   const dictionary = translations[language];
   const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
@@ -58,7 +61,7 @@ function translateDocument(language: Language) {
     const trimmed = original.trim();
     if (!trimmed) return;
     const translated = dictionary[trimmed];
-    if (translated) node.textContent = original.replace(trimmed, translated);
+    const nextText = translated ? original.replace(trimmed, translated) : original;\n    if (node.textContent !== nextText) node.textContent = nextText;
   });
 
   document.querySelectorAll<HTMLElement>("[placeholder], [aria-label], [title]").forEach((element) => {
