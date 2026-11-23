@@ -54,7 +54,7 @@ export async function Skills() {
         <SectionHeading
           number="06"
           eyebrow="Technical skills"
-          title={<>Technical <span className="font-normal italic text-[#2563EB]">skills.</span></>}
+          title={<>Tools of the <span className="font-normal italic text-[#2563EB]">trade.</span></>}
           description="Technologies, tools and engineering practices I use to develop modern web applications."
         />
 
