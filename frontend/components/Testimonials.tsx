@@ -21,10 +21,10 @@ async function getTestimonials(): Promise<TestimonialRecord[]> {
     const response = await fetch(`${apiBaseUrl}/api/testimonials`, { cache: "no-store" });
     if (!response.ok) throw new Error("Unable to load testimonials.");
     const testimonials = await response.json();
-    return Array.isArray(testimonials) && testimonials.length > 0 ? testimonials : fallbackData;
+    return Array.isArray(testimonials) ? testimonials : [];
   } catch (error) {
     console.error("Testimonials API request failed:", error);
-    return fallbackData;
+    return [];
   }
 }
 
