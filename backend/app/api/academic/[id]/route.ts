@@ -7,7 +7,7 @@ import { AcademicRecord } from "@/models/AcademicRecord";
 type Context = { params: Promise<{ id: string }> };
 
 const allowedFields = [
-  "category", "title", "institution", "issuer", "result", "date",
+  "category", "title", "institution", "course", "technologies", "outcome", "issuer", "result", "date",
   "expiryDate", "description", "credentialId", "credentialUrl",
   "documentUrl", "isPublished", "sortOrder",
 ] as const;
