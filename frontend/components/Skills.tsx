@@ -1,14 +1,53 @@
 import { Cloud, Code2, Database, Server, Workflow } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 
-const skillGroups = [
+type SkillRecord = {
+  _id: string;
+  name: string;
+  category: string;
+  level?: number;
+};
+
+const fallbackSkillGroups = [
   { number: "01", category: "Frontend Development", icon: Code2, items: ["JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS"] },
   { number: "02", category: "Backend Development", icon: Server, items: ["Node.js", "Express.js", "REST APIs"] },
   { number: "03", category: "Data & Cloud", icon: Database, items: ["MongoDB", "SQL", "AWS"] },
   { number: "04", category: "Engineering & DevOps", icon: Workflow, items: ["Git", "GitHub", "Docker", "DSA", "System Design"] },
 ];
 
-export function Skills() {
+async function getSkills(): Promise<SkillRecord[]> {
+  const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
+
+  try {
+    const response = await fetch(`${apiBaseUrl}/api/skills`, { cache: "no-store" });
+    if (!response.ok) throw new Error("Unable to load skills.");
+    const skills = await response.json();
+    return Array.isArray(skills) ? skills : [];
+  } catch (error) {
+    console.error("Skills API request failed:", error);
+    return [];
+  }
+}
+
+export async function Skills() {
+  const skills = await getSkills();
+
+  const skillGroups = skills.length > 0
+    ? Array.from(
+        skills.reduce((groups, skill) => {
+          const category = skill.category?.trim() || "Other";
+          if (!groups.has(category)) groups.set(category, []);
+          groups.get(category)?.push(skill.name);
+          return groups;
+        }, new Map<string, string[]>()).entries()
+      ).map(([category, items], index) => ({
+        number: String(index + 1).padStart(2, "0"),
+        category,
+        icon: /front.?end/i.test(category) ? Code2 : /back.?end/i.test(category) ? Server : /data|cloud|database/i.test(category) ? Database : Workflow,
+        items,
+      }))
+    : fallbackSkillGroups;
+
   return (
     <section className="border-y border-[#E2E8F0] bg-[#F1F5F9] px-4 py-16 sm:px-6 sm:py-20 lg:px-12 lg:py-28">
       <div className="mx-auto max-w-[1280px]">
