@@ -62,7 +62,8 @@ function translateDocument(language: Language) {
     const trimmed = original.trim();
     if (!trimmed) return;
     const translated = dictionary[trimmed];
-    const nextText = translated ? original.replace(trimmed, translated) : original;\n    if (node.textContent !== nextText) node.textContent = nextText;
+    const nextText = translated ? original.replace(trimmed, translated) : original;
+    if (node.textContent !== nextText) node.textContent = nextText;
   });
 
   document.querySelectorAll<HTMLElement>("[placeholder], [aria-label], [title]").forEach((element) => {
