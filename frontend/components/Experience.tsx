@@ -55,7 +55,7 @@ export async function Experience() {
   return (
     <section id="experience" className="border-y border-[#E2E8F0] bg-[#F1F5F9] px-4 py-16 sm:px-6 sm:py-20 lg:px-12 lg:py-28">
       <div className="mx-auto max-w-[1280px]">
-        <SectionHeading number="04" eyebrow="Career & education" title={<>Work experience.<br /><span className="font-normal italic text-[#2563EB]">Education.</span></>} />
+        <SectionHeading number="04" eyebrow="Career & education" title={<>My professional <span className="font-normal italic text-[#2563EB]">journey.</span></>} />
         <div className="mt-10 divide-y divide-[#E2E8F0] border-y border-[#E2E8F0] sm:mt-14">
           {timeline.map(({ date, title, organization, description, icon: Icon, id }) => (
             <article key={id} className="grid gap-3 py-6 sm:gap-5 sm:py-8 md:grid-cols-[170px_1fr]">
