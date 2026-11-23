@@ -32,7 +32,8 @@ export async function POST(request: Request) {
     }
 
     const timestamp = Math.floor(Date.now() / 1000).toString();
-    const folder = "portfolio/academic";
+    const requestedFolder = formData.get("folder");
+    const folder = requestedFolder === "cv" ? "portfolio/cv" : "portfolio/academic";
     const signatureBase = `folder=${folder}&timestamp=${timestamp}`;
     const signature = createHash("sha1").update(signatureBase + apiSecret).digest("hex");
 
