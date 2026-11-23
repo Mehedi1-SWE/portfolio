@@ -207,7 +207,8 @@ export async function Hero() {
                   </span>
 
                   <span className="whitespace-nowrap text-[14px] font-bold">
-                    <span className="text-[#7030A0]">{europassCV.title || "Europass CV"}</span>
+                    <span className="text-[#7030A0]">{(europassCV.title || "Europass CV").replace(/ CV$/, "")}</span>
+                    <span className="ml-1 text-[#0F172A]">CV</span>
                   </span>
                 </span>
 
