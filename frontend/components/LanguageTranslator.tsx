@@ -48,9 +48,6 @@ const translations: Record<Language, Record<string, string>> = {
   }
 };
 
-const originalText = new WeakMap<Text, string>();
-const originalAttributes = new WeakMap<Element, Map<string, string>>();
-
 function translateDocument(language: Language) {
   const dictionary = translations[language];
   const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
