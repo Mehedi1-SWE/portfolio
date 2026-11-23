@@ -209,6 +209,18 @@ const translations: Record<Language, Record<string, string>> = {
 };
 
 
+// Split JSX heading fragments: each text node is translated independently.
+Object.assign(translations.PT, {
+  "A strong": "Uma base",
+  "foundation.": "sólida.",
+  "Built on a strong foundation.": "Construída sobre uma base sólida."
+});
+Object.assign(translations.FR, {
+  "A strong": "Une base",
+  "foundation.": "solide.",
+  "Built on a strong foundation.": "Reposant sur des bases solides."
+});
+
 // Hero, career timeline, and profile-card copy.
 Object.assign(translations.PT, {
   "Engineering · Research · Web": "Engenharia · Pesquisa · Web",
