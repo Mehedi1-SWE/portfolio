@@ -208,12 +208,57 @@ const translations: Record<Language, Record<string, string>> = {
   }
 };
 
+
+// Additional portfolio copy used by the remaining sections.
+Object.assign(translations.PT, {
+  "About": "Sobre", "Academic Education": "Formação acadêmica", "Degrees and formal academic qualifications.": "Graus e qualificações acadêmicas formais.",
+  "Academic Certifications": "Certificações acadêmicas", "Certificates earned through academic courses and institutions.": "Certificados obtidos em cursos e instituições acadêmicas.",
+  "Professional Certifications": "Certificações profissionais", "Industry-recognized credentials and professional training.": "Credenciais reconhecidas pelo setor e formação profissional.",
+  "Academic Achievements": "Conquistas acadêmicas", "Academic awards, scholarships and recognitions.": "Prêmios acadêmicos, bolsas e reconhecimentos.",
+  "Academic & Professional Credentials": "Credenciais acadêmicas e profissionais", "Education, certifications and achievements managed directly from the portfolio dashboard.": "Formação, certificações e conquistas gerenciadas diretamente pelo painel do portfólio.",
+  "Valid until": "Válido até", "View credential ↗": "Ver credencial ↗", "Research & Thesis": "Pesquisa e Tese",
+  "Oral and Dental Disease Prediction Using Machine Learning": "Previsão de doenças orais e dentárias usando aprendizado de máquina",
+  "Academic Qualifications": "Qualificações acadêmicas", "Completed February 2024": "Concluído em fevereiro de 2024",
+  "My research interests include machine learning, AI-assisted software development, intelligent web applications and methods for improving software quality.": "Meus interesses de pesquisa incluem aprendizado de máquina, desenvolvimento de software assistido por IA, aplicações web inteligentes e métodos para melhorar a qualidade do software.",
+  "Full-Stack Development": "Desenvolvimento Full-Stack", "Complete web applications with modern frontend, backend and database architecture.": "Aplicações web completas com arquitetura moderna de frontend, backend e banco de dados.",
+  "Frontend Development": "Desenvolvimento Front-end", "Responsive interfaces using Next.js, React, TypeScript and Tailwind CSS.": "Interfaces responsivas usando Next.js, React, TypeScript e Tailwind CSS.",
+  "Backend & APIs": "Backend e APIs", "Structured REST APIs, validation, database integration and server-side logic.": "APIs REST estruturadas, validação, integração de banco de dados e lógica do servidor.",
+  "MongoDB Solutions": "Soluções MongoDB", "Practical document models and reliable data access with Mongoose.": "Modelos de documentos práticos e acesso confiável a dados com Mongoose.",
+  "API Integration": "Integração de APIs", "Clean client-server integration and third-party service connectivity.": "Integração cliente-servidor clara e conexão com serviços de terceiros.",
+  "Machine Learning": "Aprendizado de Máquina", "Data-driven prediction solutions and research-oriented ML implementation.": "Soluções de previsão orientadas por dados e implementação de ML voltada à pesquisa.",
+  "Services": "Serviços", "How I Can Help": "Como posso ajudar", "Software development services focused on your requirements, maintainable code and user-friendly applications.": "Serviços de desenvolvimento de software focados em seus requisitos, código de fácil manutenção e aplicações intuitivas.",
+  "Connect with me": "Conecte-se comigo", "Scan the QR code to add me as a friend.": "Escaneie o código QR para me adicionar como contato.",
+  "Scan to connect": "Escaneie para conectar", "Open WeChat and scan this QR code.": "Abra o WeChat e escaneie este código QR.",
+  "Close": "Fechar", "Go to homepage": "Ir para a página inicial", "Open navigation menu": "Abrir menu de navegação", "Close navigation menu": "Fechar menu de navegação"
+});
+Object.assign(translations.FR, {
+  "About": "À propos", "Academic Education": "Formation académique", "Degrees and formal academic qualifications.": "Diplômes et qualifications académiques officielles.",
+  "Academic Certifications": "Certifications académiques", "Certificates earned through academic courses and institutions.": "Certificats obtenus dans le cadre de cours et d’établissements académiques.",
+  "Professional Certifications": "Certifications professionnelles", "Industry-recognized credentials and professional training.": "Certifications reconnues par le secteur et formations professionnelles.",
+  "Academic Achievements": "Réalisations académiques", "Academic awards, scholarships and recognitions.": "Prix académiques, bourses et distinctions.",
+  "Academic & Professional Credentials": "Titres académiques et professionnels", "Education, certifications and achievements managed directly from the portfolio dashboard.": "Formation, certifications et réalisations gérées directement depuis le tableau de bord du portfolio.",
+  "Valid until": "Valable jusqu’au", "View credential ↗": "Voir le justificatif ↗", "Research & Thesis": "Recherche et mémoire",
+  "Oral and Dental Disease Prediction Using Machine Learning": "Prédiction des maladies bucco-dentaires à l’aide de l’apprentissage automatique",
+  "Academic Qualifications": "Qualifications académiques", "Completed February 2024": "Terminé en février 2024",
+  "My research interests include machine learning, AI-assisted software development, intelligent web applications and methods for improving software quality.": "Mes intérêts de recherche comprennent l’apprentissage automatique, le développement logiciel assisté par l’IA, les applications web intelligentes et les méthodes d’amélioration de la qualité logicielle.",
+  "Full-Stack Development": "Développement Full-Stack", "Complete web applications with modern frontend, backend and database architecture.": "Applications web complètes avec une architecture moderne frontend, backend et base de données.",
+  "Frontend Development": "Développement Front-end", "Responsive interfaces using Next.js, React, TypeScript and Tailwind CSS.": "Interfaces adaptatives avec Next.js, React, TypeScript et Tailwind CSS.",
+  "Backend & APIs": "Backend et API", "Structured REST APIs, validation, database integration and server-side logic.": "API REST structurées, validation, intégration de bases de données et logique côté serveur.",
+  "MongoDB Solutions": "Solutions MongoDB", "Practical document models and reliable data access with Mongoose.": "Modèles de documents pratiques et accès fiable aux données avec Mongoose.",
+  "API Integration": "Intégration d’API", "Clean client-server integration and third-party service connectivity.": "Intégration client-serveur claire et connexion aux services tiers.",
+  "Machine Learning": "Apprentissage automatique", "Data-driven prediction solutions and research-oriented ML implementation.": "Solutions de prédiction fondées sur les données et mise en œuvre du ML orientée recherche.",
+  "Services": "Services", "How I Can Help": "Comment je peux vous aider", "Software development services focused on your requirements, maintainable code and user-friendly applications.": "Services de développement logiciel axés sur vos besoins, un code maintenable et des applications faciles à utiliser.",
+  "Connect with me": "Contactez-moi", "Scan the QR code to add me as a friend.": "Scannez le code QR pour m’ajouter comme contact.",
+  "Scan to connect": "Scanner pour se connecter", "Open WeChat and scan this QR code.": "Ouvrez WeChat et scannez ce code QR.",
+  "Close": "Fermer", "Go to homepage": "Aller à la page d’accueil", "Open navigation menu": "Ouvrir le menu de navigation", "Close navigation menu": "Fermer le menu de navigation"
+});
+
 const originalText = new WeakMap<Text, string>();
 const originalAttributes = new WeakMap<Element, Map<string, string>>();
 
 function translateDocument(language: Language) {
   document.documentElement.lang = language === "PT" ? "pt" : language === "FR" ? "fr" : "en";
-  const dictionary = translations[language];
+  const dictionary = Object.fromEntries(Object.entries(translations[language]).map(([key, value]) => [key.trim(), value]));
   const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
   const nodes: Text[] = [];
   while (walker.nextNode()) nodes.push(walker.currentNode as Text);
@@ -224,7 +269,7 @@ function translateDocument(language: Language) {
     if (!trimmed) return;
     const translated = dictionary[trimmed];
     const nextText = translated ? original.replace(trimmed, translated) : original;
-    if (node.textContent !== nextText) node.textContent = nextText;
+    if (node.nodeValue !== nextText) node.nodeValue = nextText;
   });
 
   document.querySelectorAll<HTMLElement>("[placeholder], [aria-label], [title]").forEach((element) => {
