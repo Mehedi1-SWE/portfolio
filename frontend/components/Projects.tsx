@@ -55,7 +55,7 @@ export async function Projects() {
 
   return (
     <section id="projects" className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-12 lg:py-28">
-      <SectionHeading number="05" eyebrow="Professional projects" title={<>Selected <span className="font-normal italic text-[#2563EB]">work.</span></>} />
+      <SectionHeading number="05" eyebrow="Professional projects" title={<>Selected <span className="font-normal italic text-[#2563EB]">projects.</span></>} />
 
       <div className="mt-10 space-y-5 sm:mt-14">
         {projects.map((project) => (
