@@ -209,6 +209,34 @@ const translations: Record<Language, Record<string, string>> = {
 };
 
 
+// Hero, career timeline, and profile-card copy.
+Object.assign(translations.PT, {
+  "Engineering · Research · Web": "Engenharia · Pesquisa · Web",
+  "Academic & Professional": "Acadêmico e profissional",
+  "Computer Science graduate building modern web applications with a practical, research-aware approach to software engineering.": "Graduado em Ciência da Computação que desenvolve aplicações web modernas com uma abordagem prática e orientada à pesquisa em engenharia de software.",
+  "Engineering + Research": "Engenharia + Pesquisa",
+  "Academic credibility meets practical software engineering.": "Credibilidade acadêmica aliada à engenharia de software prática.",
+  "Technology highlights": "Destaques tecnológicos", "Career & education": "Carreira e formação",
+  "My professional": "Minha trajetória", "journey.": "profissional.",
+  "Contributing to full-stack web application development using MongoDB, Express.js, React.js and Node.js": "Contribuindo para o desenvolvimento de aplicações web full-stack usando MongoDB, Express.js, React.js e Node.js",
+  "Building responsive interfaces with React and Tailwind CSS, and supporting API integration, testing and deployment workflows": "Criando interfaces responsivas com React e Tailwind CSS e apoiando a integração de APIs, testes e processos de implantação",
+  "Provided technical support and troubleshooting while helping maintain reliable technology operations": "Prestou suporte técnico e solucionou problemas, ajudando a manter operações tecnológicas confiáveis",
+  "IT & Support": "TI e suporte", "Education": "Formação", "Focus": "Foco"
+});
+Object.assign(translations.FR, {
+  "Engineering · Research · Web": "Ingénierie · Recherche · Web",
+  "Academic & Professional": "Académique et professionnel",
+  "Computer Science graduate building modern web applications with a practical, research-aware approach to software engineering.": "Diplômé en informatique qui développe des applications web modernes avec une approche pratique de l’ingénierie logicielle, éclairée par la recherche.",
+  "Engineering + Research": "Ingénierie + Recherche",
+  "Academic credibility meets practical software engineering.": "La crédibilité académique rencontre l’ingénierie logicielle pratique.",
+  "Technology highlights": "Points forts technologiques", "Career & education": "Carrière et formation",
+  "My professional": "Mon parcours", "journey.": "professionnel.",
+  "Contributing to full-stack web application development using MongoDB, Express.js, React.js and Node.js": "Contribution au développement d’applications web full-stack avec MongoDB, Express.js, React.js et Node.js",
+  "Building responsive interfaces with React and Tailwind CSS, and supporting API integration, testing and deployment workflows": "Création d’interfaces adaptatives avec React et Tailwind CSS, et participation à l’intégration d’API, aux tests et aux processus de déploiement",
+  "Provided technical support and troubleshooting while helping maintain reliable technology operations": "Assistance technique et dépannage afin de contribuer à la fiabilité des opérations informatiques",
+  "IT & Support": "Informatique et support", "Education": "Formation", "Focus": "Domaine"
+});
+
 // Additional portfolio copy used by the remaining sections.
 Object.assign(translations.PT, {
   "About": "Sobre", "Academic Education": "Formação acadêmica", "Degrees and formal academic qualifications.": "Graus e qualificações acadêmicas formais.",
