@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowDown, Download, FileText, Github, GraduationCap, Sparkles } from "lucide-react";
 
-type CVLink = { slug: string; url: string; downloadName?: string; isActive: boolean };
+type CVLink = { slug: string; title?: string; url: string; downloadName?: string; isActive: boolean };
 
 async function getCVLinks(): Promise<Record<string, CVLink>> {
   const fallback: Record<string, CVLink> = {
@@ -25,15 +26,6 @@ async function getCVLinks(): Promise<Record<string, CVLink>> {
   }
 }
 
-
-import {
-  ArrowDown,
-  Download,
-  FileText,
-  Github,
-  GraduationCap,
-  Sparkles,
-} from "lucide-react";
 
 function AcademicIcon() {
   return (
@@ -147,7 +139,7 @@ export async function Hero() {
               {professionalCV.isActive && <a href={professionalCV.url} download={professionalCV.downloadName} className="group inline-flex h-[52px] w-full shrink-0 sm:w-[185px] items-center justify-between rounded-[12px] bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] px-3 text-white shadow-[0_10px_24px_rgba(37,99,235,.16)] transition hover:-translate-y-0.5">
                 <span className="flex items-center gap-2">
                   <FileText size={18} strokeWidth={2.2} className="shrink-0" />
-                  <span className="whitespace-nowrap text-[14px] font-bold">Professional CV</span>
+                  <span className="whitespace-nowrap text-[14px] font-bold">{professionalCV.title || "Professional CV"}</span>
                 </span>
                 <Download size={18} strokeWidth={2.2} className="shrink-0" />
               </a>}
@@ -180,7 +172,7 @@ export async function Hero() {
                     />
                   </svg>
 
-                  <span className="whitespace-nowrap text-[14px] font-bold">Academic CV</span>
+                  <span className="whitespace-nowrap text-[14px] font-bold">{academicCV.title || "Academic CV"}</span>
                 </span>
 
                 <Download size={18} strokeWidth={2.2} className="shrink-0 text-[#2563EB]" />
@@ -215,8 +207,7 @@ export async function Hero() {
                   </span>
 
                   <span className="whitespace-nowrap text-[14px] font-bold">
-                    <span className="text-[#7030A0]">Europass</span>
-                    <span className="ml-1 text-[#0F172A]">CV</span>
+                    <span className="text-[#7030A0]">{europassCV.title || "Europass CV"}</span>
                   </span>
                 </span>
 
