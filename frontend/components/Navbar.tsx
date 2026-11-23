@@ -11,6 +11,7 @@ const links = [
   ["Research", "#research"],
   ["Experience", "#experience"],
   ["Projects", "#projects"],
+  ["Skills", "#skills"],
 ] as const;
 
 export function Navbar() {
