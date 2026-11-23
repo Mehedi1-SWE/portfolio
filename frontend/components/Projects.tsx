@@ -37,7 +37,7 @@ const fallbackProjects: ProjectRecord[] = [
 ];
 
 async function getProjects(): Promise<ProjectRecord[]> {
-  const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL?.replace(/\\/$/, "") || "http://localhost:3001";
+  const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") || "http://localhost:3001";
 
   try {
     const response = await fetch(`${apiBaseUrl}/api/projects`, { cache: "no-store" });
