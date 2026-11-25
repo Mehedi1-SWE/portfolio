@@ -33,3 +33,7 @@ Create two Vercel projects from this same GitHub repository:
 Deploy the backend first, then set its URL in the frontend environment variables. Redeploy the frontend after adding or changing `NEXT_PUBLIC_API_URL`.
 
 Never put MongoDB credentials or the admin key in frontend environment variables. The public contact endpoint is intentionally reachable by the frontend; administrative endpoints remain protected by the admin session/key.
+
+## CV management
+
+The backend Admin dashboard provides upload, replace, preview and delete for Academic, Professional and Complete CV PDFs. Cloudinary stores the files; MongoDB stores metadata and secure URLs. Configure `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY` and `CLOUDINARY_API_SECRET` in the backend deployment. PDF uploads are limited to 10 MB and require the existing admin session.

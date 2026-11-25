@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const allowedMethods = "POST, OPTIONS";
+const allowedMethods = "GET, POST, DELETE, OPTIONS";
 const allowedHeaders = "Content-Type";
 
 export function middleware(request: NextRequest) {
@@ -27,4 +27,4 @@ export function middleware(request: NextRequest) {
   return response;
 }
 
-export const config = { matcher: ["/api/contact"] };
+export const config = { matcher: ["/api/contact", "/api/cvs"] };
