@@ -1,4 +1,5 @@
-import Image from "next/image";\nimport { CVDownloadButtons } from "@/components/CVDownloadButtons";
+import Image from "next/image";
+import { CVDownloadButtons } from "@/components/CVDownloadButtons";
 import Link from "next/link";
 import {
   ArrowDown,
@@ -110,7 +111,8 @@ export function Hero() {
               Computer Science graduate focused on full-stack web development, building responsive interfaces, backend APIs and practical software solutions.
             </p>
 
-            <CVDownloadButtons />\n            <div className="mt-7 flex flex-wrap gap-6 text-sm font-bold uppercase tracking-[.1em] text-[#64748B]">
+            <CVDownloadButtons />
+            <div className="mt-7 flex flex-wrap gap-6 text-sm font-bold uppercase tracking-[.1em] text-[#64748B]">
               <Link
                 href="#academic"
                 className="inline-flex min-h-11 items-center gap-2 transition hover:text-[#2563EB]"
