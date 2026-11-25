@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import {
   Mail,
@@ -67,8 +67,22 @@ const socialItems = [
   },
 ] as const;
 
+const languages = [
+  { code: "EN", label: "English" },
+  { code: "PT", label: "Português" },
+  { code: "FR", label: "Français" },
+] as const;
+
 export function TopBar() {
   const [showWeChat, setShowWeChat] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState<(typeof languages)[number]>(languages[0]);
+  const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("portfolio-language");
+    const language = languages.find((item) => item.code === saved);
+    if (language) setSelectedLanguage(language);
+  }, []);
 
   return (
     <div className="fixed left-1/2 top-0 z-[60] w-full max-w-[1280px] -translate-x-1/2 border-b border-white/15 bg-[#A63D24] text-white shadow-[0_8px_28px_rgba(80,31,19,.16)]">
@@ -433,41 +447,42 @@ export function TopBar() {
 
           {/* Language */}
 
-          <button
-            type="button"
-            aria-label="Language: English"
-            className="
-              inline-flex
-              h-8
-              shrink-0
-              items-center
-              gap-1.5
-              rounded-lg
-              border
-              border-white/15
-              bg-white/[.10]
-              px-2
-              text-[11px]
-              font-semibold
-              text-white/95
-              backdrop-blur-sm
-              transition-all
-              duration-300
-              hover:bg-white/[.18]
-              hover:border-white/30
-              hover:shadow-[0_0_18px_rgba(255,255,255,.12)]
-              lg:gap-2
-              lg:px-3
-              lg:text-xs
-            "
-          >
-            <GlobeIcon size={16} />
-
-            <span className="lg:hidden">EN</span>
-            <span className="hidden lg:inline">English</span>
-
-            <ChevronDownIcon size={14} />
-          </button>
+          <div className="relative">
+            <button
+              type="button"
+              aria-label={`Language: ${selectedLanguage.label}`}
+              aria-haspopup="listbox"
+              aria-expanded={isLanguageMenuOpen}
+              onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
+              className="inline-flex h-8 shrink-0 items-center gap-1.5 rounded-lg border border-white/15 bg-white/[.10] px-2 text-[11px] font-semibold text-white/95 backdrop-blur-sm transition-all duration-300 hover:border-white/30 hover:bg-white/[.18] hover:shadow-[0_0_18px_rgba(255,255,255,.12)] lg:gap-2 lg:px-3 lg:text-xs"
+            >
+              <GlobeIcon size={16} />
+              <span className="lg:hidden">{selectedLanguage.code}</span>
+              <span className="hidden lg:inline">{selectedLanguage.label}</span>
+              <ChevronDownIcon size={14} />
+            </button>
+            {isLanguageMenuOpen && (
+              <div role="listbox" aria-label="Select language" className="absolute right-0 top-[calc(100%+8px)] z-[70] min-w-[150px] overflow-hidden rounded-lg border border-white/20 bg-[#96371F] p-1 shadow-[0_12px_30px_rgba(0,0,0,.22)]">
+                {languages.map((language) => (
+                  <button
+                    key={language.code}
+                    type="button"
+                    role="option"
+                    aria-selected={selectedLanguage.code === language.code}
+                    onClick={() => {
+                      setSelectedLanguage(language);
+                      localStorage.setItem("portfolio-language", language.code);
+                      window.dispatchEvent(new CustomEvent("portfolio-language-change", { detail: language.code }));
+                      setIsLanguageMenuOpen(false);
+                    }}
+                    className={`flex min-h-9 w-full items-center rounded-md px-3 text-left text-xs font-semibold transition hover:bg-white/15 ${selectedLanguage.code === language.code ? "bg-white/15 text-white" : "text-white/90"}`}
+                  >
+                    {language.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
