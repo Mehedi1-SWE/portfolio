@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import { Geist, Inter } from "next/font/google";
 import "./globals.css";
+import { LanguageTranslator } from "@/components/LanguageTranslator";
 
 const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter" });
 const geist = Geist({ subsets: ["latin"], display: "swap", variable: "--font-geist" });
@@ -17,7 +18,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${geist.variable}`} suppressHydrationWarning>{children}</body>
+      <body className={`${inter.variable} ${geist.variable}`} suppressHydrationWarning><LanguageTranslator />{children}</body>
     </html>
   );
 }
