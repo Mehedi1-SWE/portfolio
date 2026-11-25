@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/image";\nimport { CVDownloadButtons } from "@/components/CVDownloadButtons";
 import Link from "next/link";
 import {
   ArrowDown,
@@ -110,90 +110,7 @@ export function Hero() {
               Computer Science graduate focused on full-stack web development, building responsive interfaces, backend APIs and practical software solutions.
             </p>
 
-            {/* CV BUTTONS */}
-            <div className="mt-7 grid grid-cols-1 gap-3 sm:mt-9 sm:flex sm:flex-wrap sm:items-center sm:gap-5">
-              {/* Professional CV */}
-              <a href="/professional-cv.pdf" className="group inline-flex h-[52px] w-full shrink-0 sm:w-[185px] items-center justify-between rounded-[12px] bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] px-3 text-white shadow-[0_10px_24px_rgba(37,99,235,.16)] transition hover:-translate-y-0.5">
-                <span className="flex items-center gap-2">
-                  <FileText size={18} strokeWidth={2.2} className="shrink-0" />
-                  <span className="whitespace-nowrap text-[14px] font-bold">Professional CV</span>
-                </span>
-                <Download size={18} strokeWidth={2.2} className="shrink-0" />
-              </a>
-
-              {/* Academic CV */}
-              <a href="/academic-cv.pdf" className="group inline-flex h-[52px] w-full shrink-0 sm:w-[180px] items-center justify-between rounded-[12px] border border-[#CBD5E1] bg-white px-3 text-[#0F172A] shadow-[0_4px_12px_rgba(15,23,42,.06)] transition hover:-translate-y-0.5">
-                <span className="flex items-center gap-2">
-                  {/* Filled Academic Mortarboard */}
-                  <svg
-                    width="36"
-                    height="40"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="shrink-0"
-                  >
-                    <path
-                      d="M12 3L2.5 8L12 13L21.5 8L12 3Z"
-                      fill="#2563EB"
-                    />
-                    <path
-                      d="M5.5 10.2V14.7C5.5 14.7 8.1 18 12 18C15.9 18 18.5 14.7 18.5 14.7V10.2L12 13.6L5.5 10.2Z"
-                      fill="#2563EB"
-                    />
-                    <path
-                      d="M20 9V14"
-                      stroke="#2563EB"
-                      strokeWidth="1.7"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-
-                  <span className="whitespace-nowrap text-[14px] font-bold">Academic CV</span>
-                </span>
-
-                <Download size={18} strokeWidth={2.2} className="shrink-0 text-[#2563EB]" />
-              </a>
-
-              {/* Europass CV */}
-              <a href="/europass-cv.pdf" className="group inline-flex h-[52px] w-full shrink-0 sm:w-[180px] items-center justify-between rounded-[12px] border border-[#CBD5E1] bg-white px-3 text-[#0F172A] shadow-[0_4px_12px_rgba(15,23,42,.06)] transition hover:-translate-y-0.5">
-                <span className="flex items-center gap-2">
-                  {/* EU Flag */}
-                  <span className="flex h-[28px] w-[38px] shrink-0 items-center justify-center rounded-[2px] bg-[#0757B8]">
-                    <svg
-                      width="25"
-                      height="21"
-                      viewBox="0 0 72 60"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g fill="#FFD700">
-                        <path d="M36 1l1.2 3 3.2.25-2.45 2 .8 3.05-2.75-1.6-2.75 1.6.8-3.05-2.45-2 3.2-.25z" />
-                        <path d="M48 4.2l1.2 3 3.2.25-2.45 2 .8 3.05-2.75-1.6-2.75 1.6.8-3.05-2.45-2 3.2-.25z" />
-                        <path d="M56.8 13l1.2 3 3.2.25-2.45 2 .8 3.05-2.75-1.6-2.75 1.6.8-3.05-2.45-2 3.2-.25z" />
-                        <path d="M60 25l1.2 3 3.2.25-2.45 2 .8 3.05-2.75-1.6-2.75 1.6.8-3.05-2.45-2 3.2-.25z" />
-                        <path d="M56.8 37l1.2 3 3.2.25-2.45 2 .8 3.05-2.75-1.6-2.75 1.6.8-3.05-2.45-2 3.2-.25z" />
-                        <path d="M48 45.8l1.2 3 3.2.25-2.45 2 .8 3.05-2.75-1.6-2.75 1.6.8-3.05-2.45-2 3.2-.25z" />
-                        <path d="M36 49l1.2 3 3.2.25-2.45 2 .8 3.05-2.75-1.6-2.75 1.6.8-3.05-2.45-2 3.2-.25z" />
-                        <path d="M24 45.8l1.2 3 3.2.25-2.45 2 .8 3.05-2.75-1.6-2.75 1.6.8-3.05-2.45-2 3.2-.25z" />
-                        <path d="M15.2 37l1.2 3 3.2.25-2.45 2 .8 3.05-2.75-1.6-2.75 1.6.8-3.05-2.45-2 3.2-.25z" />
-                        <path d="M12 25l1.2 3 3.2.25-2.45 2 .8 3.05-2.75-1.6-2.75 1.6.8-3.05-2.45-2 3.2-.25z" />
-                        <path d="M15.2 13l1.2 3 3.2.25-2.45 2 .8 3.05-2.75-1.6-2.75 1.6.8-3.05-2.45-2 3.2-.25z" />
-                        <path d="M24 4.2l1.2 3 3.2.25-2.45 2 .8 3.05-2.75-1.6-2.75 1.6.8-3.05-2.45-2 3.2-.25z" />
-                      </g>
-                    </svg>
-                  </span>
-
-                  <span className="whitespace-nowrap text-[14px] font-bold">
-                    <span className="text-[#7030A0]">Europass</span>
-                    <span className="ml-1 text-[#0F172A]">CV</span>
-                  </span>
-                </span>
-
-                <Download size={18} strokeWidth={2.2} className="shrink-0 text-[#2563EB]" />
-              </a>
-            </div>
-
-            <div className="mt-7 flex flex-wrap gap-6 text-sm font-bold uppercase tracking-[.1em] text-[#64748B]">
+            <CVDownloadButtons />\n            <div className="mt-7 flex flex-wrap gap-6 text-sm font-bold uppercase tracking-[.1em] text-[#64748B]">
               <Link
                 href="#academic"
                 className="inline-flex min-h-11 items-center gap-2 transition hover:text-[#2563EB]"
