@@ -31,7 +31,7 @@ export function AcademicCredentials() {
     let active = true;
     async function loadRecords() {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || ""}/api/academic`, { cache: "no-store" });
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001"}/api/academic`, { cache: "no-store" });
         if (!response.ok) return;
         const data = await response.json();
         if (active) setRecords(Array.isArray(data.records) ? data.records : Array.isArray(data) ? data : []);
