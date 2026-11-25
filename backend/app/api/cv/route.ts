@@ -6,9 +6,9 @@ import { CVManagement } from "@/models/CVManagement";
 export const dynamic = "force-dynamic";
 
 const defaults = [
-  { slug: "professional", title: "Professional CV", sourceType: "url", url: "/professional-cv.pdf", downloadName: "Mehedi-Hasan-Professional-CVManagement.pdf", isActive: true, sortOrder: 1 },
-  { slug: "academic", title: "Academic CV", sourceType: "url", url: "/academic-cv.pdf", downloadName: "Mehedi-Hasan-Academic-CVManagement.pdf", isActive: true, sortOrder: 2 },
-  { slug: "europass", title: "Europass CV", sourceType: "url", url: "/europass-cv.pdf", downloadName: "Mehedi-Hasan-Europass-CVManagement.pdf", isActive: true, sortOrder: 3 },
+  { slug: "professional", title: "Professional CV", sourceType: "url", url: "/professional-cv.pdf", downloadName: "Mehedi-Hasan-Professional-CV.pdf", isActive: true, sortOrder: 1 },
+  { slug: "academic", title: "Academic CV", sourceType: "url", url: "/academic-cv.pdf", downloadName: "Mehedi-Hasan-Academic-CV.pdf", isActive: true, sortOrder: 2 },
+  { slug: "europass", title: "Europass CV", sourceType: "url", url: "/europass-cv.pdf", downloadName: "Mehedi-Hasan-Europass-CV.pdf", isActive: true, sortOrder: 3 },
 ] as const;
 
 export async function GET(request: Request) {
@@ -35,7 +35,7 @@ export async function PATCH(request: Request) {
     }
     const updates = Object.fromEntries(allowed.filter((key) => Object.prototype.hasOwnProperty.call(body, key)).map((key) => [key, body[key]]));
     if (updates.isActive === true && !(typeof updates.url === "string" ? updates.url : "").trim()) {
-      return NextResponse.json({ error: "Add a PDF URL or upload a PDF before publishing this CVManagement." }, { status: 400 });
+      return NextResponse.json({ error: "Add a PDF URL or upload a PDF before publishing this CV." }, { status: 400 });
     }
     if (updates.url && typeof updates.url === "string" && !updates.url.startsWith("/") && !/^https:\/\//i.test(updates.url)) {
       return NextResponse.json({ error: "CV URL must use HTTPS." }, { status: 400 });
