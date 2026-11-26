@@ -18,7 +18,7 @@ export function Navbar() {
 
   return (
     <header className="fixed left-0 top-[42px] z-50 w-full px-3 pt-0 sm:px-4 lg:top-[40px] lg:px-8">
-      <nav className="mx-auto flex h-[65px] max-w-[1280px] items-center justify-between border border-white/80 bg-[#FFFDFACC] px-4 shadow-[0_18px_55px_rgba(54,39,29,.075)] backdrop-blur-xl lg:px-6">
+      <nav className="mx-auto flex h-[68px] max-w-[1280px] items-center justify-between border border-white/80 bg-[#FFFDFACC] px-4 shadow-[0_18px_55px_rgba(54,39,29,.075)] backdrop-blur-xl lg:px-6">
 
         {/* Logo */}
         <Link
@@ -56,11 +56,11 @@ export function Navbar() {
 
           {/* Contact Button */}
           <Link
-          href="#contact"
-          className="inline-flex min-h-[46px] shrink-0 items-center justify-center gap-2 rounded-xl bg-[#9B3D27] px-4 text-sm font-bold text-white shadow-[0_12px_30px_rgba(155,61,39,.18)] transition hover:-translate-y-0.5 hover:bg-[#7F2F20] sm:px-5"
-        >
-          Contact
-          <ArrowUpRight size={14} />
+            href="#contact"
+            className="inline-flex min-h-[46px] shrink-0 items-center justify-center gap-2 rounded-xl bg-[#9B3D27] px-4 text-sm font-bold text-white shadow-[0_12px_30px_rgba(155,61,39,.18)] transition hover:-translate-y-0.5 hover:bg-[#7F2F20] sm:px-5"
+          >
+            Contact
+            <ArrowUpRight size={14} />
           </Link>
         </div>
       </nav>

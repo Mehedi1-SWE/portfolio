@@ -87,9 +87,9 @@ export function TopBar() {
   return (
     <div className="fixed left-1/2 top-0 z-[60] w-full max-w-[1280px] -translate-x-1/2 border-b border-white/15 bg-[#A63D24] text-white shadow-[0_8px_28px_rgba(80,31,19,.16)]">
 
-      <div className="flex h-[42px] w-full items-center gap-3 overflow-x-auto px-3 lg:min-h-[42px] lg:justify-between lg:gap-3 lg:overflow-visible lg:px-6">
+      <div className="flex h-[48px] w-full items-center gap-3 overflow-x-auto px-3 lg:min-h-[48px] lg:justify-between lg:gap-3 lg:overflow-visible lg:px-6">
 
-        <div className="flex min-w-0 shrink-0 items-center gap-2 px-0 lg:min-h-[42px] lg:gap-5 lg:px-0">
+        <div className="flex min-w-0 shrink-0 items-center gap-2 px-0 lg:min-h-[48px] lg:gap-5 lg:px-0">
 
           {/* ================= LEFT CONTACT INFORMATION ================= */}
 
