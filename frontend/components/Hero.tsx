@@ -93,17 +93,14 @@ export function Hero() {
               Hello, I&apos;m
             </p>
 
-            <h1 className="mt-3 text-[clamp(36px,10vw,104px)] font-semibold leading-[1.05] tracking-[-.04em] text-[#0F172A] sm:text-[clamp(56px,7.5vw,104px)]">\n              Mehedi Hasan\n            </h1>
+            <h1 className="mt-3 text-[clamp(36px,10vw,104px)] font-semibold leading-[1.05] tracking-[-.04em] text-[#0F172A] sm:text-[clamp(56px,7.5vw,104px)]">Mehedi Hasan</h1>
 
             <h2 className="mt-7 max-w-2xl text-[clamp(28px,3.1vw,46px)] font-semibold leading-[1.15] tracking-[-.03em] text-[#0F172A] sm:mt-9">
-              Full-Stack Software Engineer{" "}
-              <span className="text-[#0F172A]">
-                building modern web applications with Next.js, React and Node.js.
-              </span>
+              Software Developer building modern web applications with Next.js, React and Node.js.
             </h2>
 
             <p className="mt-5 max-w-2xl text-base leading-8 text-[#475569] sm:mt-7 md:text-[17px]">
-              Computer Science graduate focused on full-stack web development, building responsive interfaces, backend APIs and practical software solutions.
+              Computer Science graduate focused on building responsive web applications, reliable backend APIs and practical software solutions with modern web technologies.
             </p>
 
             <CVDownloadButtons />
@@ -157,33 +154,31 @@ export function Hero() {
 
                   <div className="min-w-0">
                     <p className="text-xs font-bold uppercase tracking-[.14em] text-[#1D4ED8]">
-                      Academic &amp; Professional
+                      Software Development
                     </p>
 
                     <h3 className="mt-2 text-[clamp(19px,6vw,23px)] font-bold leading-[1.2] tracking-[-.025em] text-[#0F172A] sm:text-[27px] md:text-[32px]">
-                      Software Engineer
+                      Software Developer
                     </h3>
 
                     <p className="mt-3 text-sm font-medium text-[#64748B]">
-                      Full-Stack Development
+                      MERN Stack Development
                     </p>
                   </div>
                 </div>
 
                 <p className="mt-4 max-w-sm text-[15px] leading-7 text-[#64748B]">
-                  Computer Science graduate building modern web applications
-                  with a practical, research-aware approach to software
-                  engineering.
+                  Computer Science graduate focused on building modern web applications, responsive interfaces and practical full-stack solutions.
                 </p>
 
                 <div className="mt-4 flex flex-wrap gap-2">
                   {[
                     "MongoDB",
-                    "Express",
+                    "Express.js",
                     "React",
                     "Next.js",
                     "Node.js",
-                    "AI / ML",
+                    "TypeScript",
                   ].map((skill) => (
                     <span
                       key={skill}
@@ -216,11 +211,11 @@ export function Hero() {
                   </span>
 
                   <p className="mt-2 text-sm font-bold text-[#0F172A]">
-                    Engineering + Research
+                    Full-Stack Development
                   </p>
 
                   <p className="mt-1 text-xs leading-5 text-[#64748B]">
-                    Web · AI / ML
+                    Web · Backend APIs
                   </p>
                 </div>
               </div>
@@ -229,7 +224,7 @@ export function Hero() {
                 <Sparkles size={15} className="text-[#2563EB]" />
 
                 <span>
-                  Academic credibility meets practical software engineering.
+                  Building practical web solutions with modern technologies.
                 </span>
               </div>
             </div>
