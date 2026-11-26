@@ -99,7 +99,7 @@ export function Hero() {
               Software Developer building modern web applications with Next.js, React and Node.js.
             </h2>
 
-            <p className="mt-5 max-w-2xl text-base leading-8 text-[#475569] sm:mt-7 md:text-[17px]">
+            <p className="mt-5 max-w-2xl text-base leading-7 text-[#475569] sm:mt-7">
               Computer Science graduate focused on building responsive web applications, reliable backend APIs and practical software solutions with modern web technologies.
             </p>
 
