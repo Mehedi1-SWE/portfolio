@@ -14,7 +14,7 @@ export function Research() {
       <div className="grid gap-8 sm:gap-10 lg:grid-cols-[.72fr_1.28fr] lg:gap-14">
         <SectionHeading eyebrow="Research" title={<>Curiosity with a <span>technical direction.</span></>} />
         <div>
-          <p className="max-w-2xl text-[16px] leading-8 text-[#475569]">I am interested in research-oriented software engineering where intelligent systems, web technologies and reliable engineering practices meet.</p>
+          <p className="max-w-2xl text-[16px] leading-8 text-[#475569]">My research interests focus on the intersection of intelligent systems, modern web technologies and reliable software engineering practices.</p>
           <div className="mt-6 grid gap-3 sm:mt-8 sm:grid-cols-2">
             {interests.map((item, index) => (
               <div key={item} className="rounded-xl border bg-white p-4 shadow-[0_8px_28px_rgba(15,23,42,.04)] sm:p-5">
