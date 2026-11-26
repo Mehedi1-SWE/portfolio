@@ -54,7 +54,7 @@ export function Contact() {
     <section id="contact" className="relative px-4 py-20 sm:px-6 sm:py-24 lg:px-12 lg:py-32">
       <div className="hero-orb absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#2563EB]/[.06] blur-[110px]" aria-hidden="true" />
       <div className="relative mx-auto w-full max-w-3xl text-center">
-        <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.14em] text-[#64748B]">07 / Contact</span>
+        <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.14em] text-[#64748B]">Contact</span>
         <h2 className="mt-5 text-[clamp(34px,8.5vw,88px)] font-black sm:text-[clamp(40px,8.5vw,88px)] leading-[1.05] tracking-[-.04em] text-[#0F172A]">Let&apos;s build the <span className="font-normal italic text-[#2563EB]">next thing.</span></h2>
         <p className="mx-auto mt-5 max-w-2xl text-[16px] leading-8 text-[#475569] sm:mt-7">Open to software engineering opportunities, academic collaboration and Master&apos;s-level research conversations.</p>
         <div className="mt-7 flex flex-col justify-center gap-3 sm:mt-9 sm:flex-row">
