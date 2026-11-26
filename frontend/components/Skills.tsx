@@ -15,7 +15,7 @@ export function Skills() {
         <SectionHeading
           eyebrow="Technical skills"
           title={<>The <span>toolkit.</span></>}
-          description="A focused overview of the technologies and engineering practices I use to build reliable, modern software."
+          description="Technologies and engineering practices I use to develop responsive, maintainable web applications and backend services."
         />
 
         <div className="mt-8 overflow-hidden rounded-[28px] border border-[#E2E8F0] bg-white shadow-[0_14px_44px_rgba(15,23,42,.055)] sm:mt-12">
