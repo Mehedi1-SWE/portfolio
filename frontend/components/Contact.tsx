@@ -56,7 +56,7 @@ export function Contact() {
       <div className="relative mx-auto w-full max-w-3xl text-center">
         <span className="inline-flex items-center gap-2 text-[15px] font-semibold uppercase tracking-[.10em] text-[#334155]">Contact</span>
         <h2 className="mt-5 text-[clamp(30px,6vw,60px)] font-semibold sm:text-[clamp(36px,6vw,60px)] leading-[1.1] tracking-[-.035em] text-[#0F172A]">Let&apos;s build the <span>next thing.</span></h2>
-        <p className="mx-auto mt-5 max-w-2xl text-[16px] leading-8 text-[#475569] sm:mt-7">Open to Software Developer opportunities, full-stack web projects, academic collaboration and research conversations.</p>
+        <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-[#475569] sm:mt-7">Open to Software Developer opportunities, full-stack web projects, academic collaboration and research conversations.</p>
         <div className="mt-7 flex flex-col justify-center gap-3 sm:mt-9 sm:flex-row">
           <a href="mailto:mehedi.se4@gmail.com" className="inline-flex min-h-[46px] w-full items-center justify-center gap-2 rounded-xl bg-[#2563EB] px-5 text-sm font-bold text-white shadow-[0_12px_30px_rgba(37,99,235,.18)] sm:w-auto transition hover:-translate-y-0.5 hover:bg-[#1D4ED8]">Email me <Mail size={15} /></a>
           <a href="https://github.com/Mehedi1-SWE" target="_blank" rel="noreferrer" className="inline-flex min-h-[46px] w-full items-center justify-center gap-2 rounded-xl border border-[#CBD5E1] bg-white/90 px-5 text-sm font-bold text-[#0F172A] shadow-sm sm:w-auto transition hover:-translate-y-0.5 hover:border-[#CBD5E1]">GitHub <Github size={15} /></a>
