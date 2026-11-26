@@ -5,7 +5,7 @@ const projects = [
   {
     title: "Genius Car",
     category: "Insurance / Web Platform",
-    description: "A modern insurance web experience built with reusable Next.js components, responsive layouts and service-focused user flows.",
+    description: "A responsive insurance web platform featuring reusable Next.js components, clear service information and user-focused navigation.",
     stack: ["Next.js", "React", "Tailwind CSS"],
     demo: "https://genius-car.vercel.app",
     github: "https://github.com/Mehedi1-SWE/Genius-Car",
@@ -13,14 +13,14 @@ const projects = [
   {
     title: "Alliance Sourcing BD",
     category: "Full-Stack / Business Platform",
-    description: "A monorepo-based business platform with a customer-facing frontend, a dedicated admin dashboard and a backend API layer.",
+    description: "A full-stack business platform organized as a monorepo, bringing together a customer-facing website, an admin dashboard and a backend API.",
     stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Node.js", "Express.js", "MongoDB"],
     github: "https://github.com/Mehedi1-SWE/Alliance-Sourcing-BD",
   },
   {
     title: "Uttara Adhunik Medical College",
     category: "Medical College Website",
-    description: "A college website project organized into separate frontend and backend applications, with a dedicated frontend implementation.",
+    description: "A medical college website project structured with separate frontend and backend applications to support a clear, maintainable web experience.",
     stack: ["Frontend", "Backend", "Web Development"],
     github: "https://github.com/Mehedi1-SWE/Uttara-Adhunik-Medical-College",
   },
