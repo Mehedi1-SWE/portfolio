@@ -14,7 +14,7 @@ export function Skills() {
       <div className="mx-auto max-w-[1280px]">
         <SectionHeading
           eyebrow="Technical skills"
-          title={<>The <span className="font-semibold not-italic text-[#0F172A]">toolkit.</span></>}
+          title={<>The <span>toolkit.</span></>}
           description="A focused overview of the technologies and engineering practices I use to build reliable, modern software."
         />
 
