@@ -13,7 +13,6 @@ export function Skills() {
     <section className="border-y border-[#E2E8F0] bg-[#F1F5F9] px-4 py-16 sm:px-6 sm:py-20 lg:px-12 lg:py-28">
       <div className="mx-auto max-w-[1280px]">
         <SectionHeading
-          number="06"
           eyebrow="Technical skills"
           title={<>The <span className="font-semibold not-italic text-[#0F172A]">toolkit.</span></>}
           description="A focused overview of the technologies and engineering practices I use to build reliable, modern software."
