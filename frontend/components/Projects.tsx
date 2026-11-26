@@ -39,7 +39,7 @@ export function Projects() {
                 <div className="flex h-9 items-center gap-1 border-b border-[#E2E8F0] px-3"><i className="block h-1.5 w-1.5 rounded-full bg-[#CBD5E1]" /><i className="block h-1.5 w-1.5 rounded-full bg-[#CBD5E1]" /><i className="block h-1.5 w-1.5 rounded-full bg-[#CBD5E1]" /></div>
                 <div className="p-4 sm:p-8">
                   <span className="text-[8px] font-bold uppercase tracking-[.15em] text-[#64748B]">{project.category}</span>
-                  <p className="mt-5 text-2xl font-semibold tracking-[-.025em] sm:text-3xl text-[#0F172A]">{project.title}</p>
+                  <p className="mt-5 text-xl font-semibold tracking-[-.025em] text-[#0F172A] sm:text-2xl">{project.title}</p>
                   <div className="mt-7 h-2 w-3/4 rounded-full bg-[#E2E8F0]" /><div className="mt-2 h-2 w-1/2 rounded-full bg-[#F1F5F9]" />
                 </div>
               </div>
@@ -47,7 +47,7 @@ export function Projects() {
 
             <div className="flex flex-col justify-center p-5 sm:p-8 md:p-12">
               <span className="text-sm font-bold uppercase tracking-[.16em] text-[#2563EB]">{project.category}</span>
-              <h3 className="mt-4 text-3xl font-bold leading-[1.2] tracking-[-.025em] text-[#0F172A] sm:text-4xl">{project.title}</h3>
+              <h3 className="mt-4 text-2xl font-bold leading-[1.25] tracking-[-.025em] text-[#0F172A] sm:text-3xl">{project.title}</h3>
               <p className="mt-5 text-[16px] leading-7 text-[#475569]">{project.description}</p>
               <div className="mt-7 flex flex-wrap gap-2">{project.stack.map((item) => <span key={item} className="inline-flex items-center rounded-full border border-[#E2E8F0] bg-[#F8FAFC] px-3.5 py-2 text-sm font-bold tracking-[.025em] text-[#334155] transition hover:-translate-y-0.5 hover:border-[#CBD5E1] hover:bg-white">{item}</span>)}</div>
               <div className="mt-9 flex flex-wrap gap-5">
