@@ -46,7 +46,7 @@ export async function Academic() {
   return (
     <section id="academic" className="border-y border-[#E2E8F0] bg-[#F1F5F9] px-4 py-16 sm:px-6 sm:py-20 lg:px-12 lg:py-28">
       <div className="mx-auto max-w-[1280px]">
-        <SectionHeading number="02" eyebrow="Academic profile" title={<>A strong <span className="font-normal italic text-[#2563EB]">foundation.</span></>} description="Explore my Computer Science degree, selected academic projects and relevant coursework." />
+        <SectionHeading eyebrow="Academic profile" title={<>A strong <span className="font-semibold not-italic text-[#0F172A]">foundation.</span></>} description="Explore my Computer Science degree, selected academic projects and relevant coursework." />
 
         <div className="mt-10 grid gap-5 sm:mt-14 lg:grid-cols-2">
           {academicProjects.map((project, index) => (
@@ -56,7 +56,7 @@ export async function Academic() {
                 <span className="min-w-0 max-w-[85%] text-right text-xs font-bold uppercase tracking-[.1em] text-[#64748B] sm:text-sm sm:tracking-[.12em]">{project.course || "Academic Project"}</span>
               </div>
               <h3 className="mt-8 max-w-xl text-3xl font-bold leading-[1.2] tracking-[-.025em] text-[#0F172A] sm:mt-12 md:text-4xl">{project.title}</h3>
-              <p className="mt-5 max-w-xl text-[16px] leading-7 text-[#475569]">{project.description}</p>
+              <p className="mt-5 max-w-xl text-base leading-7 text-[#475569]">{project.description}</p>
               <div className="mt-7 flex flex-wrap gap-2">
                 {(project.technologies || []).map((item) => <span key={item} className="inline-flex items-center rounded-full border border-[#E2E8F0] bg-[#F8FAFC] px-3.5 py-2 text-sm font-bold tracking-[.025em] text-[#334155] transition hover:-translate-y-0.5 hover:border-[#CBD5E1] hover:bg-white">{item}</span>)}
               </div>
