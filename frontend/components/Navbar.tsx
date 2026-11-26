@@ -41,7 +41,7 @@ export function Navbar() {
             <Link
               key={href}
               href={href}
-              className="relative min-h-11 py-3 text-sm font-bold tracking-[.035em] text-[#514B44] transition hover:text-[#211F1C]"
+              className="relative min-h-11 py-3 text-sm font-semibold tracking-[.01em] text-[#514B44] transition hover:text-[#211F1C]"
             >
               {label}
             </Link>
@@ -68,7 +68,7 @@ export function Navbar() {
       <div id="mobile-navigation" className={`absolute left-4 right-4 top-[73px] max-h-[calc(100dvh-130px)] overflow-y-auto rounded-xl border border-[#E8DDD7] bg-[#FFFDFACC] p-3 shadow-[0_18px_45px_rgba(15,23,42,.14)] lg:hidden ${isMenuOpen ? "block" : "hidden"}`}>
         <div className="flex flex-col">
           {links.map(([label, href]) => (
-            <Link key={href} href={href} onClick={() => setIsMenuOpen(false)} className="flex min-h-11 items-center rounded-lg px-3 text-sm font-bold text-[#514B44] transition hover:bg-[#F7ECE7] hover:text-[#9B3D27]">
+            <Link key={href} href={href} onClick={() => setIsMenuOpen(false)} className="flex min-h-11 items-center rounded-lg px-3 text-sm font-semibold text-[#514B44] transition hover:bg-[#F7ECE7] hover:text-[#9B3D27]">
               {label}
             </Link>
           ))}
