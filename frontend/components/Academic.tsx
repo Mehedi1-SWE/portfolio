@@ -75,7 +75,7 @@ export async function Academic() {
               <article key={item._id} className="rounded-xl border border-[#E2E8F0] bg-white p-5 shadow-[0_14px_44px_rgba(15,23,42,.055)] transition hover:-translate-y-1.5 hover:shadow-[0_26px_72px_rgba(15,23,42,.12)] sm:p-6">
                 <span className="text-sm font-bold tracking-[.14em] text-[#2563EB]">{String(index + 1).padStart(2, "0")}</span>
                 <h3 className="mt-5 text-lg font-semibold tracking-[-.025em] text-[#0F172A] sm:mt-7">{item.title}</h3>
-                <p className="mt-3 text-[16px] leading-6 text-[#475569]">{item.description}</p>
+                <p className="mt-3 text-base leading-7 text-[#475569]">{item.description}</p>
               </article>
             ))}
           </div>
