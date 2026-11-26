@@ -82,7 +82,7 @@ export function Hero() {
           aria-hidden="true"
         />
 
-        <div className="relative mx-auto grid w-full max-w-[1280px] items-start gap-8 lg:grid-cols-[1.08fr_.78fr] lg:items-start lg:gap-14">
+        <div className="relative mx-auto grid w-full max-w-[1280px] items-start gap-8 lg:grid-cols-[minmax(0,1fr)_532px] lg:items-start lg:gap-14">
           <div className="reveal-card max-w-[760px]">
             <div className="mb-6 flex items-center gap-3 text-[13px] font-semibold uppercase tracking-[.14em] text-[#64748B]">
               <span className="h-2 w-2 rounded-full bg-[#2563EB]" />
@@ -99,12 +99,12 @@ export function Hero() {
               Software Developer building modern web applications with Next.js, React and Node.js.
             </h2>
 
-            <p className="mt-5 max-w-2xl text-base leading-7 text-[#475569] sm:mt-7">
+            <p className="mt-5 max-w-2xl text-lg leading-7 text-[#475569] sm:mt-7">
               Computer Science graduate focused on building responsive web applications, reliable backend APIs and practical software solutions with modern web technologies.
             </p>
 
             <CVDownloadButtons />
-            <div className="mt-7 flex flex-wrap gap-6 text-sm font-bold uppercase tracking-[.1em] text-[#64748B]">
+            <div className="relative -translate-y-2 mt-7 flex flex-wrap gap-6 text-sm font-bold uppercase tracking-[.1em] text-[#64748B]">
               <Link
                 href="#academic"
                 className="inline-flex min-h-11 items-center gap-2 transition hover:text-[#2563EB]"
@@ -126,7 +126,7 @@ export function Hero() {
           </div>
 
           {/* RIGHT PROFILE CARD */}
-          <div className="relative mx-auto w-full max-w-[500px]">
+          <div className="relative w-full max-w-none">
             <div className="relative overflow-hidden rounded-[24px] border border-[#E2E8F0] bg-gradient-to-br from-white to-[#F8FAFC] p-5 shadow-[0_30px_85px_rgba(15,23,42,.11)] md:p-6">
               <div
                 className="absolute right-0 top-0 h-40 w-40 rounded-full bg-[#2563EB]/[.07] blur-3xl"
@@ -234,7 +234,7 @@ export function Hero() {
 
       {/* TECHNOLOGY MARQUEE */}
       <div
-        className="relative z-10 mt-8 mx-auto max-w-[1280px] overflow-hidden border-y border-[#E2E8F0] bg-white py-3.5"
+        className="relative z-8 -mt-4 mx-auto max-w-[1280px] overflow-hidden border-y border-[#E2E8F0] bg-white py-3.5"
         aria-label="Technology highlights"
       >
         <div className="marquee flex w-max whitespace-nowrap">

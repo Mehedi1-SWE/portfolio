@@ -32,7 +32,7 @@ export function CVDownloadButtons() {
   }, []);
 
   return (
-    <div className="mt-7 grid grid-cols-1 gap-3 sm:mt-9 sm:flex sm:flex-wrap sm:items-center sm:gap-5">
+    <div className="relative -translate-y-2 mt-[40px] grid grid-cols-1 gap-3 sm:mt-[48px] sm:flex sm:flex-wrap sm:items-center sm:gap-5">
       {defaults.map((item, index) => {
         const cv = cvs.find(
           (entry) => entry.slug === item.slug && entry.isActive && typeof entry.url === "string" && entry.url.trim()
