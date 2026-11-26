@@ -15,7 +15,7 @@ export function Skills() {
         <SectionHeading
           number="06"
           eyebrow="Technical skills"
-          title={<>The <span className="font-normal italic text-[#2563EB]">toolkit.</span></>}
+          title={<>The <span className="font-semibold not-italic text-[#0F172A]">toolkit.</span></>}
           description="A focused overview of the technologies and engineering practices I use to build reliable, modern software."
         />
 
