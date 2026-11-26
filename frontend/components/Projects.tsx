@@ -29,7 +29,7 @@ const projects = [
 export function Projects() {
   return (
     <section id="projects" className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-12 lg:py-28">
-      <SectionHeading eyebrow="Professional projects" title={<>Selected <span className="font-semibold not-italic text-[#0F172A]">work.</span></>} />
+      <SectionHeading eyebrow="Professional projects" title={<>Selected <span>work.</span></>} />
 
       <div className="mt-10 space-y-5 sm:mt-14">
         {projects.map((project) => (
