@@ -234,7 +234,7 @@ export function Hero() {
 
       {/* TECHNOLOGY MARQUEE */}
       <div
-        className="relative z-10 mt-12 mx-auto max-w-[1280px] overflow-hidden border-y border-[#E2E8F0] bg-white py-3.5"
+        className="relative z-10 mt-8 mx-auto max-w-[1280px] overflow-hidden border-y border-[#E2E8F0] bg-white py-3.5"
         aria-label="Technology highlights"
       >
         <div className="marquee flex w-max whitespace-nowrap">
