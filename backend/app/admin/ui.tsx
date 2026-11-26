@@ -32,6 +32,8 @@ export default function AdminDashboard() {
   const [selectedFileName, setSelectedFileName] = useState("");
   const [replyDrafts, setReplyDrafts] = useState<Record<string, string>>({});
   const [sendingReplyId, setSendingReplyId] = useState<string | null>(null);
+  const [notificationMessages, setNotificationMessages] = useState<Message[]>([]);
+  const [notificationOpen, setNotificationOpen] = useState(false);
 
   const load = useCallback(async () => {
     setLoading(true); setError("");
@@ -47,7 +49,24 @@ export default function AdminDashboard() {
     } finally { setLoading(false); }
   }, [section]);
 
-  useEffect(() => { if (authenticated) load(); }, [authenticated, load]);
+  const loadNotifications = useCallback(async () => {
+    try {
+      const response = await fetch("/api/admin/messages", { cache: "no-store" });
+      if (!response.ok) return;
+      const data = await response.json();
+      setNotificationMessages(Array.isArray(data.messages) ? data.messages : []);
+    } catch {
+      // Keep the dashboard usable if a background notification refresh fails.
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!authenticated) return;
+    load();
+    loadNotifications();
+    const interval = window.setInterval(loadNotifications, 30000);
+    return () => window.clearInterval(interval);
+  }, [authenticated, load, loadNotifications]);
 
   async function login(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault(); setError("");
@@ -59,7 +78,7 @@ export default function AdminDashboard() {
 
   async function logout() {
     await fetch("/api/admin/logout", { method: "POST" });
-    setAuthenticated(false); setItems([]); setJson(""); setRecordForm(emptyRecordForm());
+    setAuthenticated(false); setItems([]); setNotificationMessages([]); setNotificationOpen(false); setJson(""); setRecordForm(emptyRecordForm());
   }
 
   async function saveAcademic(event: React.FormEvent<HTMLFormElement>) {
@@ -188,6 +207,27 @@ export default function AdminDashboard() {
 
   const current = sections.find((item) => item.id === section)!;
   const unread = items.filter((item) => !item.isRead).length;
+  const notificationUnread = notificationMessages.filter((message) => !message.isRead).length;
+  const recentNotifications = [...notificationMessages].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()).slice(0, 5);
+
+  async function openNotification(message: Message) {
+    setNotificationOpen(false);
+    setSection("messages");
+    if (!message.isRead) {
+      const response = await fetch(`/api/admin/messages/${message._id}`, { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ isRead: true }) });
+      if (response.ok) setNotificationMessages((current) => current.map((item) => item._id === message._id ? { ...item, isRead: true } : item));
+    }
+  }
+
+  async function markAllNotificationsRead() {
+    const unreadMessages = notificationMessages.filter((message) => !message.isRead);
+    if (!unreadMessages.length) return;
+    const results = await Promise.all(unreadMessages.map((message) => fetch(`/api/admin/messages/${message._id}`, { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ isRead: true }) })));
+    if (results.every((response) => response.ok)) {
+      setNotificationMessages((current) => current.map((message) => ({ ...message, isRead: true })));
+      if (section === "messages") await load();
+    }
+  }
 
   if (!authenticated) return (
     <main className="flex min-h-screen items-center justify-center bg-[#F8FAFC] px-4 py-12 text-[#0F172A]">
@@ -207,7 +247,7 @@ export default function AdminDashboard() {
 
   return (
     <main className="min-h-screen bg-[#F5F7FB] font-sans text-[15px] leading-relaxed text-slate-800 antialiased">
-      <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-slate-200/80 bg-white px-5 shadow-sm shadow-slate-200/20 sm:px-8"><div className="flex items-center gap-3"><span className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-600 text-white shadow-md shadow-blue-200"><Code2 size={25} strokeWidth={2.5} /></span><div><h1 className="text-lg font-extrabold leading-5 tracking-tight text-slate-900">Mehedi Hasan</h1><p className="mt-0.5 text-sm leading-4 text-slate-500">Admin Panel</p></div></div><div className="flex items-center gap-5"><button type="button" aria-label="Notifications" className="relative flex h-10 w-10 items-center justify-center rounded-full text-slate-700 hover:bg-slate-50"><Bell size={21} /><span className="absolute right-2 top-2 h-2.5 w-2.5 rounded-full border-2 border-white bg-red-500" /></button><button onClick={logout} className="flex items-center gap-3 rounded-full pl-1 pr-1 text-left transition hover:bg-slate-50"><span className="flex h-11 w-11 items-center justify-center rounded-full bg-violet-600 text-sm font-bold text-white">MH</span><span className="hidden sm:block"><span className="block text-sm font-bold leading-5 text-slate-900">Mehedi Hasan</span><span className="block text-xs leading-4 text-slate-500">Admin</span></span><ChevronDown size={17} className="ml-1 text-slate-700" /></button></div></header>
+      <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-slate-200/80 bg-white px-5 shadow-sm shadow-slate-200/20 sm:px-8"><div className="flex items-center gap-3"><span className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-600 text-white shadow-md shadow-blue-200"><Code2 size={25} strokeWidth={2.5} /></span><div><h1 className="text-lg font-extrabold leading-5 tracking-tight text-slate-900">Mehedi Hasan</h1><p className="mt-0.5 text-sm leading-4 text-slate-500">Admin Panel</p></div></div><div className="flex items-center gap-5"><div className="relative"><button type="button" aria-label={`Notifications, ${notificationUnread} unread messages`} aria-expanded={notificationOpen} aria-haspopup="dialog" onClick={() => setNotificationOpen((open) => !open)} className={`relative flex h-11 w-11 items-center justify-center rounded-full transition duration-200 ${notificationOpen ? "bg-blue-50 text-blue-700 ring-1 ring-blue-100" : "text-slate-700 hover:bg-slate-50"}`}><Bell size={21} strokeWidth={1.9} />{notificationUnread > 0 && <span className="absolute -right-0.5 -top-0.5 flex h-[19px] min-w-[19px] items-center justify-center rounded-full border-2 border-white bg-blue-600 px-1 text-[10px] font-bold leading-none text-white">{notificationUnread > 99 ? "99+" : notificationUnread}</span>}</button>{notificationOpen && <div role="dialog" aria-label="Notifications" className="absolute right-0 top-[calc(100%+12px)] z-[60] w-[min(360px,calc(100vw-2rem))] overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_24px_70px_rgba(15,23,42,.18)]"><div className="flex items-center justify-between border-b border-slate-100 px-4 py-3.5"><div><h2 className="text-sm font-bold text-slate-900">Notifications</h2><p className="mt-0.5 text-xs text-slate-500">{notificationUnread} unread {notificationUnread === 1 ? "message" : "messages"}</p></div><button type="button" onClick={markAllNotificationsRead} disabled={notificationUnread === 0} className="text-xs font-semibold text-blue-600 transition hover:text-blue-700 disabled:cursor-not-allowed disabled:text-slate-300">Mark all read</button></div><div className="max-h-[360px] overflow-y-auto">{recentNotifications.length === 0 ? <div className="px-5 py-9 text-center"><span className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-slate-50 text-slate-400"><Bell size={18} /></span><p className="mt-3 text-sm font-semibold text-slate-700">You&apos;re all caught up</p><p className="mt-1 text-xs text-slate-500">New contact messages will appear here.</p></div> : recentNotifications.map((message) => <button key={message._id} type="button" onClick={() => openNotification(message)} className="flex w-full items-start gap-3 border-b border-slate-100 px-4 py-3.5 text-left transition last:border-b-0 hover:bg-slate-50"><span className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${message.isRead ? "bg-slate-100 text-slate-500" : "bg-blue-50 text-blue-600"}`}><Mail size={16} /></span><span className="min-w-0 flex-1"><span className="flex items-center gap-2"><span className={`truncate text-sm ${message.isRead ? "font-medium text-slate-700" : "font-bold text-slate-900"}`}>{message.name}</span>{!message.isRead && <span className="h-2 w-2 shrink-0 rounded-full bg-blue-600" />}</span><span className="mt-0.5 block truncate text-xs font-semibold text-slate-600">{message.subject}</span><span className="mt-1 block text-xs leading-5 text-slate-500">{message.message}</span><span className="mt-1.5 block text-[11px] text-slate-400">{new Date(message.createdAt).toLocaleString()}</span></span></button>)}</div><button type="button" onClick={() => { setSection("messages"); setNotificationOpen(false); }} className="flex w-full items-center justify-center border-t border-slate-100 bg-slate-50/70 px-4 py-3 text-xs font-bold text-blue-600 transition hover:bg-blue-50">View all messages <span className="ml-1">→</span></button></div>}</div><button onClick={logout} className="flex items-center gap-3 rounded-full pl-1 pr-1 text-left transition hover:bg-slate-50"><span className="flex h-11 w-11 items-center justify-center rounded-full bg-violet-600 text-sm font-bold text-white">MH</span><span className="hidden sm:block"><span className="block text-sm font-bold leading-5 text-slate-900">Mehedi Hasan</span><span className="block text-xs leading-4 text-slate-500">Admin</span></span><ChevronDown size={17} className="ml-1 text-slate-700" /></button></div></header>
       <nav aria-label="Admin sections" className="sticky top-16 z-20 flex gap-2 overflow-x-auto border-b border-slate-200 bg-white px-4 py-3 lg:hidden">
         {sections.map((item) => { const Icon = item.icon; return <button key={item.id} type="button" aria-current={section === item.id ? "page" : undefined} onClick={() => { setSection(item.id); setNotice(""); setError(""); setJson(""); setEditingId(null); setRecordForm(emptyRecordForm(item.id)); }} className={`inline-flex shrink-0 items-center gap-2 rounded-xl px-3.5 py-2.5 text-sm font-semibold transition ${section === item.id ? "bg-blue-50 text-blue-700 ring-1 ring-blue-100" : "text-slate-600 hover:bg-slate-50"}`}><Icon size={16} />{item.label}</button>; })}
       </nav>
