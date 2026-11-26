@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import CVManagement from "./CVManagement";
 import { Activity, BriefcaseBusiness, Bell, CheckCircle2, ChevronDown, Code2, FolderKanban, Mail, MessageSquareQuote, Plus, RefreshCw, ShieldCheck, Trash2, GraduationCap, UploadCloud, CalendarDays, X, FileText } from "lucide-react";
 
@@ -34,6 +34,11 @@ export default function AdminDashboard() {
   const [sendingReplyId, setSendingReplyId] = useState<string | null>(null);
   const [notificationMessages, setNotificationMessages] = useState<Message[]>([]);
   const [notificationOpen, setNotificationOpen] = useState(false);
+  const [soundEnabled, setSoundEnabled] = useState(true);
+  const [desktopEnabled, setDesktopEnabled] = useState(false);
+  const [notificationSettingsOpen, setNotificationSettingsOpen] = useState(false);
+  const previousMessageIds = useRef<Set<string> | null>(null);
+  const audioContextRef = useRef<AudioContext | null>(null);
 
   const load = useCallback(async () => {
     setLoading(true); setError("");
@@ -54,11 +59,75 @@ export default function AdminDashboard() {
       const response = await fetch("/api/admin/messages", { cache: "no-store" });
       if (!response.ok) return;
       const data = await response.json();
-      setNotificationMessages(Array.isArray(data.messages) ? data.messages : []);
+      const messages: Message[] = Array.isArray(data.messages) ? data.messages : [];
+      const currentIds = new Set(messages.map((message) => message._id));
+      const previousIds = previousMessageIds.current;
+      const newMessages = previousIds ? messages.filter((message) => !previousIds.has(message._id)) : [];
+      previousMessageIds.current = currentIds;
+      setNotificationMessages(messages);
+      if (newMessages.length > 0) {
+        const newest = newMessages[0];
+        if (soundEnabled) playNotificationSound();
+        if (desktopEnabled && "Notification" in window && Notification.permission === "granted") {
+          new Notification("New portfolio message", { body: `${newest.name}: ${newest.subject}`, tag: newest._id });
+        }
+      }
     } catch {
       // Keep the dashboard usable if a background notification refresh fails.
     }
   }, []);
+
+  function playNotificationSound() {
+    try {
+      const AudioContextClass = window.AudioContext || (window as typeof window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+      if (!AudioContextClass) return;
+      const context = audioContextRef.current || new AudioContextClass();
+      audioContextRef.current = context;
+      if (context.state === "suspended") void context.resume();
+      const now = context.currentTime;
+      [880, 1174.66].forEach((frequency, index) => {
+        const oscillator = context.createOscillator();
+        const gain = context.createGain();
+        oscillator.type = "sine";
+        oscillator.frequency.value = frequency;
+        gain.gain.setValueAtTime(0.0001, now + index * 0.13);
+        gain.gain.exponentialRampToValueAtTime(0.12, now + index * 0.13 + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + index * 0.13 + 0.22);
+        oscillator.connect(gain);
+        gain.connect(context.destination);
+        oscillator.start(now + index * 0.13);
+        oscillator.stop(now + index * 0.13 + 0.24);
+      });
+    } catch {
+      // Audio is optional; browser autoplay restrictions may block playback.
+    }
+  }
+
+  async function enableDesktopNotifications() {
+    if (!("Notification" in window)) {
+      setNotice("Desktop notifications are not supported by this browser.");
+      return;
+    }
+    const permission = await Notification.requestPermission();
+    setDesktopEnabled(permission === "granted");
+    if (permission === "granted") setNotice("Desktop notifications enabled.");
+    else setNotice("Browser notification permission was not granted.");
+  }
+
+  useEffect(() => {
+    const savedSound = window.localStorage.getItem("admin-notification-sound");
+    const savedDesktop = window.localStorage.getItem("admin-desktop-notifications");
+    if (savedSound !== null) setSoundEnabled(savedSound === "true");
+    if (savedDesktop !== null) setDesktopEnabled(savedDesktop === "true" && "Notification" in window && Notification.permission === "granted");
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem("admin-notification-sound", String(soundEnabled));
+  }, [soundEnabled]);
+
+  useEffect(() => {
+    window.localStorage.setItem("admin-desktop-notifications", String(desktopEnabled));
+  }, [desktopEnabled]);
 
   useEffect(() => {
     if (!authenticated) return;
@@ -66,7 +135,7 @@ export default function AdminDashboard() {
     loadNotifications();
     const interval = window.setInterval(loadNotifications, 30000);
     return () => window.clearInterval(interval);
-  }, [authenticated, load, loadNotifications]);
+  }, [authenticated, load, loadNotifications, soundEnabled, desktopEnabled]);
 
   async function login(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault(); setError("");
@@ -247,7 +316,7 @@ export default function AdminDashboard() {
 
   return (
     <main className="min-h-screen bg-[#F5F7FB] font-sans text-[15px] leading-relaxed text-slate-800 antialiased">
-      <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-slate-200/80 bg-white px-5 shadow-sm shadow-slate-200/20 sm:px-8"><div className="flex items-center gap-3"><span className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-600 text-white shadow-md shadow-blue-200"><Code2 size={25} strokeWidth={2.5} /></span><div><h1 className="text-lg font-extrabold leading-5 tracking-tight text-slate-900">Mehedi Hasan</h1><p className="mt-0.5 text-sm leading-4 text-slate-500">Admin Panel</p></div></div><div className="flex items-center gap-5"><div className="relative"><button type="button" aria-label={`Notifications, ${notificationUnread} unread messages`} aria-expanded={notificationOpen} aria-haspopup="dialog" onClick={() => setNotificationOpen((open) => !open)} className={`relative flex h-11 w-11 items-center justify-center rounded-full transition duration-200 ${notificationOpen ? "bg-blue-50 text-blue-700 ring-1 ring-blue-100" : "text-slate-700 hover:bg-slate-50"}`}><Bell size={21} strokeWidth={1.9} />{notificationUnread > 0 && <span className="absolute -right-0.5 -top-0.5 flex h-[19px] min-w-[19px] items-center justify-center rounded-full border-2 border-white bg-blue-600 px-1 text-[10px] font-bold leading-none text-white">{notificationUnread > 99 ? "99+" : notificationUnread}</span>}</button>{notificationOpen && <div role="dialog" aria-label="Notifications" className="absolute right-0 top-[calc(100%+12px)] z-[60] w-[min(360px,calc(100vw-2rem))] overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_24px_70px_rgba(15,23,42,.18)]"><div className="flex items-center justify-between border-b border-slate-100 px-4 py-3.5"><div><h2 className="text-sm font-bold text-slate-900">Notifications</h2><p className="mt-0.5 text-xs text-slate-500">{notificationUnread} unread {notificationUnread === 1 ? "message" : "messages"}</p></div><button type="button" onClick={markAllNotificationsRead} disabled={notificationUnread === 0} className="text-xs font-semibold text-blue-600 transition hover:text-blue-700 disabled:cursor-not-allowed disabled:text-slate-300">Mark all read</button></div><div className="max-h-[360px] overflow-y-auto">{recentNotifications.length === 0 ? <div className="px-5 py-9 text-center"><span className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-slate-50 text-slate-400"><Bell size={18} /></span><p className="mt-3 text-sm font-semibold text-slate-700">You&apos;re all caught up</p><p className="mt-1 text-xs text-slate-500">New contact messages will appear here.</p></div> : recentNotifications.map((message) => <button key={message._id} type="button" onClick={() => openNotification(message)} className="flex w-full items-start gap-3 border-b border-slate-100 px-4 py-3.5 text-left transition last:border-b-0 hover:bg-slate-50"><span className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${message.isRead ? "bg-slate-100 text-slate-500" : "bg-blue-50 text-blue-600"}`}><Mail size={16} /></span><span className="min-w-0 flex-1"><span className="flex items-center gap-2"><span className={`truncate text-sm ${message.isRead ? "font-medium text-slate-700" : "font-bold text-slate-900"}`}>{message.name}</span>{!message.isRead && <span className="h-2 w-2 shrink-0 rounded-full bg-blue-600" />}</span><span className="mt-0.5 block truncate text-xs font-semibold text-slate-600">{message.subject}</span><span className="mt-1 block text-xs leading-5 text-slate-500">{message.message}</span><span className="mt-1.5 block text-[11px] text-slate-400">{new Date(message.createdAt).toLocaleString()}</span></span></button>)}</div><button type="button" onClick={() => { setSection("messages"); setNotificationOpen(false); }} className="flex w-full items-center justify-center border-t border-slate-100 bg-slate-50/70 px-4 py-3 text-xs font-bold text-blue-600 transition hover:bg-blue-50">View all messages <span className="ml-1">→</span></button></div>}</div><button onClick={logout} className="flex items-center gap-3 rounded-full pl-1 pr-1 text-left transition hover:bg-slate-50"><span className="flex h-11 w-11 items-center justify-center rounded-full bg-violet-600 text-sm font-bold text-white">MH</span><span className="hidden sm:block"><span className="block text-sm font-bold leading-5 text-slate-900">Mehedi Hasan</span><span className="block text-xs leading-4 text-slate-500">Admin</span></span><ChevronDown size={17} className="ml-1 text-slate-700" /></button></div></header>
+      <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-slate-200/80 bg-white px-5 shadow-sm shadow-slate-200/20 sm:px-8"><div className="flex items-center gap-3"><span className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-600 text-white shadow-md shadow-blue-200"><Code2 size={25} strokeWidth={2.5} /></span><div><h1 className="text-lg font-extrabold leading-5 tracking-tight text-slate-900">Mehedi Hasan</h1><p className="mt-0.5 text-sm leading-4 text-slate-500">Admin Panel</p></div></div><div className="flex items-center gap-5"><div className="relative"><button type="button" aria-label={`Notifications, ${notificationUnread} unread messages`} aria-expanded={notificationOpen} aria-haspopup="dialog" onClick={() => setNotificationOpen((open) => !open)} className={`relative flex h-11 w-11 items-center justify-center rounded-full transition duration-200 ${notificationOpen ? "bg-blue-50 text-blue-700 ring-1 ring-blue-100" : "text-slate-700 hover:bg-slate-50"}`}><Bell size={21} strokeWidth={1.9} />{notificationUnread > 0 && <span className="absolute -right-0.5 -top-0.5 flex h-[19px] min-w-[19px] items-center justify-center rounded-full border-2 border-white bg-blue-600 px-1 text-[10px] font-bold leading-none text-white">{notificationUnread > 99 ? "99+" : notificationUnread}</span>}</button>{notificationOpen && <div role="dialog" aria-label="Notifications" className="absolute right-0 top-[calc(100%+12px)] z-[60] w-[min(360px,calc(100vw-2rem))] overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_24px_70px_rgba(15,23,42,.18)]"><div className="flex items-center justify-between border-b border-slate-100 px-4 py-3.5"><div><h2 className="text-sm font-bold text-slate-900">Notifications</h2><p className="mt-0.5 text-xs text-slate-500">{notificationUnread} unread {notificationUnread === 1 ? "message" : "messages"}</p></div><button type="button" onClick={markAllNotificationsRead} disabled={notificationUnread === 0} className="text-xs font-semibold text-blue-600 transition hover:text-blue-700 disabled:cursor-not-allowed disabled:text-slate-300">Mark all read</button></div><div className="max-h-[360px] overflow-y-auto">{recentNotifications.length === 0 ? <div className="px-5 py-9 text-center"><span className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-slate-50 text-slate-400"><Bell size={18} /></span><p className="mt-3 text-sm font-semibold text-slate-700">You&apos;re all caught up</p><p className="mt-1 text-xs text-slate-500">New contact messages will appear here.</p></div> : recentNotifications.map((message) => <button key={message._id} type="button" onClick={() => openNotification(message)} className="flex w-full items-start gap-3 border-b border-slate-100 px-4 py-3.5 text-left transition last:border-b-0 hover:bg-slate-50"><span className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${message.isRead ? "bg-slate-100 text-slate-500" : "bg-blue-50 text-blue-600"}`}><Mail size={16} /></span><span className="min-w-0 flex-1"><span className="flex items-center gap-2"><span className={`truncate text-sm ${message.isRead ? "font-medium text-slate-700" : "font-bold text-slate-900"}`}>{message.name}</span>{!message.isRead && <span className="h-2 w-2 shrink-0 rounded-full bg-blue-600" />}</span><span className="mt-0.5 block truncate text-xs font-semibold text-slate-600">{message.subject}</span><span className="mt-1 block text-xs leading-5 text-slate-500">{message.message}</span><span className="mt-1.5 block text-[11px] text-slate-400">{new Date(message.createdAt).toLocaleString()}</span></span></button>)}</div><button type="button" onClick={() => { setSection("messages"); setNotificationOpen(false); }} className="flex w-full items-center justify-center border-t border-slate-100 bg-slate-50/70 px-4 py-3 text-xs font-bold text-blue-600 transition hover:bg-blue-50">View all messages <span className="ml-1">→</span></button></div><div className="border-t border-slate-100 p-3"><button type="button" onClick={() => setNotificationSettingsOpen((open) => !open)} className="flex w-full items-center justify-between rounded-lg px-2 py-2 text-xs font-semibold text-slate-600 transition hover:bg-slate-50"><span className="flex items-center gap-2"><span className="text-slate-400">⚙</span> Alert settings</span><ChevronDown size={14} className={notificationSettingsOpen ? "rotate-180 transition" : "transition"} /></button>{notificationSettingsOpen && <div className="mt-2 space-y-3 rounded-xl bg-slate-50 p-3"><label className="flex cursor-pointer items-center justify-between gap-3 text-xs font-medium text-slate-700"><span className="flex items-center gap-2"><Bell size={14} /> Sound alerts</span><input type="checkbox" checked={soundEnabled} onChange={(event) => setSoundEnabled(event.target.checked)} className="h-4 w-4 accent-blue-600" /></label><div className="flex items-center justify-between gap-2"><span className="flex items-center gap-2 text-xs font-medium text-slate-700"><Mail size={14} /> Desktop alerts</span><button type="button" onClick={enableDesktopNotifications} className={`rounded-lg px-2.5 py-1.5 text-[11px] font-semibold ${desktopEnabled ? "bg-emerald-50 text-emerald-700" : "bg-white text-blue-600 ring-1 ring-slate-200"}`}>{desktopEnabled ? "Enabled" : "Enable"}</button></div><button type="button" onClick={playNotificationSound} className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 transition hover:border-blue-200 hover:text-blue-700">Test sound</button><p className="text-[10px] leading-4 text-slate-400">New messages are checked every 30 seconds. Keep this admin panel open to receive alerts.</p></div>}</div></div>}</div><button onClick={logout} className="flex items-center gap-3 rounded-full pl-1 pr-1 text-left transition hover:bg-slate-50"><span className="flex h-11 w-11 items-center justify-center rounded-full bg-violet-600 text-sm font-bold text-white">MH</span><span className="hidden sm:block"><span className="block text-sm font-bold leading-5 text-slate-900">Mehedi Hasan</span><span className="block text-xs leading-4 text-slate-500">Admin</span></span><ChevronDown size={17} className="ml-1 text-slate-700" /></button></div></header>
       <nav aria-label="Admin sections" className="sticky top-16 z-20 flex gap-2 overflow-x-auto border-b border-slate-200 bg-white px-4 py-3 lg:hidden">
         {sections.map((item) => { const Icon = item.icon; return <button key={item.id} type="button" aria-current={section === item.id ? "page" : undefined} onClick={() => { setSection(item.id); setNotice(""); setError(""); setJson(""); setEditingId(null); setRecordForm(emptyRecordForm(item.id)); }} className={`inline-flex shrink-0 items-center gap-2 rounded-xl px-3.5 py-2.5 text-sm font-semibold transition ${section === item.id ? "bg-blue-50 text-blue-700 ring-1 ring-blue-100" : "text-slate-600 hover:bg-slate-50"}`}><Icon size={16} />{item.label}</button>; })}
       </nav>
