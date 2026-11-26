@@ -18,7 +18,7 @@ export function SectionHeading({
     <div className="w-full min-w-0 max-w-3xl">
       <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-[#64748B]">
         <span className="h-px w-6 bg-[#CBD5E1]" />
-        {number && eyebrow ? `${number} / ${eyebrow}` : (label ?? eyebrow ?? "")}
+        {label ?? eyebrow ?? ""}
       </span>
       <h2 className="mt-5 text-[clamp(2rem,4vw,4rem)] font-black sm:text-[clamp(2.35rem,4vw,4rem)] leading-[1.1] tracking-[-0.035em] text-[#0F172A]">
         {title}
