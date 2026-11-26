@@ -29,7 +29,7 @@ const projects = [
 export function Projects() {
   return (
     <section id="projects" className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-12 lg:py-28">
-      <SectionHeading number="05" eyebrow="Professional projects" title={<>Selected <span className="font-normal italic text-[#2563EB]">work.</span></>} />
+      <SectionHeading eyebrow="Professional projects" title={<>Selected <span className="font-semibold not-italic text-[#0F172A]">work.</span></>} />
 
       <div className="mt-10 space-y-5 sm:mt-14">
         {projects.map((project) => (
@@ -39,7 +39,7 @@ export function Projects() {
                 <div className="flex h-9 items-center gap-1 border-b border-[#E2E8F0] px-3"><i className="block h-1.5 w-1.5 rounded-full bg-[#CBD5E1]" /><i className="block h-1.5 w-1.5 rounded-full bg-[#CBD5E1]" /><i className="block h-1.5 w-1.5 rounded-full bg-[#CBD5E1]" /></div>
                 <div className="p-4 sm:p-8">
                   <span className="text-[8px] font-bold uppercase tracking-[.15em] text-[#64748B]">{project.category}</span>
-                  <p className="mt-5 text-2xl font-black tracking-[-.05em] sm:text-3xl text-[#0F172A]">{project.title}</p>
+                  <p className="mt-5 text-2xl font-semibold tracking-[-.025em] sm:text-3xl text-[#0F172A]">{project.title}</p>
                   <div className="mt-7 h-2 w-3/4 rounded-full bg-[#E2E8F0]" /><div className="mt-2 h-2 w-1/2 rounded-full bg-[#F1F5F9]" />
                 </div>
               </div>
