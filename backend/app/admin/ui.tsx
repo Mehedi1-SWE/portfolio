@@ -85,18 +85,35 @@ export default function AdminDashboard() {
       audioContextRef.current = context;
       if (context.state === "suspended") void context.resume();
       const now = context.currentTime;
-      [880, 1174.66].forEach((frequency, index) => {
+      const notes = [
+        { frequency: 783.99, start: 0, duration: 0.72, volume: 0.075 },
+        { frequency: 1046.5, start: 0.22, duration: 0.82, volume: 0.07 },
+        { frequency: 1318.51, start: 0.48, duration: 0.95, volume: 0.065 },
+        { frequency: 1567.98, start: 0.82, duration: 1.2, volume: 0.06 },
+        { frequency: 1318.51, start: 1.45, duration: 1.35, volume: 0.045 },
+      ];
+      notes.forEach(({ frequency, start, duration, volume }) => {
         const oscillator = context.createOscillator();
+        const overtone = context.createOscillator();
         const gain = context.createGain();
+        const startAt = now + start;
         oscillator.type = "sine";
         oscillator.frequency.value = frequency;
-        gain.gain.setValueAtTime(0.0001, now + index * 0.13);
-        gain.gain.exponentialRampToValueAtTime(0.12, now + index * 0.13 + 0.02);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + index * 0.13 + 0.22);
+        overtone.type = "sine";
+        overtone.frequency.value = frequency * 2.01;
+        const overtoneGain = context.createGain();
+        overtoneGain.gain.value = 0.18;
         oscillator.connect(gain);
+        overtone.connect(overtoneGain);
+        overtoneGain.connect(gain);
+        gain.gain.setValueAtTime(0.0001, startAt);
+        gain.gain.exponentialRampToValueAtTime(volume, startAt + 0.025);
+        gain.gain.exponentialRampToValueAtTime(0.0001, startAt + duration);
         gain.connect(context.destination);
-        oscillator.start(now + index * 0.13);
-        oscillator.stop(now + index * 0.13 + 0.24);
+        oscillator.start(startAt);
+        overtone.start(startAt);
+        oscillator.stop(startAt + duration + 0.02);
+        overtone.stop(startAt + duration + 0.02);
       });
     } catch {
       // Audio is optional; browser autoplay restrictions may block playback.
