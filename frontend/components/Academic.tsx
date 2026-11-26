@@ -14,8 +14,8 @@ type AcademicItem = {
 };
 
 const fallbackProjects = [
-  { _id: "project-1", category: "academic-project" as const, course: "Artificial Intelligence / Machine Learning", title: "Dental Disease Prediction System", description: "An academic machine-learning project focused on disease prediction with a user-facing interface for interacting with the model.", technologies: ["Python", "Machine Learning", "React"], outcome: "99% model accuracy" },
-  { _id: "project-2", category: "academic-project" as const, course: "Web Engineering / Full-Stack Development", title: "E-Commerce Web Application", description: "A full-stack academic application with authentication, product workflows and payment integration.", technologies: ["MongoDB", "Express", "React", "Node.js"], outcome: "Full-stack implementation" },
+  { _id: "project-1", category: "academic-project" as const, course: "Artificial Intelligence / Machine Learning", title: "Dental Disease Prediction System", description: "An academic machine-learning project exploring dental disease prediction through a model-supported, user-facing application.", technologies: ["Python", "Machine Learning", "React"], outcome: "99% model accuracy" },
+  { _id: "project-2", category: "academic-project" as const, course: "Web Engineering / Full-Stack Development", title: "E-Commerce Web Application", description: "A full-stack academic application featuring user authentication, product management workflows and payment integration.", technologies: ["MongoDB", "Express", "React", "Node.js"], outcome: "Full-stack implementation" },
 ];
 
 const fallbackCoursework = [
@@ -46,7 +46,7 @@ export async function Academic() {
   return (
     <section id="academic" className="border-y border-[#E2E8F0] bg-[#F1F5F9] px-4 py-16 sm:px-6 sm:py-20 lg:px-12 lg:py-28">
       <div className="mx-auto max-w-[1280px]">
-        <SectionHeading eyebrow="Academic profile" title={<>A strong <span>foundation.</span></>} description="Explore my Computer Science degree, selected academic projects and relevant coursework." />
+        <SectionHeading eyebrow="Academic profile" title={<>A strong <span>foundation.</span></>} description="A summary of my Computer Science education, selected academic projects and relevant coursework." />
 
         <div className="mt-10 grid gap-5 sm:mt-14 lg:grid-cols-2">
           {academicProjects.map((project, index) => (
