@@ -2,13 +2,18 @@
 import { useEffect, useState } from "react";
 import { Download, FileText } from "lucide-react";
 
-type CVItem = { type: string; label: string; secureUrl?: string };
+type CVItem = {
+  slug: "professional" | "academic" | "europass";
+  title: string;
+  url?: string;
+  isActive: boolean;
+};
 
 const defaults = [
-  { type: "professional", label: "Professional CV" },
-  { type: "academic", label: "Academic CV" },
-  { type: "europass", label: "Europass CV" },
-];
+  { slug: "professional", label: "Professional CV" },
+  { slug: "academic", label: "Academic CV" },
+  { slug: "europass", label: "Europass CV" },
+] as const;
 
 export function CVDownloadButtons() {
   const [cvs, setCvs] = useState<CVItem[]>([]);
@@ -17,24 +22,26 @@ export function CVDownloadButtons() {
     const api = process.env.NEXT_PUBLIC_API_URL;
     if (!api) return;
 
-    fetch(api.replace(/\/$/, "") + "/api/cvs", { cache: "no-store" })
+    fetch(`${api.replace(/\/$/, "")}/api/cv`, { cache: "no-store" })
       .then((response) => {
         if (!response.ok) throw new Error("Unable to load CVs.");
         return response.json();
       })
-      .then((data) => setCvs(data.cvs || []))
+      .then((data: CVItem[]) => setCvs(Array.isArray(data) ? data : []))
       .catch(() => setCvs([]));
   }, []);
 
   return (
     <div className="mt-7 grid grid-cols-1 gap-3 sm:mt-9 sm:flex sm:flex-wrap sm:items-center sm:gap-5">
       {defaults.map((item, index) => {
-        const cv = cvs.find((entry) => entry.type === item.type);
-        const href = cv?.secureUrl;
+        const cv = cvs.find(
+          (entry) => entry.slug === item.slug && entry.isActive && typeof entry.url === "string" && entry.url.trim()
+        );
+        const href = cv?.url;
 
         return (
           <a
-            key={item.type}
+            key={item.slug}
             href={href || "#"}
             target={href ? "_blank" : undefined}
             rel={href ? "noreferrer" : undefined}
@@ -43,14 +50,14 @@ export function CVDownloadButtons() {
               if (!href) event.preventDefault();
             }}
             className={
-              item.type === "europass"
+              item.slug === "europass"
                 ? "group inline-flex h-[52px] w-full sm:w-[180px] shrink-0 items-center justify-between rounded-[12px] border border-[#CEC6BB] bg-white px-3 text-[#292521] shadow-[0_4px_12px_rgba(60,45,35,.06)] transition hover:-translate-y-0.5"
                 : index === 0
                   ? "group inline-flex h-[52px] w-full shrink-0 sm:w-[185px] items-center justify-between rounded-[12px] bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] px-3 text-white shadow-[0_10px_24px_rgba(37,99,235,.16)] transition hover:-translate-y-0.5"
                   : "group inline-flex h-[52px] w-full shrink-0 sm:w-[180px] items-center justify-between rounded-[12px] border border-[#CBD5E1] bg-white px-3 text-[#0F172A] shadow-[0_4px_12px_rgba(15,23,42,.06)] transition hover:-translate-y-0.5"
             }
           >
-            {item.type === "europass" ? (
+            {item.slug === "europass" ? (
               <>
                 <span className="flex items-center gap-2">
                   <span className="flex h-[28px] w-[38px] shrink-0 items-center justify-center rounded-[2px] bg-[#0757B8]">
