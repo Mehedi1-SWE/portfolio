@@ -84,7 +84,7 @@ export function Hero() {
 
         <div className="relative mx-auto grid w-full max-w-[1280px] items-start gap-8 lg:grid-cols-[1.08fr_.78fr] lg:items-start lg:gap-14">
           <div className="reveal-card max-w-[760px]">
-            <div className="mb-6 flex items-center gap-3 text-sm font-bold uppercase tracking-[.12em] text-[#64748B]">
+            <div className="mb-6 flex items-center gap-3 text-[13px] font-semibold uppercase tracking-[.14em] text-[#64748B]">
               <span className="h-2 w-2 rounded-full bg-[#2563EB]" />
               Engineering · Research · Web
             </div>
