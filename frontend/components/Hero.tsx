@@ -141,12 +141,12 @@ export function Hero() {
 
               <div className="relative py-6">
                 <div className="flex min-w-0 items-center gap-3 sm:gap-4">
-                  <div className="relative h-[128px] w-[100px] shrink-0 overflow-hidden rounded-[10px] border border-white/90 bg-[#EFF6FF] shadow-[0_18px_34px_rgba(15,23,42,.18)]">
+                  <div className="relative h-[135px] w-[105px] shrink-0 overflow-hidden rounded-[10px] border border-white/90 bg-[#EFF6FF] shadow-[0_18px_34px_rgba(15,23,42,.18)]">
                     <Image
                       src="/mehedi-hasan.jpg"
                       alt="Mehedi Hasan"
                       fill
-                      sizes="104px"
+                      sizes="105px"
                       className="object-cover object-[50%_28%]"
                       priority
                     />
