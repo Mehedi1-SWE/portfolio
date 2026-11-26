@@ -95,9 +95,9 @@ export function Hero() {
 
             <h1 className="mt-3 text-[clamp(36px,10vw,104px)] font-semibold leading-[1.05] tracking-[-.04em] text-[#0F172A] sm:text-[clamp(56px,7.5vw,104px)]">\n              Mehedi Hasan\n            </h1>
 
-            <h2 className="mt-7 max-w-2xl text-[clamp(28px,3.1vw,46px)] font-semibold sm:mt-9 leading-[1.15] tracking-[-.03em] text-[#1E293B]">
+            <h2 className="mt-7 max-w-2xl text-[clamp(28px,3.1vw,46px)] font-semibold leading-[1.15] tracking-[-.03em] text-[#0F172A] sm:mt-9">
               Full-Stack Software Engineer{" "}
-              <span className="text-[#64748B]">
+              <span className="text-[#0F172A]">
                 building modern web applications with Next.js, React and Node.js.
               </span>
             </h2>
