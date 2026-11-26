@@ -70,7 +70,7 @@ export function Hero() {
     <>
       <section
         id="home"
-        className="relative flex min-h-0 items-start px-4 pb-14 pt-[112px] sm:px-6 sm:pb-16 sm:pt-[120px] lg:min-h-[700px] lg:px-12 lg:pb-18"
+        className="relative flex min-h-0 items-start px-4 pb-14 pt-[128px] sm:px-6 sm:pb-16 sm:pt-[136px] lg:min-h-[700px] lg:px-12 lg:pb-18"
       >
         <div
           className="grid-bg absolute inset-x-0 top-0 h-[760px] opacity-50"
@@ -234,7 +234,7 @@ export function Hero() {
 
       {/* TECHNOLOGY MARQUEE */}
       <div
-        className="relative z-10 mt-6 overflow-hidden border-y border-[#E2E8F0] bg-white py-3.5"
+        className="relative z-10 mt-12 mx-auto max-w-[1280px] overflow-hidden border-y border-[#E2E8F0] bg-white py-3.5"
         aria-label="Technology highlights"
       >
         <div className="marquee flex w-max whitespace-nowrap">
