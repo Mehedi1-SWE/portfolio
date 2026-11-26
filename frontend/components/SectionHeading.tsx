@@ -17,7 +17,7 @@ export function SectionHeading({
       <span className="inline-flex items-center text-[15px] font-semibold uppercase tracking-[0.10em] text-[#64748B]">
         {label ?? eyebrow ?? ""}
       </span>
-      <h2 className="mt-5 text-[clamp(2rem,3.5vw,3.25rem)] font-semibold leading-[1.15] tracking-[-0.025em] text-[#0F172A]">
+      <h2 className="mt-5 text-[clamp(1.875rem,3vw,2.75rem)] font-semibold leading-[1.2] tracking-[-0.025em] text-[#0F172A]">
         {title}
       </h2>
       {description ? (
