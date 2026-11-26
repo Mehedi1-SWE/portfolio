@@ -69,7 +69,7 @@ export async function Academic() {
         </div>
 
         <div className="mt-14 sm:mt-20">
-          <div className="flex items-center gap-3 text-sm font-bold uppercase tracking-[.16em] text-[#64748B]"><GraduationCap size={15} className="text-[#2563EB]" /> Coursework</div>
+          <div className="flex items-center gap-3 text-[13px] font-semibold uppercase tracking-[.12em] text-[#64748B]"><GraduationCap size={16} strokeWidth={1.8} className="text-[#2563EB]" /> Coursework</div>
           <div className="mt-5 grid gap-4 sm:mt-7 md:grid-cols-2 lg:grid-cols-4">
             {coursework.map((item, index) => (
               <article key={item._id} className="rounded-xl border border-[#E2E8F0] bg-white p-5 shadow-[0_14px_44px_rgba(15,23,42,.055)] transition hover:-translate-y-1.5 hover:shadow-[0_26px_72px_rgba(15,23,42,.12)] sm:p-6">
