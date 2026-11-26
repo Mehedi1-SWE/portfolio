@@ -251,7 +251,7 @@ export function Hero() {
             ].map((item) => (
               <span
                 key={item}
-                className="shrink-0 text-sm font-bold tracking-[.16em] text-[#64748B]"
+                className="shrink-0 text-[13px] font-semibold tracking-[.12em] text-[#64748B]"
               >
                 {item}{" "}
                 <span className="ml-10 text-[#2563EB]">✦</span>
@@ -271,7 +271,7 @@ export function Hero() {
             ].map((item) => (
               <span
                 key={item}
-                className="shrink-0 text-sm font-bold tracking-[.16em] text-[#64748B]"
+                className="shrink-0 text-[13px] font-semibold tracking-[.12em] text-[#64748B]"
               >
                 {item}{" "}
                 <span className="ml-10 text-[#2563EB]">✦</span>
