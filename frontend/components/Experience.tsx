@@ -18,7 +18,7 @@ export function Experience() {
               <span className="font-sans text-sm font-semibold text-[#64748B]">{date}</span>
               <div className="relative min-w-0">
                 <div className="flex min-w-0 items-start gap-3"><Icon size={18} className="mt-1 shrink-0 text-[#2563EB]" /><div className="min-w-0"><h3 className="text-xl font-semibold text-[#0F172A]">{title}</h3><p className="mt-1 text-sm font-bold uppercase tracking-[.12em] text-[#2563EB]">{organization}</p></div></div>
-                <p className="mt-4 max-w-3xl text-[16px] leading-7 text-[#475569]">{description}</p>
+                <p className="mt-4 max-w-3xl text-base leading-7 text-[#475569]">{description}</p>
               </div>
             </article>
           ))}
